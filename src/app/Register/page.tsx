@@ -69,27 +69,19 @@ export default function Register() {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-        {/* Logo and Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <div className="w-8 h-8 bg-green-600 rounded-sm transform rotate-45 mr-3"></div>
-            <h1 className="text-2xl font-bold text-green-800">HealthFirst</h1>
-          </div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">Create Your Account</h2>
-          <p className="text-gray-500 text-sm">Start your journey towards better health management.</p>
-        </div>
+    <div className="max-h-screen h-[90vh] bg-green-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-screen flex items-center justify-center ">
+        {/* Main Card */}
+        <div className="bg-white rounded-2xl shadow-lg p-8  ">
+          <h2 className="text-4xl font-bold font-mono  bg-clip-text text-transparent bg-gradient-to-l from-green-950 via-green-400 to-green-950 text-center mb-8 px-40 py-10 drop-shadow-xl drop-shadow-green-200 cursor-pointer">
+            Create Your Account
+          </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Name Field */}
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-              Name
-            </label>
+          <form onSubmit={handleSubmit} className="space-y-10">
+            {/* Name Field */}
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="size-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -100,20 +92,15 @@ export default function Register() {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                placeholder="Enter your full name"
+                className="block w-full pl-16 pr-3 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-mono text-green-950 text-xl font-bold"
+                placeholder="Full Name"
               />
             </div>
-          </div>
 
-          {/* Email Field */}
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-              Email
-            </label>
+            {/* Email Field */}
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="size-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
@@ -125,17 +112,12 @@ export default function Register() {
                 required
                 value={formData.email}
                 onChange={handleInputChange}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                placeholder="Enter your email"
+                className="block w-full pl-16 pr-3 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-mono text-green-950 text-xl font-bold"
+                placeholder="Email"
               />
             </div>
-          </div>
 
-          {/* Password Field */}
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-              Password
-            </label>
+            {/* Password Field */}
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,43 +132,44 @@ export default function Register() {
                 required
                 value={formData.password}
                 onChange={handleInputChange}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                placeholder="Create a password"
+                className="block w-full pl-16 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-mono text-green-950 text-xl font-bold"
+                placeholder="Password"
               />
             </div>
-          </div>
 
-          {/* Hidden field for user type */}
-          <input type="hidden" name="userType" value={UserType.PATIENT} />
+            {/* Hidden field for user type */}
+            <input type="hidden" name="userType" value={UserType.PATIENT} />
 
-          {error && (
-            <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-md">
-              {error}
+            {/* Error Message */}
+            {error && (
+              <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-md">
+                {error}
+              </div>
+            )}
+
+            {/* Register Button */}
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-green-500 text-white py-3 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xl font-mono font-extrabold"
+            >
+              {isLoading ? "Creating account..." : "Register"}
+            </button>
+
+            {/* Sign in link */}
+            <div className="text-center">
+              <p className="text-lg  font-mono text-gray-600">
+                Already have an account?{" "}
+                <a
+                  href="/auth/signin"
+                  className="text-green-600 hover:text-green-500 font-medium"
+                >
+                  Sign in
+                </a>
+              </p>
             </div>
-          )}
-
-          {/* Register Button */}
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200"
-          >
-            {isLoading ? "Creating account..." : "Register"}
-          </button>
-
-          {/* Sign in link */}
-          <div className="text-center">
-            <p className="text-sm text-gray-600">
-              Already have an account?{" "}
-              <a
-                href="/auth/signin"
-                className="font-medium text-green-600 hover:text-green-500"
-              >
-                Sign in
-              </a>
-            </p>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

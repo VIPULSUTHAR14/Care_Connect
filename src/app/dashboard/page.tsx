@@ -3,14 +3,20 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import PastReportsOverview from "@/components/PastReportsOverview";
+import { ArrowRight } from "lucide-react";
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const To_report = ()=>{
-    router.push("/patient/patient_health_reports")
-  }
+  const To_report = () => {
+    router.push("/patient/patient_health_reports");
+  };
+
+  const To_chatbot = () => {
+    router.push("/chatbot");
+  };
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -20,8 +26,8 @@ export default function Dashboard() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 to-teal-100">
-        <div className="animate-spin rounded-full h-24 w-24 border-b-4 border-indigo-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-24 w-24 border-b-4 border-green-600"></div>
       </div>
     );
   }
@@ -30,91 +36,89 @@ export default function Dashboard() {
     return null;
   }
 
-  const getUserTypeDisplay = (userType: string) => {
-    switch (userType) {
-      case "patient":
-        return "Patient";
-      case "doctor":
-        return "Doctor";
-      case "hospital":
-        return "Hospital";
-      case "pharmacy":
-        return "Pharmacy";
-      default:
-        return userType;
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-teal-100">
-      <div className="max-w-5xl mx-auto py-10 px-4 sm:px-8">
-        <div className="bg-white/80 shadow-xl rounded-3xl p-10 border border-teal-200">
-          <div className="flex flex-col items-center">
-            <img
-              src="/assets/Board.png"
-              alt="Healthcare"
-              className="w-32 h-32 rounded-full shadow-lg mb-6 border-4 border-indigo-200 object-cover"
-            />
-            <h1 className="text-4xl font-extrabold text-teal-900 mb-2 font-mono tracking-tight">
-              Welcome, {(session.user as any)?.name?.split(" ")[0] || "User"}!
-            </h1>
-            <p className="text-lg text-gray-600 mb-6 font-mono">
-              Your personalized Healthcare Dashboard
+    <div className=" min-h-[90vh] bg-gray-50 flex flex-col md:flex-row">
+      <div className="w-full md:w-[20vw] flex flex-col items-center justify-start pt-4 space-y-12  px-4">
+        <p className="text-2xl text-cyan-800 font-mono font-bold">
+          Medication Management
+        </p>
+        <div className="w-full max-w-sm bg-red-300/70 rounded-2xl flex flex-col justify-center items-center border border-rose-900 py-4">
+        <p className="font-mono text-xl text-red-800 flex px-6 text-center" >Get reminders for your pills</p>
+        <button type="button" className="font-mono font-bold text-red-800 flex items-center gap-1 mt-2" onClick={()=>{
+          router.push("/Pill_remider")
+        }} >Remind me <ArrowRight/> </button>
+        </div>
+        <div className="w-full max-w-sm bg-blue-400/70 rounded-2xl flex flex-col justify-center items-center border border-blue-900 py-4">
+        <p className="font-mono text-xl text-blue-800 flex px-6 text-center  " >Find out about your medicine </p>
+        <button type="button" className="font-mono font-bold text-blue-800 flex items-center gap-1 mt-2" onClick={()=>{
+          router.push("/pharmacy")
+        }} >Pharmacy <ArrowRight/> </button>
+        </div>
+        <div className="w-full max-w-sm bg-violet-400/70 rounded-2xl flex flex-col justify-center items-center border border-violet-900 py-4">
+        <p className="font-mono text-xl text-violet-800 flex px-6 text-center  " >Keep track of what you take</p>
+        <button type="button" className="font-mono font-bold text-violet-800 flex items-center gap-1 mt-2" onClick={()=>{
+          router.push("/Pill_remider")
+        }} >learn more <ArrowRight/> </button>
+        </div>
+        <div className="w-full max-w-sm bg-yellow-400/40 rounded-2xl flex flex-col justify-center items-center border border-yellow-900 py-4">
+        <p className="font-mono text-xl text-yellow-800 flex px-6 text-center  " >Book an apointment</p>
+        <button type="button" className="font-mono font-bold text-yellow-800 flex items-center gap-1 mt-2" onClick={()=>{
+          router.push("/Pill_remider")
+        }} >Book now <ArrowRight/> </button>
+        </div>
+      </div>
+      <div className="flex flex-col flex-1 w-full px-4 md:px-6 "  >
+        <div className="flex-1 gap-10">
+          <div className="pt-4 ">
+            <p className="text-2xl text-cyan-800 font-mono font-bold pl-1 md:pl-5">
+              Recent Reports
             </p>
-            <div className="bg-gradient-to-r from-indigo-100 to-teal-100 shadow-inner rounded-xl px-8 py-6 w-full max-w-lg flex items-center gap-4 mb-8">
-              <div className="flex-shrink-0">
-                <div className="h-16 w-16 rounded-full bg-indigo-200 flex items-center justify-center shadow">
-                  <span className="text-indigo-700 font-bold text-3xl font-mono">
-                    {(session.user as any)?.name?.charAt(0) || "U"}
-                  </span>
-                </div>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 font-mono">
-                  {(session.user as any)?.name || "User"}
-                </h2>
-                <p className="text-md text-gray-500 font-mono">
-                  {(session.user as any)?.email}
-                </p>
-                <span className="inline-block mt-1 px-3 py-1 rounded-full bg-teal-200 text-teal-900 text-xs font-bold font-mono uppercase tracking-wider">
-                  {getUserTypeDisplay((session.user as any)?.userType || "unknown")}
+            <PastReportsOverview />
+          </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-6 md:gap-8 pt-8 md:pt-16" >
+              {/* new div */}
+              <div className="pt-5" >
+                {/* this is for the chat bot */}
+              
+                <div className="bg-gray-100 w-full max-w-full md:max-w-4xl rounded-2xl flex flex-col justify-center items-center drop-shadow-lg drop-shadow-black p-6 h-auto md:h-[30vh] ">
+                <p className="text-2xl font-mono font-bold text-cyan-800">
+              AI Health Assistant
+            </p>
+              <p className="text-lg text-cyan-700 p-2 md:p-4 font-mono text-center ">
+                Meet your{" "}
+                <span className="font-semibold text-gray-700 underline">
+                  Symptom &amp; Health AI Assistant
                 </span>
-              </div>
-            </div>
-            <div className="w-full">
-              <h3 className="text-xl font-bold text-teal-900 mb-4 font-mono text-left">
-                Quick Actions
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-                <button className="flex flex-col items-center bg-gradient-to-br from-white to-teal-50 p-6 rounded-2xl shadow hover:shadow-lg transition-all border border-teal-100 hover:-translate-y-1 group">
-                  <div className="text-indigo-600 text-3xl mb-2 group-hover:scale-110 transition-transform">📋</div>
-                  <div className="text-base font-semibold text-gray-900 font-mono">Profile</div>
-                </button>
-                <button className="flex flex-col items-center bg-gradient-to-br from-white to-teal-50 p-6 rounded-2xl shadow hover:shadow-lg transition-all border border-teal-100 hover:-translate-y-1 group">
-                  <div className="text-indigo-600 text-3xl mb-2 group-hover:scale-110 transition-transform">🔍</div>
-                  <div className="text-base font-semibold text-gray-900 font-mono">Search</div>
-                </button>
-                <button onClick={()=>{To_report()}} className="flex flex-col items-center bg-gradient-to-br from-white to-teal-50 p-6 rounded-2xl shadow hover:shadow-lg transition-all border border-teal-100 hover:-translate-y-1 group">
-                  <div className="text-indigo-600 text-3xl mb-2 group-hover:scale-110 transition-transform">📊</div>
-                  <div className="text-base font-semibold text-gray-900 font-mono">Reports</div>
-                </button>
-                <button className="flex flex-col items-center bg-gradient-to-br from-white to-teal-50 p-6 rounded-2xl shadow hover:shadow-lg transition-all border border-teal-100 hover:-translate-y-1 group">
-                  <div className="text-indigo-600 text-3xl mb-2 group-hover:scale-110 transition-transform">⚙️</div>
-                  <div className="text-base font-semibold text-gray-900 font-mono">Settings</div>
-                </button>
-              </div>
-            </div>
-            <div className="mt-10 w-full flex justify-center">
-              <button
-                onClick={() => {
-                  window.location.href = "/api/auth/signout";
-                }}
-                className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold py-3 px-10 rounded-2xl shadow-lg transition-all font-mono text-lg"
-              >
-                Sign Out
+                !
+              </p>
+              <button onClick={()=>{
+                router.push("/chatbot")
+              }} className="bg-cyan-800 hover:bg-cyan-700 transition-all text-xl md:text-2xl hover:underline px-6 py-3 md:p-5 rounded-full font-mono font-bold " >
+                Start Chatting Now
               </button>
             </div>
-          </div>
+              </div>
+              <div className="flex flex-col w-full max-w-full md:max-w-5xl h-auto md:h-[30vh] bg-gray-100 rounded-2xl drop-shadow-lg drop-shadow-cyan-950 m-3 md:m-5 p-4 ">
+                {/* this is for the quick action  */}
+              <p className="text-2xl font-mono font-bold text-cyan-800 p-4">
+                Quick Action
+              </p>
+              <div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="h-32 sm:h-40 bg-cyan-900 rounded-2xl text-white flex items-center justify-center">
+                    Quick
+                  </div>
+                  <div className="h-32 sm:h-40 bg-cyan-900 rounded-2xl text-white flex items-center justify-center">
+                    Quick
+                  </div>
+                  <div className="h-32 sm:h-40 bg-cyan-900 rounded-2xl text-white flex items-center justify-center">
+                    Quick
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          
         </div>
       </div>
     </div>

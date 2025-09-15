@@ -1,0 +1,2660 @@
+{
+  "medicines": [
+    {
+      "medicine_name": "Calpol 650",
+      "active_ingredient": "Paracetamol (650mg)",
+      "causes_for_use": [
+        "Fever (Pyrexia)",
+        "Pain Relief (Analgesic)",
+        "Headaches",
+        "Toothaches",
+        "Muscle aches"
+      ],
+      "summary": "A common over-the-counter medication to reduce fever and relieve mild to moderate pain by blocking pain and fever signals in the brain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Augmentin 625 Duo",
+      "active_ingredient": "Amoxycillin (500mg) + Clavulanic Acid (125mg)",
+      "causes_for_use": [
+        "Bacterial infections",
+        "Respiratory tract infections",
+        "Urinary Tract Infections (UTIs)",
+        "Skin and soft tissue infections",
+        "Dental infections"
+      ],
+      "summary": "A combination antibiotic that treats bacterial infections. Amoxycillin kills bacteria, while Clavulanic Acid prevents the bacteria from deactivating the Amoxycillin.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Allegra 120",
+      "active_ingredient": "Fexofenadine (120mg)",
+      "causes_for_use": [
+        "Allergic Rhinitis (sneezing, runny nose)",
+        "Chronic Urticaria (itching and hives)"
+      ],
+      "summary": "A non-drowsy antihistamine that provides relief from allergy symptoms by blocking the effects of histamine in the body.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Pan-D Capsule",
+      "active_ingredient": "Pantoprazole (40mg) + Domperidone (30mg)",
+      "causes_for_use": [
+        "Gastroesophageal Reflux Disease (GERD)",
+        "Heartburn and acidity",
+        "Stomach and duodenal ulcers",
+        "Nausea and vomiting associated with acidity"
+      ],
+      "summary": "A combination medication for acidity and reflux. Pantoprazole reduces stomach acid production, and Domperidone helps in the proper movement of food to prevent reflux and nausea.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Combiflam",
+      "active_ingredient": "Ibuprofen (400mg) + Paracetamol (325mg)",
+      "causes_for_use": [
+        "Mild to moderate pain (headache, toothache, muscle pain)",
+        "Inflammation and swelling",
+        "Fever"
+      ],
+      "summary": "A combination of a pain reliever (Paracetamol) and an anti-inflammatory drug (Ibuprofen). It effectively reduces pain, inflammation, and fever.",
+      "stock": "Not Available"
+    },
+    {
+      "medicine_name": "Glycomet-GP 1",
+      "active_ingredient": "Glimepiride (1mg) + Metformin (500mg)",
+      "causes_for_use": [
+        "Management of high blood sugar in Type 2 Diabetes Mellitus"
+      ],
+      "summary": "An anti-diabetic medication that combines two drugs. Metformin reduces glucose production and improves insulin sensitivity, while Glimepiride stimulates the pancreas to release more insulin.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Amlong 5",
+      "active_ingredient": "Amlodipine (5mg)",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Angina (chest pain)"
+      ],
+      "summary": "A calcium channel blocker used to treat high blood pressure and prevent angina. It relaxes blood vessels, making it easier for the heart to pump blood.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Atorva 10",
+      "active_ingredient": "Atorvastatin (10mg)",
+      "causes_for_use": [
+        "High cholesterol",
+        "Prevention of cardiovascular diseases like heart attack and stroke"
+      ],
+      "summary": "Belongs to a group of medicines called statins. It works by reducing the amount of 'bad' cholesterol (LDL) and triglycerides in the blood, while increasing the levels of 'good' cholesterol (HDL).",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Telma 40",
+      "active_ingredient": "Telmisartan (40mg)",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Reducing the risk of heart attack and stroke in high-risk patients"
+      ],
+      "summary": "An angiotensin II receptor blocker (ARB). It relaxes blood vessels, which lowers blood pressure and makes it easier for the heart to pump blood. It is also used for heart protection in certain patients.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ecosprin 75",
+      "active_ingredient": "Aspirin (75mg)",
+      "causes_for_use": [
+        "Blood thinner to prevent blood clots",
+        "Prevention of heart attacks and strokes",
+        "Used after stent placement or bypass surgery"
+      ],
+      "summary": "A low-dose aspirin medication that acts as an antiplatelet agent, or blood thinner. It prevents platelets in the blood from clumping together and forming harmful clots, thereby reducing the risk of heart attacks and strokes.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Montair LC",
+      "active_ingredient": "Montelukast (10mg) + Levocetirizine (5mg)",
+      "causes_for_use": [
+        "Allergic rhinitis (sneezing, runny nose)",
+        "Symptoms of asthma",
+        "Skin allergies"
+      ],
+      "summary": "A combination medicine used to relieve allergy symptoms and prevent asthma. Levocetirizine is an antihistamine that blocks histamine. Montelukast blocks another substance called leukotriene, which helps reduce inflammation in the airways and nose.",
+      "stock": "Not Available"
+    },
+    {
+      "medicine_name": "Ciplox 500",
+      "active_ingredient": "Ciprofloxacin (500mg)",
+      "causes_for_use": [
+        "Bacterial infections",
+        "Typhoid fever",
+        "Urinary Tract Infections (UTIs)",
+        "Bone and joint infections",
+        "Gastrointestinal infections"
+      ],
+      "summary": "A fluoroquinolone antibiotic used to treat a wide range of serious bacterial infections. It works by stopping the growth and multiplication of bacteria. It is ineffective against viral infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Thyronorm 50mcg",
+      "active_ingredient": "Thyroxine Sodium (50mcg)",
+      "causes_for_use": [
+        "Hypothyroidism (underactive thyroid)"
+      ],
+      "summary": "A synthetic thyroid hormone used to replace the natural hormone when the body does not produce enough. It helps regulate the body's energy and metabolism.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Sertima 50",
+      "active_ingredient": "Sertraline (50mg)",
+      "causes_for_use": [
+        "Depression",
+        "Anxiety disorders (Panic disorder, Social anxiety)",
+        "Obsessive-Compulsive Disorder (OCD)"
+      ],
+      "summary": "An antidepressant belonging to the SSRI (Selective Serotonin Reuptake Inhibitor) class. It works by increasing the levels of serotonin, a chemical messenger in the brain, which helps improve mood and relieve symptoms of depression and anxiety.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Lonazep 0.5",
+      "active_ingredient": "Clonazepam (0.5mg)",
+      "causes_for_use": [
+        "Anxiety disorders",
+        "Panic attacks",
+        "Epilepsy (seizures)"
+      ],
+      "summary": "A benzodiazepine that works by enhancing the activity of a calming chemical messenger in the brain (GABA). It is used for short-term relief of severe anxiety and to control seizures.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ultracet",
+      "active_ingredient": "Tramadol (37.5mg) + Paracetamol (325mg)",
+      "causes_for_use": [
+        "Moderate to severe pain"
+      ],
+      "summary": "A combination painkiller for pain that is not relieved by other analgesics. Paracetamol is a pain reliever, while Tramadol is a mild opioid analgesic that works on the central nervous system to block pain signals.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Zocon 150",
+      "active_ingredient": "Fluconazole (150mg)",
+      "causes_for_use": [
+        "Fungal infections (e.g., vaginal yeast infections, oral thrush)",
+        "Systemic fungal infections"
+      ],
+      "summary": "An antifungal medication used to treat a variety of fungal and yeast infections. It works by stopping the growth of the fungus.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Zyloric 100",
+      "active_ingredient": "Allopurinol (100mg)",
+      "causes_for_use": [
+        "Gout",
+        "Kidney stones caused by high uric acid levels"
+      ],
+      "summary": "Used to prevent gout attacks by reducing the production of uric acid in the body. It is not a painkiller and does not relieve an active gout attack, but is used for long-term management.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Myoril 4mg",
+      "active_ingredient": "Thiocolchicoside (4mg)",
+      "causes_for_use": [
+        "Painful muscle spasms",
+        "Stiffness in muscles associated with spine or joint disorders"
+      ],
+      "summary": "A muscle relaxant used to relieve pain and stiffness from muscle spasms. It acts on the brain and spinal cord to relieve muscle stiffness without reducing muscle strength.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Wysolone 10",
+      "active_ingredient": "Prednisolone (10mg)",
+      "causes_for_use": [
+        "Severe allergic reactions",
+        "Asthma",
+        "Rheumatoid arthritis",
+        "Autoimmune diseases",
+        "Certain skin conditions"
+      ],
+      "summary": "A corticosteroid that works by reducing inflammation and suppressing the immune system. It is used to treat a wide range of inflammatory and allergic conditions.",
+      "stock": "Not Available"
+    },
+    {
+      "medicine_name": "Ondem 4",
+      "active_ingredient": "Ondansetron (4mg)",
+      "causes_for_use": [
+        "Nausea and vomiting",
+        "Often used to prevent nausea from chemotherapy, radiation, or surgery"
+      ],
+      "summary": "An antiemetic medication that blocks the action of serotonin, a natural substance in the body that can cause nausea and vomiting.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Vertin 16",
+      "active_ingredient": "Betahistine (16mg)",
+      "causes_for_use": [
+        "Meniere's disease",
+        "Symptoms of vertigo (dizziness, spinning sensation)",
+        "Tinnitus (ringing in the ears)"
+      ],
+      "summary": "An anti-vertigo medicine that is thought to work by improving blood flow in the inner ear, which helps reduce the symptoms of Meniere's disease.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Zentel",
+      "active_ingredient": "Albendazole (400mg)",
+      "causes_for_use": [
+        "Intestinal worm infections (e.g., pinworm, roundworm, hookworm)"
+      ],
+      "summary": "An anthelmintic medicine used to treat infections caused by various parasitic worms. It works by preventing the worms from absorbing sugar, causing them to lose energy and die.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Flagyl 400",
+      "active_ingredient": "Metronidazole (400mg)",
+      "causes_for_use": [
+        "Bacterial infections of the stomach, liver, skin, and vagina",
+        "Amoebic dysentery and other protozoprotozoal infections"
+      ],
+      "summary": "An antibiotic and antiprotozoal medication effective against anaerobic bacteria and certain parasites. It works by stopping the growth of these infectious organisms.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Januvia 100",
+      "active_ingredient": "Sitagliptin (100mg)",
+      "causes_for_use": [
+        "Management of high blood sugar in Type 2 Diabetes Mellitus"
+      ],
+      "summary": "An oral diabetes medicine that helps control blood sugar levels. It works by increasing levels of natural substances called incretins, which help to control blood sugar by increasing insulin release and decreasing the amount of sugar made by the liver.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Metolar XR 50",
+      "active_ingredient": "Metoprolol Succinate (50mg)",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Angina (chest pain)",
+        "Heart failure",
+        "Preventing migraines"
+      ],
+      "summary": "A beta-blocker that affects the heart and circulation. It works by blocking the action of certain natural chemicals in your body, such as epinephrine, on the heart and blood vessels. This effect lowers heart rate, blood pressure, and strain on the heart.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Lasix 40",
+      "active_ingredient": "Furosemide (40mg)",
+      "causes_for_use": [
+        "Edema (fluid retention) associated with heart failure, liver or kidney disease",
+        "High blood pressure (Hypertension)"
+      ],
+      "summary": "A loop diuretic (water pill) that prevents your body from absorbing too much salt, allowing the salt to instead be passed in your urine. This helps reduce fluid retention and can also lower blood pressure.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Feronia XT",
+      "active_ingredient": "Ferrous Ascorbate (Iron) + Folic Acid",
+      "causes_for_use": [
+        "Iron deficiency anemia",
+        "Folic acid deficiency",
+        "Often prescribed during pregnancy"
+      ],
+      "summary": "A combination supplement used to treat or prevent low blood levels of iron and folic acid. Iron is crucial for producing red blood cells, and folic acid is important for fetal development and cell growth.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Uprise-D3 60K",
+      "active_ingredient": "Cholecalciferol (Vitamin D3) (60,000 IU)",
+      "causes_for_use": [
+        "Vitamin D deficiency",
+        "Strengthening bones",
+        "Used as a supplement in osteoporosis"
+      ],
+      "summary": "A high-dose Vitamin D supplement, typically taken once a week. Vitamin D is essential for the absorption of calcium and phosphorus, which are vital for building and maintaining strong bones.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Clopitab 75",
+      "active_ingredient": "Clopidogrel (75mg)",
+      "causes_for_use": [
+        "Prevention of heart attack and stroke",
+        "Peripheral vascular disease",
+        "Recent heart attack or stroke"
+      ],
+      "summary": "An antiplatelet medicine or blood thinner that helps prevent the formation of harmful blood clots in blood vessels.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Rosuvas 10",
+      "active_ingredient": "Rosuvastatin (10mg)",
+      "causes_for_use": [
+        "High cholesterol",
+        "Prevention of heart disease"
+      ],
+      "summary": "A statin medication used to lower 'bad' cholesterol (LDL) and fats (triglycerides) and raise 'good' cholesterol (HDL) in the blood.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Concor 5",
+      "active_ingredient": "Bisoprolol (5mg)",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Angina Pectoris",
+        "Heart failure"
+      ],
+      "summary": "A beta-blocker that works by blocking the action of certain natural chemicals in your body on the heart and blood vessels, which lowers heart rate and blood pressure.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Losar 50",
+      "active_ingredient": "Losartan (50mg)",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Diabetic nephropathy (kidney disease in diabetics)"
+      ],
+      "summary": "An angiotensin II receptor blocker (ARB) that helps to relax blood vessels, lowering blood pressure and making it easier for the heart to pump blood.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Janumet 50/500",
+      "active_ingredient": "Sitagliptin (50mg) + Metformin (500mg)",
+      "causes_for_use": [
+        "Type 2 Diabetes Mellitus"
+      ],
+      "summary": "A combination of two oral anti-diabetic medicines to control high blood sugar. Sitagliptin helps raise insulin levels after meals while Metformin lowers sugar production in the liver.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Diamicron XR 60",
+      "active_ingredient": "Gliclazide (60mg)",
+      "causes_for_use": [
+        "Type 2 Diabetes Mellitus"
+      ],
+      "summary": "A sulfonylurea drug that helps the pancreas produce more insulin to lower blood sugar levels.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Galvus Met 50/500",
+      "active_ingredient": "Vildagliptin (50mg) + Metformin (500mg)",
+      "causes_for_use": [
+        "Type 2 Diabetes Mellitus"
+      ],
+      "summary": "A combination drug that improves blood sugar control. Vildagliptin works by increasing incretins and Metformin reduces glucose production by the liver.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Trajenta 5",
+      "active_ingredient": "Linagliptin (5mg)",
+      "causes_for_use": [
+        "Type 2 Diabetes Mellitus"
+      ],
+      "summary": "A DPP-4 inhibitor, which is an oral diabetes medicine that helps control blood sugar levels by increasing insulin release and decreasing sugar production.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Forxiga 10",
+      "active_ingredient": "Dapagliflozin (10mg)",
+      "causes_for_use": [
+        "Type 2 Diabetes Mellitus",
+        "Heart Failure",
+        "Chronic Kidney Disease"
+      ],
+      "summary": "An SGLT2 inhibitor that works by helping the kidneys get rid of glucose from the bloodstream through the urine, thereby lowering blood sugar levels.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Shelcal 500",
+      "active_ingredient": "Calcium Carbonate (500mg) + Vitamin D3",
+      "causes_for_use": [
+        "Calcium deficiency",
+        "Osteoporosis",
+        "Weak bones (Osteomalacia)"
+      ],
+      "summary": "A dietary supplement used to prevent or treat low blood calcium levels. Vitamin D3 is included to help the body absorb calcium.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Neurobion Forte",
+      "active_ingredient": "Vitamin B complex (B1, B2, B3, B5, B6, B12)",
+      "causes_for_use": [
+        "Vitamin B deficiency",
+        "Neuropathy (nerve damage)",
+        "General weakness"
+      ],
+      "summary": "A multivitamin supplement containing a mixture of B vitamins used to treat or prevent vitamin deficiency due to poor diet, certain illnesses, or alcoholism.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Liv.52",
+      "active_ingredient": "Herbal formulation (Caper Bush, Chicory)",
+      "causes_for_use": [
+        "Liver protection",
+        "Jaundice",
+        "Appetite improvement",
+        "Hepatitis"
+      ],
+      "summary": "A popular Ayurvedic formulation that is claimed to protect the liver against various hepatotoxins and promote liver health.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Revital H",
+      "active_ingredient": "Multivitamins, Minerals, and Ginseng Extract",
+      "causes_for_use": [
+        "General debility",
+        "Fatigue and stress",
+        "Nutritional supplement"
+      ],
+      "summary": "A daily health supplement that combines vitamins, minerals, and ginseng to help maintain energy levels, support the immune system, and improve mental alertness.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Spasmonil",
+      "active_ingredient": "Dicyclomine + Paracetamol",
+      "causes_for_use": [
+        "Abdominal cramps",
+        "Menstrual pain (Dysmenorrhea)"
+      ],
+      "summary": "A combination medicine used to relieve colicky pain and cramps. Dicyclomine is an antispasmodic, and Paracetamol is a pain reliever.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Voveran 50",
+      "active_ingredient": "Diclofenac (50mg)",
+      "causes_for_use": [
+        "Pain and inflammation",
+        "Rheumatoid arthritis",
+        "Osteoarthritis",
+        "Ankylosing Spondylitis"
+      ],
+      "summary": "A nonsteroidal anti-inflammatory drug (NSAID) that works by blocking the release of certain chemical messengers that cause pain and inflammation.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Zerodol-P",
+      "active_ingredient": "Aceclofenac (100mg) + Paracetamol (325mg)",
+      "causes_for_use": [
+        "Pain",
+        "Fever",
+        "Inflammation"
+      ],
+      "summary": "A combination of two medicines: Aceclofenac, an NSAID, and Paracetamol, an analgesic-antipyretic. It is used for pain relief in various conditions.",
+      "stock": "Not Available"
+    },
+    {
+      "medicine_name": "Meftal-Spas",
+      "active_ingredient": "Mefenamic Acid + Dicyclomine",
+      "causes_for_use": [
+        "Menstrual pain",
+        "Abdominal cramps"
+      ],
+      "summary": "A combination drug used to relieve spasmodic pain and cramps. Mefenamic Acid is an NSAID, and Dicyclomine is an antispasmodic.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Azithral 500",
+      "active_ingredient": "Azithromycin (500mg)",
+      "causes_for_use": [
+        "Respiratory tract infections",
+        "Skin and soft tissue infections",
+        "Sexually transmitted diseases"
+      ],
+      "summary": "A macrolide antibiotic that fights bacteria. It is often used for short-course treatments due to its long half-life.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cefix 200",
+      "active_ingredient": "Cefixime (200mg)",
+      "causes_for_use": [
+        "Bacterial infections",
+        "Urinary Tract Infections (UTIs)",
+        "Throat and lung infections",
+        "Typhoid fever"
+      ],
+      "summary": "A third-generation cephalosporin antibiotic that is used to treat a wide variety of bacterial infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Doxy-1 L-DR Forte",
+      "active_ingredient": "Doxycycline (100mg) + Lactic Acid Bacillus",
+      "causes_for_use": [
+        "Bacterial infections",
+        "Acne",
+        "Malaria prophylaxis"
+      ],
+      "summary": "A tetracycline antibiotic that treats bacterial infections. It includes Lactic Acid Bacillus to maintain healthy gut flora.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Oflox 200",
+      "active_ingredient": "Ofloxacin (200mg)",
+      "causes_for_use": [
+        "Bacterial infections of the urinary tract, respiratory tract, and gastrointestinal system"
+      ],
+      "summary": "A fluoroquinolone antibiotic used to treat various bacterial infections. It works by stopping the multiplication of bacteria.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Moxikind-CV 625",
+      "active_ingredient": "Amoxycillin (500mg) + Clavulanic Acid (125mg)",
+      "causes_for_use": [
+        "Bacterial infections"
+      ],
+      "summary": "A popular brand of the Amoxycillin and Clavulanic Acid combination antibiotic, used to treat a wide range of bacterial infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Acivir 400",
+      "active_ingredient": "Acyclovir (400mg)",
+      "causes_for_use": [
+        "Herpes simplex virus infections (cold sores, genital herpes)",
+        "Chickenpox",
+        "Shingles"
+      ],
+      "summary": "An antiviral drug that slows the growth and spread of the herpes virus in the body. It does not cure herpes, but can lessen the symptoms of the infection.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ketorol-DT",
+      "active_ingredient": "Ketorolac (10mg)",
+      "causes_for_use": [
+        "Short-term management of moderate to severe pain"
+      ],
+      "summary": "A potent nonsteroidal anti-inflammatory drug (NSAID) used for short-term pain relief, often after surgery. It is available as a dispersible tablet.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Deriphyllin",
+      "active_ingredient": "Etofylline + Theophylline",
+      "causes_for_use": [
+        "Asthma",
+        "Chronic Obstructive Pulmonary Disease (COPD)",
+        "Wheezing and shortness of breath"
+      ],
+      "summary": "A bronchodilator medication that relaxes the muscles in the airways, making it easier to breathe.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Asthalin Inhaler",
+      "active_ingredient": "Salbutamol",
+      "causes_for_use": [
+        "Asthma",
+        "Bronchospasm"
+      ],
+      "summary": "A fast-acting 'reliever' or 'rescue' inhaler used to quickly treat wheezing and shortness of breath caused by breathing problems like asthma.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Seroflo Inhaler",
+      "active_ingredient": "Salmeterol + Fluticasone",
+      "causes_for_use": [
+        "Long-term control of Asthma and COPD"
+      ],
+      "summary": "A combination 'preventer' inhaler. Salmeterol is a long-acting bronchodilator, and Fluticasone is a corticosteroid that reduces inflammation.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Budecort Inhaler",
+      "active_ingredient": "Budesonide",
+      "causes_for_use": [
+        "Maintenance treatment of Asthma"
+      ],
+      "summary": "An inhaled corticosteroid ('preventer') that reduces irritation and swelling in the airways to prevent asthma attacks from occurring.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Levolin Inhaler",
+      "active_ingredient": "Levosalbutamol",
+      "causes_for_use": [
+        "Asthma",
+        "COPD"
+      ],
+      "summary": "A bronchodilator similar to Salbutamol, used as a 'reliever' inhaler. It is a specific isomer of Salbutamol, which may cause fewer side effects for some people.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Etizola 0.5",
+      "active_ingredient": "Etizolam (0.5mg)",
+      "causes_for_use": [
+        "Anxiety",
+        "Insomnia"
+      ],
+      "summary": "A thienodiazepine drug, which is similar to benzodiazepines. It acts as an anxiolytic and sedative, used for short-term treatment of anxiety and sleep disorders.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Zolfresh 10",
+      "active_ingredient": "Zolpidem (10mg)",
+      "causes_for_use": [
+        "Short-term treatment of Insomnia"
+      ],
+      "summary": "A sedative-hypnotic medication used to help people fall asleep. It is intended for short-term use only.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Nexito 10",
+      "active_ingredient": "Escitalopram (10mg)",
+      "causes_for_use": [
+        "Depression",
+        "Generalized Anxiety Disorder"
+      ],
+      "summary": "A widely used antidepressant of the SSRI class. It works by increasing serotonin levels in the brain to improve mood and reduce anxiety.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Risperdal 2",
+      "active_ingredient": "Risperidone (2mg)",
+      "causes_for_use": [
+        "Schizophrenia",
+        "Bipolar disorder",
+        "Irritability in autism"
+      ],
+      "summary": "An atypical antipsychotic medication used to treat certain mental/mood disorders by helping to restore the balance of certain natural substances in the brain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Oleptal 300",
+      "active_ingredient": "Oxcarbazepine (300mg)",
+      "causes_for_use": [
+        "Epilepsy (seizures)"
+      ],
+      "summary": "An anticonvulsant medication used to treat seizures by decreasing abnormal electrical activity in the brain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Gabapin 300",
+      "active_ingredient": "Gabapentin (300mg)",
+      "causes_for_use": [
+        "Neuropathic pain (nerve pain)",
+        "Seizures"
+      ],
+      "summary": "An anti-epileptic drug that is also very commonly used to relieve nerve pain, such as that caused by shingles or diabetic neuropathy.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Syndopa 110",
+      "active_ingredient": "Levodopa + Carbidopa",
+      "causes_for_use": [
+        "Parkinson's disease"
+      ],
+      "summary": "A combination medication used to treat the symptoms of Parkinson's disease, such as stiffness and tremors. Levodopa is converted to dopamine in the brain, while Carbidopa prevents Levodopa from being broken down before it reaches the brain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Famtac 40",
+      "active_ingredient": "Famotidine (40mg)",
+      "causes_for_use": [
+        "Acidity",
+        "Stomach ulcers",
+        "Gastroesophageal Reflux Disease (GERD)"
+      ],
+      "summary": "An H2 blocker that works by decreasing the amount of acid the stomach produces, providing relief from heartburn and indigestion.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Gelusil MPS",
+      "active_ingredient": "Aluminium Hydroxide + Magnesium Hydroxide + Simethicone",
+      "causes_for_use": [
+        "Acidity",
+        "Gas",
+        "Heartburn",
+        "Indigestion"
+      ],
+      "summary": "A liquid antacid that works by neutralizing excess stomach acid. Simethicone is added to help break up gas bubbles in the gut.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Digene",
+      "active_ingredient": "Magnesium Hydroxide + Simethicone + Magnesium Aluminium Silicate + Dried Aluminium Hydroxide",
+      "causes_for_use": [
+        "Acidity",
+        "Gas"
+      ],
+      "summary": "A popular brand of chewable antacid tablets that provide quick relief from acidity and gas by neutralizing stomach acid.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Eldoper",
+      "active_ingredient": "Loperamide (2mg)",
+      "causes_for_use": [
+        "Diarrhea"
+      ],
+      "summary": "An anti-diarrheal medication that works by slowing down the movement of the gut, which decreases the number of bowel movements and makes the stool less watery.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Norflox-TZ",
+      "active_ingredient": "Norfloxacin + Tinidazole",
+      "causes_for_use": [
+        "Diarrhea and dysentery caused by bacterial and protozoal infections"
+      ],
+      "summary": "A combination of an antibiotic (Norfloxacin) and an antiprotozoal (Tinidazole) used to treat mixed gastrointestinal infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Veltam 0.4",
+      "active_ingredient": "Tamsulosin (0.4mg)",
+      "causes_for_use": [
+        "Benign Prostatic Hyperplasia (BPH)"
+      ],
+      "summary": "An alpha-blocker that helps to relax the muscles in the prostate and bladder neck, making it easier to urinate for men with an enlarged prostate.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Finax 1",
+      "active_ingredient": "Finasteride (1mg)",
+      "causes_for_use": [
+        "Male pattern baldness (Androgenetic alopecia)"
+      ],
+      "summary": "A medication used to treat hair loss in men by blocking the body's production of a male hormone (DHT) in the scalp that stops hair growth.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Sildenafil",
+      "active_ingredient": "Sildenafil (50mg/100mg)",
+      "causes_for_use": [
+        "Erectile Dysfunction (ED)"
+      ],
+      "summary": "A PDE5 inhibitor, sold under various brand names like Viagra, that works by increasing blood flow to the penis to help a man get and keep an erection.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Duphaston 10",
+      "active_ingredient": "Dydrogesterone (10mg)",
+      "causes_for_use": [
+        "Menstrual disorders",
+        "Infertility",
+        "Preventing miscarriage"
+      ],
+      "summary": "A synthetic progestogen, similar to the natural hormone progesterone. It is used to regulate the menstrual cycle and support pregnancy.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Clomid 50",
+      "active_ingredient": "Clomiphene (50mg)",
+      "causes_for_use": [
+        "Female infertility (to induce ovulation)"
+      ],
+      "summary": "An ovulation stimulant used to treat infertility in women who are not ovulating properly.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "I-Pill",
+      "active_ingredient": "Levonorgestrel",
+      "causes_for_use": [
+        "Emergency contraception"
+      ],
+      "summary": "An emergency contraceptive pill that contains a high dose of a progestin hormone to prevent pregnancy after unprotected intercourse or contraceptive failure.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cipladine",
+      "active_ingredient": "Povidone-Iodine",
+      "causes_for_use": [
+        "Antiseptic for cuts, wounds, and burns"
+      ],
+      "summary": "A broad-spectrum antiseptic solution or ointment applied to the skin to prevent infection in minor cuts, scrapes, and burns.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Betnovate-N",
+      "active_ingredient": "Betamethasone + Neomycin",
+      "causes_for_use": [
+        "Infected and inflamed skin conditions like eczema"
+      ],
+      "summary": "A combination topical cream containing a steroid (Betamethasone) to reduce inflammation and an antibiotic (Neomycin) to treat bacterial infection.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Quadriderm RF",
+      "active_ingredient": "Betamethasone + Clotrimazole + Neomycin",
+      "causes_for_use": [
+        "Mixed fungal and bacterial skin infections with inflammation"
+      ],
+      "summary": "A combination cream with a steroid, an antifungal (Clotrimazole), and an antibiotic for complex skin infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Candid B Cream",
+      "active_ingredient": "Clotrimazole + Beclomethasone",
+      "causes_for_use": [
+        "Fungal skin infections with itching or inflammation"
+      ],
+      "summary": "A combination cream containing an antifungal (Clotrimazole) and a steroid (Beclomethasone) to treat fungal infections and relieve associated itching.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Dermi 5 Cream",
+      "active_ingredient": "Clobetasol + Miconazole + Neomycin + Zinc",
+      "causes_for_use": [
+        "Severe and mixed skin infections"
+      ],
+      "summary": "A potent combination cream with a strong steroid, antifungal, antibiotic, and a soothing agent for severe skin conditions.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Soframycin Skin Cream",
+      "active_ingredient": "Framycetin Sulphate",
+      "causes_for_use": [
+        "Bacterial skin infections, burns, wounds"
+      ],
+      "summary": "A topical antibiotic cream used to treat a variety of bacterial skin infections and to prevent infection in burns and wounds.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "T-Bact Ointment",
+      "active_ingredient": "Mupirocin",
+      "causes_for_use": [
+        "Bacterial skin infections like impetigo"
+      ],
+      "summary": "A topical antibiotic that is particularly effective against certain types of bacteria, such as Staphylococcus and Streptococcus, that cause skin infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ciplox Eye Drops",
+      "active_ingredient": "Ciprofloxacin",
+      "causes_for_use": [
+        "Bacterial eye infections (conjunctivitis)"
+      ],
+      "summary": "Antibiotic eye drops used to treat bacterial infections of the eye.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Refresh Tears",
+      "active_ingredient": "Carboxymethylcellulose",
+      "causes_for_use": [
+        "Dry eyes",
+        "Eye irritation"
+      ],
+      "summary": "Lubricating eye drops, also known as artificial tears, used to relieve dryness and irritation of the eye.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Timolol Eye Drops",
+      "active_ingredient": "Timolol",
+      "causes_for_use": [
+        "Glaucoma"
+      ],
+      "summary": "A beta-blocker in the form of eye drops used to treat high pressure inside the eye due to glaucoma or ocular hypertension.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Otrivin Nasal Spray",
+      "active_ingredient": "Xylometazoline",
+      "causes_for_use": [
+        "Nasal congestion"
+      ],
+      "summary": "A decongestant nasal spray that provides fast and temporary relief from a blocked nose caused by colds, sinusitis, or allergies.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Avil 25",
+      "active_ingredient": "Pheniramine (25mg)",
+      "causes_for_use": [
+        "Allergic reactions",
+        "Hay fever",
+        "Itching"
+      ],
+      "summary": "An older, first-generation antihistamine that is effective for allergies but often causes drowsiness.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cetzin",
+      "active_ingredient": "Cetirizine (10mg)",
+      "causes_for_use": [
+        "Allergies",
+        "Hives",
+        "Hay fever"
+      ],
+      "summary": "A second-generation antihistamine used to relieve allergy symptoms. It is less sedating than older antihistamines but can still cause drowsiness in some people.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Crocin Pain Relief",
+      "active_ingredient": "Paracetamol + Caffeine",
+      "causes_for_use": [
+        "Headaches",
+        "Migraines"
+      ],
+      "summary": "A pain-relieving medication that combines Paracetamol with Caffeine, which helps to increase the effectiveness of the Paracetamol.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Sinarest",
+      "active_ingredient": "Paracetamol + Phenylephrine + Chlorpheniramine",
+      "causes_for_use": [
+        "Common cold symptoms (pain, fever, congestion, runny nose)"
+      ],
+      "summary": "A combination medicine for cold and flu that contains a pain reliever/fever reducer, a decongestant, and an antihistamine.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Vicks Action 500 Advanced",
+      "active_ingredient": "Paracetamol + Phenylephrine + Caffeine",
+      "causes_for_use": [
+        "Cold and flu symptoms"
+      ],
+      "summary": "An over-the-counter remedy for cold symptoms, providing relief from headache, nasal congestion, and body aches.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Grilinctus Syrup",
+      "active_ingredient": "Dextromethorphan + Chlorpheniramine + Guaifenesin + Ammonium Chloride",
+      "causes_for_use": [
+        "Cough with mucus"
+      ],
+      "summary": "A combination cough syrup containing a cough suppressant, an antihistamine, and expectorants to help loosen mucus.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Benadryl Cough Syrup",
+      "active_ingredient": "Diphenhydramine + Ammonium Chloride + Sodium Citrate",
+      "causes_for_use": [
+        "Cough and cold symptoms"
+      ],
+      "summary": "A cough syrup containing a sedating antihistamine that helps relieve coughing and other cold symptoms.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Folvite",
+      "active_ingredient": "Folic Acid (5mg)",
+      "causes_for_use": [
+        "Folic acid deficiency",
+        "Anemia",
+        "Prevention of neural tube defects in pregnancy"
+      ],
+      "summary": "A Vitamin B9 supplement that is essential for producing and maintaining new cells, and is particularly important during pregnancy.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cardace 5",
+      "active_ingredient": "Ramipril (5mg)",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Heart failure"
+      ],
+      "summary": "An ACE inhibitor that works by relaxing blood vessels to lower blood pressure and reduce the workload on the heart.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Inderal 10",
+      "active_ingredient": "Propranolol (10mg)",
+      "causes_for_use": [
+        "Hypertension",
+        "Anxiety symptoms (like tremors)",
+        "Migraine prevention"
+      ],
+      "summary": "A non-selective beta-blocker used for various cardiovascular conditions and also to manage physical symptoms of anxiety.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Warf 5",
+      "active_ingredient": "Warfarin (5mg)",
+      "causes_for_use": [
+        "Prevention and treatment of blood clots (e.g., DVT, PE)",
+        "Atrial fibrillation"
+      ],
+      "summary": "An anticoagulant (blood thinner) that helps to prevent blood clots. Its use requires careful monitoring through regular blood tests (INR).",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Unienzyme",
+      "active_ingredient": "Fungal Diastase + Papain + Activated Charcoal",
+      "causes_for_use": [
+        "Indigestion",
+        "Gas",
+        "Bloating"
+      ],
+      "summary": "A digestive supplement containing enzymes to help break down food and activated charcoal to absorb gas.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Normaxin",
+      "active_ingredient": "Clidinium + Chlordiazepoxide + Dicyclomine",
+      "causes_for_use": [
+        "Irritable Bowel Syndrome (IBS)",
+        "Stomach cramps",
+        "Anxiety-related digestive issues"
+      ],
+      "summary": "A combination drug that helps treat stomach and intestinal problems by reducing stomach acid, slowing the gut, and reducing anxiety.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Defza 6",
+      "active_ingredient": "Deflazacort (6mg)",
+      "causes_for_use": [
+        "Inflammatory conditions",
+        "Autoimmune diseases",
+        "Duchenne muscular dystrophy"
+      ],
+      "summary": "A corticosteroid used to treat inflammation. It is sometimes considered to have fewer side effects than other steroids like prednisolone.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "HCQS 200",
+      "active_ingredient": "Hydroxychloroquine (200mg)",
+      "causes_for_use": [
+        "Rheumatoid arthritis",
+        "Lupus",
+        "Malaria"
+      ],
+      "summary": "A disease-modifying antirheumatic drug (DMARD) that reduces inflammation and pain in autoimmune conditions.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Shelcal-CT",
+      "active_ingredient": "Calcium + Calcitriol + Zinc",
+      "causes_for_use": [
+        "Osteoporosis",
+        "Bone health"
+      ],
+      "summary": "A supplement containing calcium, an active form of Vitamin D (Calcitriol) for better absorption, and Zinc for bone health.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Pan 40",
+      "active_ingredient": "Pantoprazole (40mg)",
+      "causes_for_use": [
+        "Acidity",
+        "GERD",
+        "Stomach ulcers"
+      ],
+      "summary": "A widely used Proton Pump Inhibitor (PPI) that provides long-lasting reduction of stomach acid production.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Rabekind-DSR",
+      "active_ingredient": "Rabeprazole + Domperidone",
+      "causes_for_use": [
+        "Acidity",
+        "Nausea",
+        "GERD"
+      ],
+      "summary": "A combination of a PPI (Rabeprazole) and a prokinetic agent (Domperidone) for treating acid reflux and its symptoms like nausea.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Voveran Emulgel",
+      "active_ingredient": "Diclofenac (topical)",
+      "causes_for_use": [
+        "Joint pain",
+        "Muscle pain",
+        "Sprains"
+      ],
+      "summary": "A topical NSAID gel that provides localized relief from pain and inflammation by being absorbed through the skin.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Volini Spray",
+      "active_ingredient": "Diclofenac + Menthol + Methyl Salicylate",
+      "causes_for_use": [
+        "Muscle pain",
+        "Back pain",
+        "Sprains"
+      ],
+      "summary": "A topical pain relief spray that combines an NSAID with cooling and warming agents for quick pain relief.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Moov Ointment",
+      "active_ingredient": "Herbal oils (Turpentine oil, Nilgiri oil, Wintergreen oil, Mint)",
+      "causes_for_use": [
+        "Muscle pain",
+        "Joint pain"
+      ],
+      "summary": "A popular herbal topical analgesic ointment that provides a warming sensation and relief from muscular and joint aches.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "D-Rise 60K",
+      "active_ingredient": "Cholecalciferol (Vitamin D3) (60,000 IU)",
+      "causes_for_use": [
+        "Vitamin D deficiency"
+      ],
+      "summary": "A high-dose, once-a-week Vitamin D supplement used to treat deficiency and improve bone health.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "MTP Kit",
+      "active_ingredient": "Mifepristone + Misoprostol",
+      "causes_for_use": [
+        "Medical termination of pregnancy"
+      ],
+      "summary": "A combination of two medicines used for medical abortion during the early stages of pregnancy, to be used strictly under medical supervision.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Taxim-O 200",
+      "active_ingredient": "Cefixime (200mg)",
+      "causes_for_use": [
+        "Bacterial infections"
+      ],
+      "summary": "A popular brand of the cephalosporin antibiotic Cefixime, used for infections of the urinary tract, throat, and lungs.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Monocef-O 200",
+      "active_ingredient": "Cefpodoxime (200mg)",
+      "causes_for_use": [
+        "Bacterial infections"
+      ],
+      "summary": "A cephalosporin antibiotic used to treat infections like bronchitis, pneumonia, and infections of the skin, ear, and urinary tract.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Levoflox 500",
+      "active_ingredient": "Levofloxacin (500mg)",
+      "causes_for_use": [
+        "Bacterial infections (pneumonia, sinusitis, skin)"
+      ],
+      "summary": "A broad-spectrum fluoroquinolone antibiotic used for treating a number of bacterial infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Envas 5",
+      "active_ingredient": "Enalapril (5mg)",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Heart failure"
+      ],
+      "summary": "An ACE inhibitor used to treat high blood pressure and congestive heart failure.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Minipress XL 5",
+      "active_ingredient": "Prazosin (5mg)",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Benign Prostatic Hyperplasia (BPH)"
+      ],
+      "summary": "An alpha-blocker used to relax blood vessels to treat hypertension and also to relax muscles in the prostate for BPH.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Duolin Inhaler",
+      "active_ingredient": "Levosalbutamol + Ipratropium",
+      "causes_for_use": [
+        "Chronic Obstructive Pulmonary Disease (COPD)",
+        "Asthma"
+      ],
+      "summary": "A combination inhaler containing two bronchodilators that work in different ways to open up the airways.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Foracort Inhaler",
+      "active_ingredient": "Formoterol + Budesonide",
+      "causes_for_use": [
+        "Maintenance treatment of Asthma and COPD"
+      ],
+      "summary": "A combination 'preventer' inhaler with a long-acting bronchodilator (Formoterol) and a corticosteroid (Budesonide).",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Naprosyn 500",
+      "active_ingredient": "Naproxen (500mg)",
+      "causes_for_use": [
+        "Pain",
+        "Inflammation",
+        "Arthritis",
+        "Gout"
+      ],
+      "summary": "A nonsteroidal anti-inflammatory drug (NSAID) used to relieve pain from various conditions like headache, muscle aches, and arthritis.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Lyrica 75",
+      "active_ingredient": "Pregabalin (75mg)",
+      "causes_for_use": [
+        "Neuropathic pain",
+        "Fibromyalgia",
+        "Seizures"
+      ],
+      "summary": "An anticonvulsant and analgesic drug used to treat nerve pain caused by conditions like diabetes or shingles, as well as fibromyalgia.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Shelcal HD",
+      "active_ingredient": "Calcium Carbonate + Vitamin D3",
+      "causes_for_use": [
+        "Calcium deficiency",
+        "Osteoporosis"
+      ],
+      "summary": "A high-dose calcium and Vitamin D3 supplement used to support bone health.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Becosules Z",
+      "active_ingredient": "Vitamin B Complex + Vitamin C + Zinc",
+      "causes_for_use": [
+        "Vitamin deficiency",
+        "Immune support"
+      ],
+      "summary": "A multivitamin supplement that provides essential B-complex vitamins, Vitamin C, and Zinc to boost immunity and overall health.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Stemetil MD",
+      "active_ingredient": "Prochlorperazine",
+      "causes_for_use": [
+        "Nausea",
+        "Vomiting",
+        "Vertigo"
+      ],
+      "summary": "An antiemetic medication that is effective in controlling nausea and vomiting. It is often provided as a mouth-dissolving (MD) tablet for faster action.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Lanzol 30",
+      "active_ingredient": "Lansoprazole (30mg)",
+      "causes_for_use": [
+        "Acidity",
+        "Ulcers",
+        "GERD"
+      ],
+      "summary": "A Proton Pump Inhibitor (PPI) that reduces the amount of acid produced in the stomach.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cystone",
+      "active_ingredient": "Herbal formulation",
+      "causes_for_use": [
+        "Kidney stones",
+        "Urinary tract infections"
+      ],
+      "summary": "An Ayurvedic formulation claimed to help prevent the formation of kidney stones and assist in their expulsion.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Pilex Forte Ointment",
+      "active_ingredient": "Herbal formulation",
+      "causes_for_use": [
+        "Piles (hemorrhoids)"
+      ],
+      "summary": "A topical herbal ointment that helps to shrink pile mass, control bleeding and heal inflamed skin, providing relief from rectal bleeding, pain, and itchiness.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Movicol Powder",
+      "active_ingredient": "Macrogol (Polyethylene Glycol) + Electrolytes",
+      "causes_for_use": [
+        "Constipation"
+      ],
+      "summary": "An osmotic laxative that works by drawing water into the bowel to soften stools and make them easier to pass.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cremaffin Plus",
+      "active_ingredient": "Liquid Paraffin + Magnesium Hydroxide + Sodium Picosulfate",
+      "causes_for_use": [
+        "Constipation"
+      ],
+      "summary": "A combination laxative that works in three ways: as a lubricant, an osmotic laxative, and a stimulant to provide relief from constipation.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ivermectol 12",
+      "active_ingredient": "Ivermectin (12mg)",
+      "causes_for_use": [
+        "Parasitic infections (scabies, river blindness, worms)"
+      ],
+      "summary": "An anti-parasitic medication used to treat infections caused by certain parasites.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Fabiflu",
+      "active_ingredient": "Favipiravir",
+      "causes_for_use": [
+        "Mild to moderate COVID-19 (under specific medical guidelines)"
+      ],
+      "summary": "An antiviral drug that was approved for restricted emergency use in India for the treatment of COVID-19.",
+      "stock": "Not Available"
+    },
+    {
+      "medicine_name": "Humalog",
+      "active_ingredient": "Insulin Lispro",
+      "causes_for_use": [
+        "Type 1 and Type 2 Diabetes Mellitus"
+      ],
+      "summary": "A rapid-acting insulin used to control high blood sugar in adults and children with diabetes mellitus. It is typically taken shortly before meals.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Lantus",
+      "active_ingredient": "Insulin Glargine",
+      "causes_for_use": [
+        "Type 1 and Type 2 Diabetes Mellitus"
+      ],
+      "summary": "A long-acting insulin that provides a steady level of insulin in the body for up to 24 hours. It is usually taken once a day to manage baseline blood sugar levels.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Xarelto",
+      "active_ingredient": "Rivaroxaban",
+      "causes_for_use": [
+        "Prevention of stroke in atrial fibrillation",
+        "Treatment of DVT and PE",
+        "Prevention of blood clots after surgery"
+      ],
+      "summary": "A direct oral anticoagulant (DOAC) that works by blocking a specific clotting factor in the blood, used to prevent and treat harmful blood clots.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Eliquis",
+      "active_ingredient": "Apixaban",
+      "causes_for_use": [
+        "Prevention of stroke in atrial fibrillation",
+        "Treatment of DVT and PE"
+      ],
+      "summary": "An oral anticoagulant (blood thinner) that works by inhibiting Factor Xa, a key component in the blood clotting process.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Brilinta",
+      "active_ingredient": "Ticagrelor",
+      "causes_for_use": [
+        "Acute coronary syndrome",
+        "Prevention of heart attack and stroke in high-risk patients"
+      ],
+      "summary": "An antiplatelet medication used to prevent platelets from sticking together and forming a dangerous blood clot. It is often used with aspirin.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Jardiance",
+      "active_ingredient": "Empagliflozin",
+      "causes_for_use": [
+        "Type 2 Diabetes Mellitus",
+        "Heart Failure"
+      ],
+      "summary": "An SGLT2 inhibitor used to lower blood sugar in adults with type 2 diabetes and also to reduce the risk of cardiovascular death in patients with heart disease.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Spiriva",
+      "active_ingredient": "Tiotropium Bromide",
+      "causes_for_use": [
+        "Chronic Obstructive Pulmonary Disease (COPD)",
+        "Asthma"
+      ],
+      "summary": "A long-acting anticholinergic bronchodilator that helps to open up airways and make breathing easier for people with COPD or severe asthma.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Topamac 25",
+      "active_ingredient": "Topiramate (25mg)",
+      "causes_for_use": [
+        "Migraine prevention",
+        "Epilepsy (seizures)"
+      ],
+      "summary": "An anticonvulsant medication that is also used to prevent migraine headaches by calming overactive nerve cells in the brain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Seroquel 100",
+      "active_ingredient": "Quetiapine (100mg)",
+      "causes_for_use": [
+        "Schizophrenia",
+        "Bipolar disorder",
+        "Major depressive disorder (adjunctive)"
+      ],
+      "summary": "An atypical antipsychotic that works by changing the actions of chemicals in the brain. It is used to treat several different mental health conditions.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Aricep 5",
+      "active_ingredient": "Donepezil (5mg)",
+      "causes_for_use": [
+        "Alzheimer's disease (mild to moderate)"
+      ],
+      "summary": "A cholinesterase inhibitor used to improve memory, awareness, and the ability to function in people with Alzheimer's disease. It does not cure the disease but can slow its progression.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Methotrexate",
+      "active_ingredient": "Methotrexate",
+      "causes_for_use": [
+        "Rheumatoid arthritis",
+        "Psoriasis",
+        "Certain types of cancer"
+      ],
+      "summary": "A disease-modifying antirheumatic drug (DMARD) and chemotherapy agent. At low doses, it treats autoimmune diseases by suppressing the immune system. At high doses, it treats cancer.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cyclosporine",
+      "active_ingredient": "Cyclosporine",
+      "causes_for_use": [
+        "Organ transplant rejection prevention",
+        "Rheumatoid arthritis",
+        "Psoriasis"
+      ],
+      "summary": "An immunosuppressant drug used to prevent organ rejection after a transplant and to treat severe autoimmune diseases.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Tacrolimus",
+      "active_ingredient": "Tacrolimus",
+      "causes_for_use": [
+        "Organ transplant rejection prevention",
+        "Eczema (topical)"
+      ],
+      "summary": "A potent immunosuppressant used orally to prevent organ rejection and topically as an ointment to treat moderate to severe eczema.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Valium",
+      "active_ingredient": "Diazepam",
+      "causes_for_use": [
+        "Anxiety disorders",
+        "Muscle spasms",
+        "Seizures",
+        "Alcohol withdrawal"
+      ],
+      "summary": "A well-known benzodiazepine used for its calming, muscle-relaxing, and anti-seizure effects. Generally for short-term use.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ativan",
+      "active_ingredient": "Lorazepam",
+      "causes_for_use": [
+        "Anxiety disorders",
+        "Insomnia due to anxiety",
+        "Seizures"
+      ],
+      "summary": "A potent benzodiazepine used to treat anxiety disorders and seizure emergencies. It has strong sedative properties.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Isotretinoin Capsules",
+      "active_ingredient": "Isotretinoin",
+      "causes_for_use": [
+        "Severe, nodular acne"
+      ],
+      "summary": "A powerful derivative of Vitamin A used to treat severe acne that has not responded to other treatments. Requires strict medical supervision due to potential side effects.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Minoxidil Solution",
+      "active_ingredient": "Minoxidil (Topical)",
+      "causes_for_use": [
+        "Androgenetic alopecia (male and female pattern baldness)"
+      ],
+      "summary": "A topical solution or foam that is applied to the scalp to stimulate hair growth and to slow balding.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Febuxostat",
+      "active_ingredient": "Febuxostat",
+      "causes_for_use": [
+        "Gout"
+      ],
+      "summary": "A medication used for the long-term management of gout. It works by decreasing the amount of uric acid in the body, an alternative to Allopurinol.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Nasonex Nasal Spray",
+      "active_ingredient": "Mometasone Furoate",
+      "causes_for_use": [
+        "Allergic rhinitis",
+        "Nasal polyps"
+      ],
+      "summary": "A corticosteroid nasal spray used to treat nasal symptoms such as congestion, sneezing, and runny nose caused by seasonal or year-round allergies.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Carca",
+      "active_ingredient": "Carvedilol",
+      "causes_for_use": [
+        "Heart failure",
+        "High blood pressure (Hypertension)"
+      ],
+      "summary": "A beta-blocker that is also an alpha-blocker. It is used to treat heart failure and high blood pressure by slowing the heart rate and relaxing blood vessels.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Dilzem",
+      "active_ingredient": "Diltiazem",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Angina",
+        "Certain heart rhythm disorders"
+      ],
+      "summary": "A calcium channel blocker that works by relaxing the muscles of your heart and blood vessels.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Isordil",
+      "active_ingredient": "Isosorbide Dinitrate",
+      "causes_for_use": [
+        "Angina prevention and treatment"
+      ],
+      "summary": "A nitrate that dilates (widens) blood vessels, making it easier for blood to flow through them and easier for the heart to pump. Used to treat and prevent chest pain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Nitroglycerin",
+      "active_ingredient": "Glyceryl Trinitrate",
+      "causes_for_use": [
+        "Acute angina attack"
+      ],
+      "summary": "A fast-acting nitrate used to relieve sudden attacks of chest pain (angina). It is often administered as a sublingual tablet (under the tongue) for rapid absorption.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Amiodarone",
+      "active_ingredient": "Amiodarone",
+      "causes_for_use": [
+        "Serious heart rhythm disorders (arrhythmias)"
+      ],
+      "summary": "A potent antiarrhythmic drug used to treat and prevent a number of types of irregular heartbeats when other treatments have not worked.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Digoxin",
+      "active_ingredient": "Digoxin",
+      "causes_for_use": [
+        "Heart failure",
+        "Atrial fibrillation"
+      ],
+      "summary": "A cardiac glycoside that helps make the heart beat stronger and with a more regular rhythm.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Enoxaparin Injection",
+      "active_ingredient": "Enoxaparin Sodium",
+      "causes_for_use": [
+        "Prevention and treatment of DVT and PE",
+        "Heart attack"
+      ],
+      "summary": "A low molecular weight heparin (LMWH), an anticoagulant used to prevent and treat harmful blood clots. It is administered via injection.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "ORS Powder",
+      "active_ingredient": "Sodium Chloride, Potassium Chloride, Sodium Citrate, Dextrose",
+      "causes_for_use": [
+        "Dehydration due to diarrhea and vomiting"
+      ],
+      "summary": "Oral Rehydration Salts, a life-saving solution of salts and sugar mixed with water to replenish fluids and electrolytes lost during episodes of diarrhea or vomiting.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Itraconazole",
+      "active_ingredient": "Itraconazole",
+      "causes_for_use": [
+        "Systemic fungal infections",
+        "Fungal nail infections"
+      ],
+      "summary": "A broad-spectrum antifungal medication used to treat a wide variety of fungal infections affecting the lungs, mouth, throat, and toenails.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Terbinafine",
+      "active_ingredient": "Terbinafine",
+      "causes_for_use": [
+        "Fungal infections of the nail (onychomycosis)",
+        "Ringworm"
+      ],
+      "summary": "An antifungal medication that is particularly effective for treating fungal infections of the nails and skin.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Oseltamivir",
+      "active_ingredient": "Oseltamivir",
+      "causes_for_use": [
+        "Treatment and prevention of Influenza A and B"
+      ],
+      "summary": "An antiviral drug used to treat the flu. It helps shorten the duration of flu symptoms if taken within 48 hours of their onset.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Valacyclovir",
+      "active_ingredient": "Valacyclovir",
+      "causes_for_use": [
+        "Herpes simplex (cold sores, genital herpes)",
+        "Shingles"
+      ],
+      "summary": "An antiviral drug that is converted to acyclovir in the body. It is used to treat infections caused by herpes viruses.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Tenofovir",
+      "active_ingredient": "Tenofovir Disoproxil Fumarate",
+      "causes_for_use": [
+        "HIV infection",
+        "Chronic Hepatitis B"
+      ],
+      "summary": "An antiretroviral medication used as part of combination therapy to treat HIV and to treat chronic hepatitis B.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Rifampicin",
+      "active_ingredient": "Rifampicin",
+      "causes_for_use": [
+        "Tuberculosis",
+        "Leprosy"
+      ],
+      "summary": "A powerful antibiotic that is a cornerstone of treatment for tuberculosis and other mycobacterial infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Isoniazid",
+      "active_ingredient": "Isoniazid",
+      "causes_for_use": [
+        "Tuberculosis (treatment and prevention)"
+      ],
+      "summary": "An antibiotic used as a first-line agent in the prevention and treatment of tuberculosis.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Pyrazinamide",
+      "active_ingredient": "Pyrazinamide",
+      "causes_for_use": [
+        "Tuberculosis"
+      ],
+      "summary": "A drug used in combination with other drugs to treat tuberculosis. It is particularly important in the initial phase of treatment.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ethambutol",
+      "active_ingredient": "Ethambutol",
+      "causes_for_use": [
+        "Tuberculosis"
+      ],
+      "summary": "An antibiotic that prevents the growth of tuberculosis bacteria, used as part of a multi-drug regimen.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Paclitaxel",
+      "active_ingredient": "Paclitaxel",
+      "causes_for_use": [
+        "Breast cancer",
+        "Ovarian cancer",
+        "Lung cancer"
+      ],
+      "summary": "A chemotherapy medication used to treat a number of types of cancer. It works by interfering with the normal function of microtubules during cell division.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cisplatin",
+      "active_ingredient": "Cisplatin",
+      "causes_for_use": [
+        "Testicular cancer",
+        "Ovarian cancer",
+        "Bladder cancer",
+        "Lung cancer"
+      ],
+      "summary": "A platinum-based chemotherapy drug used to treat various cancers. It works by interfering with DNA repair.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Doxorubicin",
+      "active_ingredient": "Doxorubicin",
+      "causes_for_use": [
+        "Breast cancer",
+        "Leukemia",
+        "Lymphoma"
+      ],
+      "summary": "An anthracycline type of chemotherapy that works by slowing or stopping the growth of cancer cells.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Tamoxifen",
+      "active_ingredient": "Tamoxifen",
+      "causes_for_use": [
+        "Hormone receptor-positive breast cancer"
+      ],
+      "summary": "A selective estrogen receptor modulator (SERM) used to treat and prevent breast cancer in women. It works by blocking the effects of estrogen on cancer cells.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Letrozole",
+      "active_ingredient": "Letrozole",
+      "causes_for_use": [
+        "Hormone receptor-positive breast cancer in postmenopausal women"
+      ],
+      "summary": "An aromatase inhibitor that works by decreasing the amount of estrogen produced in the body, which can slow the growth of certain types of breast tumors.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Imatinib",
+      "active_ingredient": "Imatinib",
+      "causes_for_use": [
+        "Chronic Myeloid Leukemia (CML)",
+        "Gastrointestinal Stromal Tumors (GIST)"
+      ],
+      "summary": "A targeted therapy drug known as a tyrosine kinase inhibitor. It works by blocking the action of an abnormal protein that signals cancer cells to multiply.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Rituximab",
+      "active_ingredient": "Rituximab",
+      "causes_for_use": [
+        "Non-Hodgkin's lymphoma",
+        "Chronic lymphocytic leukemia",
+        "Rheumatoid arthritis"
+      ],
+      "summary": "A monoclonal antibody that works by targeting a specific protein on the surface of B cells, causing them to die. Used in both cancer and autoimmune diseases.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Trastuzumab",
+      "active_ingredient": "Trastuzumab",
+      "causes_for_use": [
+        "HER2-positive breast cancer",
+        "HER2-positive stomach cancer"
+      ],
+      "summary": "A monoclonal antibody used as a targeted therapy for cancers that overexpress the HER2 protein. It blocks the receptor to stop cancer cells from growing.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Nivolumab",
+      "active_ingredient": "Nivolumab",
+      "causes_for_use": [
+        "Melanoma",
+        "Lung cancer",
+        "Kidney cancer"
+      ],
+      "summary": "An immunotherapy drug called a checkpoint inhibitor. It works by blocking a protein that stops the immune system from attacking cancer cells.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Pembrolizumab",
+      "active_ingredient": "Pembrolizumab",
+      "causes_for_use": [
+        "Melanoma",
+        "Lung cancer",
+        "Head and neck cancer"
+      ],
+      "summary": "A highly effective immunotherapy drug (checkpoint inhibitor) that helps the body's immune system to detect and fight cancer cells.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Latanoprost Eye Drops",
+      "active_ingredient": "Latanoprost",
+      "causes_for_use": [
+        "Glaucoma",
+        "Ocular hypertension"
+      ],
+      "summary": "A prostaglandin analog eye drop used to reduce pressure inside the eye by increasing the outflow of fluid from the eye.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Moxifloxacin Eye Drops",
+      "active_ingredient": "Moxifloxacin",
+      "causes_for_use": [
+        "Bacterial conjunctivitis"
+      ],
+      "summary": "A fluoroquinolone antibiotic in eye drop form used to treat bacterial infections of the eyes.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Olopatadine Eye Drops",
+      "active_ingredient": "Olopatadine",
+      "causes_for_use": [
+        "Allergic conjunctivitis"
+      ],
+      "summary": "An antihistamine and mast cell stabilizer eye drop used to treat itching and redness in the eyes due to allergies.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ceftriaxone Injection",
+      "active_ingredient": "Ceftriaxone",
+      "causes_for_use": [
+        "Severe bacterial infections (meningitis, pneumonia, sepsis)"
+      ],
+      "summary": "A third-generation cephalosporin antibiotic administered intravenously or intramuscularly for serious infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Piperacillin/Tazobactam Injection",
+      "active_ingredient": "Piperacillin + Tazobactam",
+      "causes_for_use": [
+        "Severe, hospital-acquired bacterial infections"
+      ],
+      "summary": "A powerful combination of a broad-spectrum penicillin antibiotic and a beta-lactamase inhibitor, used for difficult-to-treat infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Vancomycin Injection",
+      "active_ingredient": "Vancomycin",
+      "causes_for_use": [
+        "MRSA (Methicillin-resistant Staphylococcus aureus)",
+        "Severe Clostridium difficile infection"
+      ],
+      "summary": "A glycopeptide antibiotic used to treat serious infections caused by Gram-positive bacteria that are resistant to other antibiotics.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Meropenem Injection",
+      "active_ingredient": "Meropenem",
+      "causes_for_use": [
+        "Complicated intra-abdominal infections",
+        "Meningitis",
+        "Hospital-acquired pneumonia"
+      ],
+      "summary": "A very broad-spectrum carbapenem antibiotic used for severe, multi-drug resistant bacterial infections.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Adrenaline Injection",
+      "active_ingredient": "Epinephrine",
+      "causes_for_use": [
+        "Anaphylaxis (severe allergic reaction)",
+        "Cardiac arrest"
+      ],
+      "summary": "A life-saving medication used in emergencies to treat severe allergic reactions by constricting blood vessels, relaxing airways, and increasing heart rate.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Propofol Injection",
+      "active_ingredient": "Propofol",
+      "causes_for_use": [
+        "Induction and maintenance of general anesthesia",
+        "Sedation for procedures"
+      ],
+      "summary": "A short-acting intravenous anesthetic agent used to put patients to sleep for surgery or to sedate them in intensive care.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Fentanyl Injection",
+      "active_ingredient": "Fentanyl",
+      "causes_for_use": [
+        "Severe pain management",
+        "Anesthesia"
+      ],
+      "summary": "A potent synthetic opioid analgesic used for severe pain and as an adjunct to general anesthesia. It is significantly more potent than morphine.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Midazolam Injection",
+      "active_ingredient": "Midazolam",
+      "causes_for_use": [
+        "Procedural sedation",
+        "Anxiety before surgery",
+        "Seizures"
+      ],
+      "summary": "A short-acting benzodiazepine used to produce sleepiness or drowsiness and to relieve anxiety before medical procedures.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Dexamethasone Injection",
+      "active_ingredient": "Dexamethasone",
+      "causes_for_use": [
+        "Severe inflammation",
+        "Severe allergic reactions",
+        "Cerebral edema",
+        "Certain cancers"
+      ],
+      "summary": "A potent corticosteroid used to treat various inflammatory conditions. It is also used in the management of severe COVID-19.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Remdesivir Injection",
+      "active_ingredient": "Remdesivir",
+      "causes_for_use": [
+        "COVID-19 (in hospitalized patients)"
+      ],
+      "summary": "An antiviral medication administered intravenously that was granted emergency use authorization for treating hospitalized patients with COVID-19.",
+      "stock": "Not Available"
+    },
+    {
+      "medicine_name": "Amphotericin B Injection",
+      "active_ingredient": "Amphotericin B",
+      "causes_for_use": [
+        "Severe, life-threatening fungal infections (e.g., Mucormycosis)"
+      ],
+      "summary": "A powerful antifungal medication reserved for serious systemic fungal infections. It can have significant side effects, particularly on the kidneys.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "ORS (Oral Rehydration Solution)",
+      "active_ingredient": "Electrolytes and Glucose",
+      "causes_for_use": [
+        "Dehydration from diarrhea"
+      ],
+      "summary": "A simple, effective treatment for dehydration. The combination of salt and sugar helps the body absorb water and electrolytes more efficiently.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Zincovit Tablet",
+      "active_ingredient": "Multivitamins + Multiminerals + Grape Seed Extract",
+      "causes_for_use": [
+        "Nutritional deficiencies",
+        "Immune support",
+        "General wellness"
+      ],
+      "summary": "A popular nutritional supplement containing a wide range of vitamins, minerals, and an antioxidant (grape seed extract) for overall health.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Polyethylene Glycol 3350",
+      "active_ingredient": "Polyethylene Glycol 3350",
+      "causes_for_use": [
+        "Constipation",
+        "Bowel preparation for colonoscopy"
+      ],
+      "summary": "An osmotic laxative powder that is mixed with water. It works by retaining water in the stool, making it softer and easier to pass.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Lactulose Solution",
+      "active_ingredient": "Lactulose",
+      "causes_for_use": [
+        "Constipation",
+        "Hepatic encephalopathy"
+      ],
+      "summary": "A synthetic sugar used to treat constipation by drawing water into the bowel. It is also used in liver disease to reduce ammonia levels in the blood.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Bisacodyl",
+      "active_ingredient": "Bisacodyl",
+      "causes_for_use": [
+        "Constipation",
+        "Bowel cleansing before procedures"
+      ],
+      "summary": "A stimulant laxative that works by increasing the movement of the intestines, helping the stool to come out.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Domstal",
+      "active_ingredient": "Domperidone",
+      "causes_for_use": [
+        "Nausea",
+        "Vomiting",
+        "Indigestion",
+        "Bloating"
+      ],
+      "summary": "A prokinetic and anti-emetic agent that helps to relieve nausea and feelings of fullness by increasing the movements of the stomach and intestines.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cyclopam",
+      "active_ingredient": "Dicyclomine + Paracetamol",
+      "causes_for_use": [
+        "Abdominal cramps",
+        "Irritable Bowel Syndrome (IBS)",
+        "Menstrual cramps"
+      ],
+      "summary": "A combination medication that provides relief from spasms and pain. Dicyclomine relieves muscle cramps in the abdomen, and Paracetamol reduces pain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Mucaine Gel",
+      "active_ingredient": "Oxetacaine + Aluminium Hydroxide + Magnesium Hydroxide",
+      "causes_for_use": [
+        "Acidity",
+        "Stomach ulcers",
+        "Pain from ulcers"
+      ],
+      "summary": "An antacid gel that also contains a local anesthetic (Oxetacaine) to provide faster relief from pain caused by stomach ulcers or acid.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Sucralfate",
+      "active_ingredient": "Sucralfate",
+      "causes_for_use": [
+        "Stomach and intestinal ulcers",
+        "GERD"
+      ],
+      "summary": "An anti-ulcer medication that works by forming a protective coating over an ulcer, which shields it from stomach acid and allows it to heal.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ursodeoxycholic Acid",
+      "active_ingredient": "Ursodeoxycholic Acid",
+      "causes_for_use": [
+        "Gallstones",
+        "Primary Biliary Cirrhosis (PBC)"
+      ],
+      "summary": "A naturally occurring bile acid used to dissolve certain types of gallstones and to treat a specific autoimmune liver disease (PBC).",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Rifaximin",
+      "active_ingredient": "Rifaximin",
+      "causes_for_use": [
+        "Traveler's diarrhea",
+        "Irritable Bowel Syndrome (IBS)",
+        "Hepatic encephalopathy"
+      ],
+      "summary": "An antibiotic that is poorly absorbed into the bloodstream, so it mainly works in the gut. It is used to treat various gastrointestinal conditions.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Protinules Powder",
+      "active_ingredient": "Protein Hydrolysate + Vitamins + Minerals",
+      "causes_for_use": [
+        "Nutritional supplement",
+        "Protein deficiency",
+        "Recovery from illness"
+      ],
+      "summary": "A protein supplement powder that is easily digestible and fortified with essential vitamins and minerals, used to meet nutritional needs.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Tadalafil",
+      "active_ingredient": "Tadalafil",
+      "causes_for_use": [
+        "Erectile Dysfunction (ED)",
+        "Benign Prostatic Hyperplasia (BPH)"
+      ],
+      "summary": "A long-acting PDE5 inhibitor (similar to Sildenafil) used to treat erectile dysfunction. Lower doses can also be taken daily to manage symptoms of an enlarged prostate.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Dutasteride",
+      "active_ingredient": "Dutasteride",
+      "causes_for_use": [
+        "Benign Prostatic Hyperplasia (BPH)",
+        "Male pattern baldness"
+      ],
+      "summary": "A 5-alpha-reductase inhibitor that works by preventing the conversion of testosterone to dihydrotestosterone (DHT), helping to shrink an enlarged prostate and treat hair loss.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Mirabegron",
+      "active_ingredient": "Mirabegron",
+      "causes_for_use": [
+        "Overactive Bladder (OAB)"
+      ],
+      "summary": "A medication used to treat the symptoms of an overactive bladder, such as a frequent need to urinate, a sudden urge to urinate, and incontinence. It works by relaxing the bladder muscle.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Solifenacin",
+      "active_ingredient": "Solifenacin",
+      "causes_for_use": [
+        "Overactive Bladder (OAB)"
+      ],
+      "summary": "An anticholinergic medication that reduces muscle spasms of the bladder and urinary tract, helping to control the symptoms of OAB.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Nitrofurantoin",
+      "active_ingredient": "Nitrofurantoin",
+      "causes_for_use": [
+        "Urinary Tract Infections (UTIs)"
+      ],
+      "summary": "An antibiotic that is specifically used to treat and prevent uncomplicated urinary tract infections. It works by killing bacteria in the urinary tract.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Phenazopyridine",
+      "active_ingredient": "Phenazopyridine",
+      "causes_for_use": [
+        "Symptomatic relief of pain from UTIs"
+      ],
+      "summary": "A urinary tract analgesic that helps to relieve pain, burning, and urgency associated with UTIs. It does not treat the infection itself and colors the urine orange.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Tranexamic Acid",
+      "active_ingredient": "Tranexamic Acid",
+      "causes_for_use": [
+        "Heavy menstrual bleeding",
+        "Preventing excessive bleeding after surgery or trauma"
+      ],
+      "summary": "An antifibrinolytic agent that works by slowing the breakdown of blood clots, which helps to prevent prolonged bleeding.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Misoprostol",
+      "active_ingredient": "Misoprostol",
+      "causes_for_use": [
+        "Stomach ulcer prevention",
+        "Labor induction",
+        "Medical abortion (with Mifepristone)",
+        "Postpartum hemorrhage"
+      ],
+      "summary": "A synthetic prostaglandin used for various purposes, including protecting the stomach lining, ripening the cervix for labor, and causing uterine contractions.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Medroxyprogesterone Acetate",
+      "active_ingredient": "Medroxyprogesterone Acetate",
+      "causes_for_use": [
+        "Abnormal uterine bleeding",
+        "Amenorrhea (absence of periods)",
+        "Contraception (injectable form)"
+      ],
+      "summary": "A synthetic progestin used to regulate menstrual periods and as a long-acting injectable contraceptive (Depo-Provera).",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Oral Contraceptive Pills (e.g., Mala-D)",
+      "active_ingredient": "Levonorgestrel + Ethinyl Estradiol",
+      "causes_for_use": [
+        "Birth control",
+        "Regulating menstrual cycles",
+        "PCOS"
+      ],
+      "summary": "Combination hormonal pills containing estrogen and progestin that work by preventing ovulation to protect against pregnancy.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Sertaconazole Cream",
+      "active_ingredient": "Sertaconazole",
+      "causes_for_use": [
+        "Fungal skin infections",
+        "Athlete's foot"
+      ],
+      "summary": "A topical antifungal cream from the azole class used to treat common fungal infections of the skin.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Adapalene Gel",
+      "active_ingredient": "Adapalene",
+      "causes_for_use": [
+        "Acne vulgaris"
+      ],
+      "summary": "A third-generation topical retinoid primarily used in the treatment of mild-moderate acne. It works by affecting the growth of cells and decreasing swelling and inflammation.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Clindamycin + Nicotinamide Gel",
+      "active_ingredient": "Clindamycin + Nicotinamide",
+      "causes_for_use": [
+        "Acne vulgaris"
+      ],
+      "summary": "A combination topical treatment for acne. Clindamycin is an antibiotic that fights bacteria, and Nicotinamide (a form of Vitamin B3) has anti-inflammatory properties.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Hydroquinone Cream",
+      "active_ingredient": "Hydroquinone",
+      "causes_for_use": [
+        "Hyperpigmentation",
+        "Melasma",
+        "Dark spots"
+      ],
+      "summary": "A skin-lightening agent used to lighten areas of darkened skin. It works by decreasing the production of melanin.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Mometasone Cream",
+      "active_ingredient": "Mometasone Furoate",
+      "causes_for_use": [
+        "Eczema",
+        "Psoriasis",
+        "Dermatitis"
+      ],
+      "summary": "A medium-potency topical corticosteroid used to reduce inflammation, itching, and redness in various skin conditions.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Calamine Lotion",
+      "active_ingredient": "Calamine + Zinc Oxide",
+      "causes_for_use": [
+        "Itching",
+        "Sunburn",
+        "Insect bites",
+        "Chickenpox rashes"
+      ],
+      "summary": "A soothing topical lotion that provides relief from mild itching and skin irritation. It has a drying effect and is commonly used for weeping rashes.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Silverex Cream",
+      "active_ingredient": "Silver Sulphadiazine",
+      "causes_for_use": [
+        "Burn wounds"
+      ],
+      "summary": "A topical antibacterial cream used to prevent and treat infections in second and third-degree burns.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ketoconazole Shampoo",
+      "active_ingredient": "Ketoconazole",
+      "causes_for_use": [
+        "Dandruff",
+        "Seborrheic dermatitis",
+        "Tinea versicolor"
+      ],
+      "summary": "An antifungal shampoo used to treat fungal infections on the scalp and body. It helps control flaking, scaling, and itching.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Permethrin Lotion",
+      "active_ingredient": "Permethrin",
+      "causes_for_use": [
+        "Scabies",
+        "Head lice"
+      ],
+      "summary": "An anti-parasite medication used to treat infestations of scabies mites and lice by paralyzing and killing them.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Propranolol",
+      "active_ingredient": "Propranolol",
+      "causes_for_use": [
+        "Hypertension",
+        "Angina",
+        "Migraine prevention",
+        "Performance anxiety"
+      ],
+      "summary": "A non-selective beta-blocker that affects the heart, blood vessels, and other parts of the body. It's used for heart conditions, migraines, and managing physical anxiety symptoms.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Amitriptyline",
+      "active_ingredient": "Amitriptyline",
+      "causes_for_use": [
+        "Depression",
+        "Neuropathic pain",
+        "Migraine prevention"
+      ],
+      "summary": "A tricyclic antidepressant (TCA) used to treat mood disorders. At lower doses, it is highly effective for chronic nerve pain and preventing migraines.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Duloxetine",
+      "active_ingredient": "Duloxetine",
+      "causes_for_use": [
+        "Depression",
+        "Generalized Anxiety Disorder",
+        "Neuropathic pain",
+        "Fibromyalgia"
+      ],
+      "summary": "A serotonin-norepinephrine reuptake inhibitor (SNRI) antidepressant that is also effective in treating chronic pain conditions.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Mirtazapine",
+      "active_ingredient": "Mirtazapine",
+      "causes_for_use": [
+        "Depression",
+        "Insomnia",
+        "Appetite stimulation"
+      ],
+      "summary": "An atypical antidepressant that can also have strong sedative effects and often increases appetite, making it useful for certain patient profiles.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Olanzapine",
+      "active_ingredient": "Olanzapine",
+      "causes_for_use": [
+        "Schizophrenia",
+        "Bipolar disorder"
+      ],
+      "summary": "An atypical antipsychotic medication used to treat psychotic disorders. It is known to be effective but can cause significant weight gain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Haloperidol",
+      "active_ingredient": "Haloperidol",
+      "causes_for_use": [
+        "Schizophrenia",
+        "Tourette's syndrome",
+        "Acute psychosis"
+      ],
+      "summary": "A typical antipsychotic used to treat psychotic disorders and control tics. It is a potent medication with a higher risk of movement-related side effects.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Carbamazepine",
+      "active_ingredient": "Carbamazepine",
+      "causes_for_use": [
+        "Epilepsy",
+        "Bipolar disorder",
+        "Trigeminal neuralgia"
+      ],
+      "summary": "An anticonvulsant that is also used as a mood stabilizer and for treating specific types of nerve pain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Valproic Acid",
+      "active_ingredient": "Valproic Acid / Sodium Valproate",
+      "causes_for_use": [
+        "Epilepsy",
+        "Bipolar disorder",
+        "Migraine prevention"
+      ],
+      "summary": "A medication with a broad range of uses, including controlling seizures, stabilizing mood in bipolar disorder, and preventing migraines.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Levetiracetam",
+      "active_ingredient": "Levetiracetam",
+      "causes_for_use": [
+        "Epilepsy (seizures)"
+      ],
+      "summary": "A widely used anti-epileptic drug known for having a favorable side-effect profile and fewer drug interactions compared to older anticonvulsants.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Phenytoin",
+      "active_ingredient": "Phenytoin",
+      "causes_for_use": [
+        "Epilepsy (seizures)"
+      ],
+      "summary": "One of the oldest and most commonly used anticonvulsant medications. It works by slowing down impulses in the brain that cause seizures.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Lamotrigine",
+      "active_ingredient": "Lamotrigine",
+      "causes_for_use": [
+        "Epilepsy",
+        "Bipolar disorder"
+      ],
+      "summary": "An anticonvulsant that is also highly effective as a mood stabilizer, particularly for preventing the depressive episodes of bipolar disorder.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Sumatriptan",
+      "active_ingredient": "Sumatriptan",
+      "causes_for_use": [
+        "Acute treatment of migraine attacks"
+      ],
+      "summary": "A triptan medication used to relieve the symptoms of an active migraine headache. It works by narrowing blood vessels in the brain. It does not prevent migraines.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Rizatriptan",
+      "active_ingredient": "Rizatriptan",
+      "causes_for_use": [
+        "Acute treatment of migraine attacks"
+      ],
+      "summary": "A fast-acting triptan used to treat migraine headaches once they have started. Often available as a mouth-dissolving tablet for quicker relief.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Memantine",
+      "active_ingredient": "Memantine",
+      "causes_for_use": [
+        "Alzheimer's disease (moderate to severe)"
+      ],
+      "summary": "A medication used to treat the symptoms of Alzheimer's disease. It works by blocking the effects of a substance in the brain called glutamate.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Methylphenidate",
+      "active_ingredient": "Methylphenidate",
+      "causes_for_use": [
+        "Attention Deficit Hyperactivity Disorder (ADHD)",
+        "Narcolepsy"
+      ],
+      "summary": "A central nervous system stimulant used to treat ADHD by increasing attention and decreasing restlessness. It is a controlled substance.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Atomoxetine",
+      "active_ingredient": "Atomoxetine",
+      "causes_for_use": [
+        "Attention Deficit Hyperactivity Disorder (ADHD)"
+      ],
+      "summary": "A non-stimulant medication used to treat ADHD. It works by affecting neurotransmitters in the brain and can be a good alternative for those who cannot take stimulants.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Allopurinol",
+      "active_ingredient": "Allopurinol",
+      "causes_for_use": [
+        "Gout",
+        "High uric acid levels"
+      ],
+      "summary": "The most common medication for the long-term prevention of gout. It lowers uric acid levels in the blood by inhibiting its production.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Colchicine",
+      "active_ingredient": "Colchicine",
+      "causes_for_use": [
+        "Treatment of acute gout attacks",
+        "Prevention of gout flares"
+      ],
+      "summary": "An anti-inflammatory medication that is highly effective at relieving the pain and swelling of an acute gout attack.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Etoricoxib",
+      "active_ingredient": "Etoricoxib",
+      "causes_for_use": [
+        "Arthritis pain and inflammation",
+        "Gout",
+        "Post-operative pain"
+      ],
+      "summary": "A selective COX-2 inhibitor, a type of NSAID that is designed to be gentler on the stomach lining compared to traditional NSAIDs.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Piroxicam",
+      "active_ingredient": "Piroxicam",
+      "causes_for_use": [
+        "Rheumatoid arthritis",
+        "Osteoarthritis"
+      ],
+      "summary": "A long-acting NSAID used to relieve pain, tenderness, swelling, and stiffness caused by arthritis.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Indomethacin",
+      "active_ingredient": "Indomethacin",
+      "causes_for_use": [
+        "Arthritis",
+        "Gout",
+        "Bursitis"
+      ],
+      "summary": "A potent NSAID used for moderate to severe inflammatory conditions.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Nimesulide",
+      "active_ingredient": "Nimesulide",
+      "causes_for_use": [
+        "Acute pain",
+        "Menstrual cramps"
+      ],
+      "summary": "An NSAID used for short-term pain relief. Its use is restricted in some countries due to concerns about liver toxicity.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Serratiopeptidase",
+      "active_ingredient": "Serratiopeptidase",
+      "causes_for_use": [
+        "Pain and swelling",
+        "Inflammation"
+      ],
+      "summary": "A proteolytic enzyme claimed to have anti-inflammatory properties. It is often combined with NSAIDs to reduce swelling, though its efficacy is debated.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Trypsin-Chymotrypsin",
+      "active_ingredient": "Trypsin + Chymotrypsin",
+      "causes_for_use": [
+        "Inflammatory edema",
+        "Post-operative swelling"
+      ],
+      "summary": "A combination of enzymes used to resolve swelling and inflammation, particularly after surgery or injury.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Alfacalcidol",
+      "active_ingredient": "Alfacalcidol",
+      "causes_for_use": [
+        "Kidney disease-related bone problems",
+        "Hypoparathyroidism"
+      ],
+      "summary": "A form of Vitamin D that does not require activation by the kidneys, making it useful for patients with kidney failure to manage calcium and bone health.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Sevelamer",
+      "active_ingredient": "Sevelamer Carbonate",
+      "causes_for_use": [
+        "High phosphate levels in kidney disease"
+      ],
+      "summary": "A phosphate binder used by patients on dialysis. It works by binding to phosphate from food in the gut, preventing it from being absorbed into the blood.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Erythropoietin Injection",
+      "active_ingredient": "Recombinant Human Erythropoietin (EPO)",
+      "causes_for_use": [
+        "Anemia due to chronic kidney disease",
+        "Anemia due to chemotherapy"
+      ],
+      "summary": "A man-made version of a human hormone that stimulates the bone marrow to produce more red blood cells.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cilnidipine",
+      "active_ingredient": "Cilnidipine",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)"
+      ],
+      "summary": "A calcium channel blocker that blocks two types of calcium channels (L-type and N-type), which not only lowers blood pressure but may also offer better protection against organ damage.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Chlorthalidone",
+      "active_ingredient": "Chlorthalidone",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)",
+        "Edema"
+      ],
+      "summary": "A thiazide-like diuretic (water pill) that is highly effective and long-acting for the treatment of hypertension.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Spironolactone",
+      "active_ingredient": "Spironolactone",
+      "causes_for_use": [
+        "Heart failure",
+        "Hypertension",
+        "Edema",
+        "Hormonal acne"
+      ],
+      "summary": "A potassium-sparing diuretic that helps remove excess fluid from the body without causing potassium loss. It also has anti-androgen effects.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Torsemide",
+      "active_ingredient": "Torsemide",
+      "causes_for_use": [
+        "Edema due to heart, kidney or liver failure",
+        "Hypertension"
+      ],
+      "summary": "A potent loop diuretic, similar to Furosemide, used to treat fluid overload.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Nebivolol",
+      "active_ingredient": "Nebivolol",
+      "causes_for_use": [
+        "High blood pressure (Hypertension)"
+      ],
+      "summary": "A highly selective beta-blocker that also has a vasodilating effect by releasing nitric oxide, which helps to relax blood vessels.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Ivabradine",
+      "active_ingredient": "Ivabradine",
+      "causes_for_use": [
+        "Heart failure",
+        "Chronic stable angina"
+      ],
+      "summary": "A heart rate-lowering agent that works by specifically inhibiting the 'funny' current (If) in the heart's pacemaker, reducing heart rate without affecting blood pressure.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Sacubitril/Valsartan",
+      "active_ingredient": "Sacubitril + Valsartan",
+      "causes_for_use": [
+        "Heart failure with reduced ejection fraction"
+      ],
+      "summary": "A combination drug (an angiotensin receptor-neprilysin inhibitor or ARNI) that is highly effective in treating heart failure by relaxing blood vessels and reducing strain on the heart.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Phenobarbitone",
+      "active_ingredient": "Phenobarbital",
+      "causes_for_use": [
+        "Epilepsy (seizures)"
+      ],
+      "summary": "One of the oldest anti-seizure medications, a barbiturate that works by slowing down brain activity. Still used for certain types of seizures, especially in neonates.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Folic Acid",
+      "active_ingredient": "Folic Acid (Vitamin B9)",
+      "causes_for_use": [
+        "Folate-deficiency anemia",
+        "Pregnancy supplement"
+      ],
+      "summary": "An essential B vitamin required for the formation of red blood cells and for preventing neural tube defects in developing babies.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Methylcobalamin",
+      "active_ingredient": "Methylcobalamin (Vitamin B12)",
+      "causes_for_use": [
+        "Vitamin B12 deficiency",
+        "Peripheral neuropathy"
+      ],
+      "summary": "An active form of Vitamin B12, essential for nerve health, brain function, and the production of red blood cells. Often used for nerve pain.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Pyridoxine",
+      "active_ingredient": "Pyridoxine (Vitamin B6)",
+      "causes_for_use": [
+        "Vitamin B6 deficiency",
+        "Nausea and vomiting in pregnancy",
+        "Peripheral neuropathy"
+      ],
+      "summary": "Vitamin B6 is important for normal brain development and for keeping the nervous system and immune system healthy.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Vitamin C (Limosil)",
+      "active_ingredient": "Ascorbic Acid",
+      "causes_for_use": [
+        "Vitamin C deficiency (Scurvy)",
+        "Immune support",
+        "Antioxidant"
+      ],
+      "summary": "An essential nutrient that acts as an antioxidant and is important for skin health, wound healing, and proper immune function.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Vitamin E",
+      "active_ingredient": "Tocopherol",
+      "causes_for_use": [
+        "Vitamin E deficiency",
+        "Skin health",
+        "Antioxidant"
+      ],
+      "summary": "A fat-soluble antioxidant that helps protect cells from damage. It is often found in skincare products.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Cod Liver Oil Capsules",
+      "active_ingredient": "Vitamin A + Vitamin D + Omega-3 Fatty Acids",
+      "causes_for_use": [
+        "Dietary supplement",
+        "Joint health",
+        "Heart health"
+      ],
+      "summary": "A nutritional supplement derived from the liver of cod fish, rich in essential fatty acids and vitamins A and D.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Glucosamine + Chondroitin",
+      "active_ingredient": "Glucosamine Sulfate + Chondroitin Sulfate",
+      "causes_for_use": [
+        "Osteoarthritis"
+      ],
+      "summary": "A popular dietary supplement combination believed to help relieve joint pain and slow the degeneration of cartilage in people with osteoarthritis.",
+      "stock": "Available"
+    },
+    {
+      "medicine_name": "Coenzyme Q10",
+      "active_ingredient": "Coenzyme Q10 (Ubiquinone)",
+      "causes_for_use": [
+        "Heart health",
+        "Statin-induced muscle pain",
+        "Migraine prevention"
+      ],
+      "summary": "An antioxidant that your body produces naturally. It's used as a supplement for heart health and to replenish levels that may be lowered by statin medications.",
+      "stock": "Available"
+    }
+  ]
+}
+

@@ -49,7 +49,7 @@ export default function Patient_health_Reports() {
 
   if (loading) {
     return (
-      <div>
+      <div className="w-[100vw] h-[90vh] bg-gray-400  " >
         Loading reports...
       </div>
     );
@@ -64,14 +64,14 @@ export default function Patient_health_Reports() {
   }
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Past Health Reports</h2>
+    <div className="bg-gray-200 w-[100vw] h-[90vh] flex flex-col justify-center items-center  " >
+      <h2 className="text-2xl font-bold mb-4 text-cyan-800 ">Past Health Reports</h2>
       {reports.length === 0 ? (
-        <div>No past reports found.</div>
+        <div className="text-cyan-700" >No past reports found.</div>
       ) : (
         <ul className="space-y-4">
           {reports.map((report) => (
-            <li key={report.id} className="border p-4 rounded shadow">
+            <li key={report.id} className="border p-4 rounded shadow text-cyan-900 ">
               <div><strong>Date:</strong> {report.date}</div>
               <div><strong>Description:</strong> {report.description}</div>
               {/* Add more report fields as needed */}

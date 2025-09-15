@@ -1,0 +1,491 @@
+{
+    "doctors": [
+      {
+        "id": 1,
+        "name": "Dr. Priya Sharma",
+        "email": "priya.sharma@hospital.com",
+        "password": "hashed_pw_xyz123abc",
+        "registration": {
+          "NMC_id": "NMC/2005/001234"
+        },
+        "hospital": "Punjab Super Speciality Hospital, Jalandhar",
+        "speciality": "Cardiology",
+        "gender": "Female",
+        "experience": 20,
+        "availability": {
+          "monday_friday": "09:00 AM - 05:00 PM",
+          "saturday": "09:00 AM - 01:00 PM"
+        }
+      },
+      {
+        "id": 2,
+        "name": "Dr. Rahul Verma",
+        "email": "rahul.verma@medcenter.org",
+        "password": "hashed_pw_pqr456def",
+        "registration": {
+          "NMC_id": "NMC/2008/005678"
+        },
+        "hospital": "Punjab Super Speciality Hospital, Jalandhar",
+        "speciality": "Neurology",
+        "gender": "Male",
+        "experience": 17,
+        "availability": {
+          "monday_saturday": "10:00 AM - 06:00 PM"
+        }
+      },
+      {
+        "id": 3,
+        "name": "Dr. Anjali Singh",
+        "email": "anjali.singh@clinic.in",
+        "password": "hashed_pw_lmn789ghi",
+        "registration": {
+          "NMC_id": "NMC/2010/009101"
+        },
+        "hospital": "Punjab Super Speciality Hospital, Jalandhar",
+        "speciality": "Pediatrics",
+        "gender": "Female",
+        "experience": 15,
+        "availability": {
+          "monday_friday": "10:00 AM - 07:00 PM"
+        }
+      },
+      {
+        "id": 4,
+        "name": "Dr. Vikram Rathore",
+        "email": "vikram.rathore@hospital.com",
+        "password": "hashed_pw_jkl112mno",
+        "registration": {
+          "NMC_id": "NMC/2002/011213"
+        },
+        "hospital": "Punjab Super Speciality Hospital, Jalandhar",
+        "speciality": "Orthopedics",
+        "gender": "Male",
+        "experience": 23,
+        "availability": {
+          "monday_saturday": "08:00 AM - 04:00 PM"
+        }
+      },
+      {
+        "id": 5,
+        "name": "Dr. Sneha Patel",
+        "email": "sneha.patel@medcenter.org",
+        "password": "hashed_pw_pqr141tuv",
+        "registration": {
+          "NMC_id": "NMC/2012/014151"
+        },
+        "hospital": "Punjab Super Speciality Hospital, Jalandhar",
+        "speciality": "Dermatology",
+        "gender": "Female",
+        "experience": 13,
+        "availability": {
+          "monday_friday": "11:00 AM - 06:00 PM",
+          "saturday": "11:00 AM - 02:00 PM"
+        }
+      },
+      {
+        "id": 6,
+        "name": "Dr. Amit Gupta",
+        "email": "amit.gupta@clinic.in",
+        "password": "hashed_pw_wxy161zaz",
+        "registration": {
+          "NMC_id": "NMC/2007/016171"
+        },
+        "hospital": "Amritsar Institute of Medical Sciences, Amritsar",
+        "speciality": "Gastroenterology",
+        "gender": "Male",
+        "experience": 18,
+        "availability": {
+          "monday_saturday": "09:30 AM - 05:30 PM"
+        }
+      },
+      {
+        "id": 7,
+        "name": "Dr. Neha Reddy",
+        "email": "neha.reddy@hospital.com",
+        "password": "hashed_pw_bcb181dfg",
+        "registration": {
+          "NMC_id": "NMC/2011/018192"
+        },
+        "hospital": "Amritsar Institute of Medical Sciences, Amritsar",
+        "speciality": "Oncology",
+        "gender": "Female",
+        "experience": 14,
+        "availability": {
+          "monday_friday": "09:00 AM - 05:00 PM"
+        }
+      },
+      {
+        "id": 8,
+        "name": "Dr. Sameer Khan",
+        "email": "sameer.khan@medcenter.org",
+        "password": "hashed_pw_hij202klm",
+        "registration": {
+          "NMC_id": "NMC/2009/020212"
+        },
+        "hospital": "Amritsar Institute of Medical Sciences, Amritsar",
+        "speciality": "Urology",
+        "gender": "Male",
+        "experience": 16,
+        "availability": {
+          "tuesday_saturday": "10:00 AM - 06:00 PM"
+        }
+      },
+      {
+        "id": 9,
+        "name": "Dr. Pooja Desai",
+        "email": "pooja.desai@clinic.in",
+        "password": "hashed_pw_nop222qrs",
+        "registration": {
+          "NMC_id": "NMC/2013/022232"
+        },
+        "hospital": "Amritsar Institute of Medical Sciences, Amritsar",
+        "speciality": "Gynecology",
+        "gender": "Female",
+        "experience": 12,
+        "availability": {
+          "monday_friday": "10:00 AM - 05:00 PM",
+          "saturday": "10:00 AM - 01:00 PM"
+        }
+      },
+      {
+        "id": 10,
+        "name": "Dr. Alok Mishra",
+        "email": "alok.mishra@hospital.com",
+        "password": "hashed_pw_tuv242wxy",
+        "registration": {
+          "NMC_id": "NMC/2006/024252"
+        },
+        "hospital": "Amritsar Institute of Medical Sciences, Amritsar",
+        "speciality": "Nephrology",
+        "gender": "Male",
+        "experience": 19,
+        "availability": {
+          "monday_saturday": "09:00 AM - 04:00 PM"
+        }
+      },
+      {
+        "id": 11,
+        "name": "Dr. Kavita Joshi",
+        "email": "kavita.joshi@medcenter.org",
+        "password": "hashed_pw_zab262cde",
+        "registration": {
+          "NMC_id": "NMC/2014/026272"
+        },
+        "hospital": "Ludhiana Cardiac and Medical Center, Ludhiana",
+        "speciality": "Endocrinology",
+        "gender": "Female",
+        "experience": 11,
+        "availability": {
+          "monday_friday": "09:00 AM - 05:00 PM"
+        }
+      },
+      {
+        "id": 12,
+        "name": "Dr. Rohan Mehra",
+        "email": "rohan.mehra@clinic.in",
+        "password": "hashed_pw_fgh282ijk",
+        "registration": {
+          "NMC_id": "NMC/2004/028293"
+        },
+        "hospital": "Ludhiana Cardiac and Medical Center, Ludhiana",
+        "speciality": "Pulmonology",
+        "gender": "Male",
+        "experience": 21,
+        "availability": {
+          "monday_saturday": "11:00 AM - 07:00 PM"
+        }
+      },
+      {
+        "id": 13,
+        "name": "Dr. Sunita Agarwal",
+        "email": "sunita.agarwal@hospital.com",
+        "password": "hashed_pw_lmn303opq",
+        "registration": {
+          "NMC_id": "NMC/2001/030313"
+        },
+        "hospital": "Ludhiana Cardiac and Medical Center, Ludhiana",
+        "speciality": "Ophthalmology",
+        "gender": "Female",
+        "experience": 24,
+        "availability": {
+          "monday_friday": "09:00 AM - 05:00 PM",
+          "saturday": "09:00 AM - 12:00 PM"
+        }
+      },
+      {
+        "id": 14,
+        "name": "Dr. Deepak Kumar",
+        "email": "deepak.kumar@medcenter.org",
+        "password": "hashed_pw_rst323uvw",
+        "registration": {
+          "NMC_id": "NMC/2015/032333"
+        },
+        "hospital": "Ludhiana Cardiac and Medical Center, Ludhiana",
+        "speciality": "ENT",
+        "gender": "Male",
+        "experience": 10,
+        "availability": {
+          "monday_saturday": "10:00 AM - 06:00 PM"
+        }
+      },
+      {
+        "id": 15,
+        "name": "Dr. Ishita Roy",
+        "email": "ishita.roy@clinic.in",
+        "password": "hashed_pw_xyz343abc",
+        "registration": {
+          "NMC_id": "NMC/2016/034353"
+        },
+        "hospital": "Ludhiana Cardiac and Medical Center, Ludhiana",
+        "speciality": "Rheumatology",
+        "gender": "Female",
+        "experience": 9,
+        "availability": {
+          "tuesday_saturday": "12:00 PM - 08:00 PM"
+        }
+      },
+      {
+        "id": 16,
+        "name": "Dr. Anand Iyer",
+        "email": "anand.iyer@hospital.com",
+        "password": "hashed_pw_def363ghi",
+        "registration": {
+          "NMC_id": "NMC/2003/036373"
+        },
+        "hospital": "Patiala General Hospital, Patiala",
+        "speciality": "Hepatology",
+        "gender": "Male",
+        "experience": 22,
+        "availability": {
+          "monday_friday": "09:00 AM - 04:00 PM"
+        }
+      },
+      {
+        "id": 17,
+        "name": "Dr. Geeta Menon",
+        "email": "geeta.menon@medcenter.org",
+        "password": "hashed_pw_jkl383mno",
+        "registration": {
+          "NMC_id": "NMC/2000/038394"
+        },
+        "hospital": "Patiala General Hospital, Patiala",
+        "speciality": "General Surgery",
+        "gender": "Female",
+        "experience": 25,
+        "availability": {
+          "monday_saturday": "08:30 AM - 04:30 PM"
+        }
+      },
+      {
+        "id": 18,
+        "name": "Dr. Harish Chandra",
+        "email": "harish.chandra@clinic.in",
+        "password": "hashed_pw_pqr404stu",
+        "registration": {
+          "NMC_id": "NMC/2007/040414"
+        },
+        "hospital": "Patiala General Hospital, Patiala",
+        "speciality": "Psychiatry",
+        "gender": "Male",
+        "experience": 18,
+        "availability": {
+          "monday_friday": "02:00 PM - 09:00 PM"
+        }
+      },
+      {
+        "id": 19,
+        "name": "Dr. Meena Kumari",
+        "email": "meena.kumari@hospital.com",
+        "password": "hashed_pw_vwx424yza",
+        "registration": {
+          "NMC_id": "NMC/2012/042434"
+        },
+        "hospital": "Patiala General Hospital, Patiala",
+        "speciality": "Anesthesiology",
+        "gender": "Female",
+        "experience": 13,
+        "availability": {
+          "on_rotation": "Shift-based"
+        }
+      },
+      {
+        "id": 20,
+        "name": "Dr. Rajesh Nair",
+        "email": "rajesh.nair@medcenter.org",
+        "password": "hashed_pw_bcd444efg",
+        "registration": {
+          "NMC_id": "NMC/2011/044454"
+        },
+        "hospital": "Patiala General Hospital, Patiala",
+        "speciality": "Cardiothoracic Surgery",
+        "gender": "Male",
+        "experience": 14,
+        "availability": {
+          "monday_saturday": "09:00 AM - 05:00 PM"
+        }
+      },
+      {
+        "id": 21,
+        "name": "Dr. Fatima Bi",
+        "email": "fatima.bi@clinic.in",
+        "password": "hashed_pw_hij464klm",
+        "registration": {
+          "NMC_id": "NMC/2018/046474"
+        },
+        "hospital": "Mohali Advanced Care Hospital, Mohali",
+        "speciality": "Radiology",
+        "gender": "Female",
+        "experience": 7,
+        "availability": {
+          "monday_saturday": "08:00 AM - 04:00 PM"
+        }
+      },
+      {
+        "id": 22,
+        "name": "Dr. Suresh Tiwari",
+        "email": "suresh.tiwari@hospital.com",
+        "password": "hashed_pw_nop484qrs",
+        "registration": {
+          "NMC_id": "NMC/2006/048495"
+        },
+        "hospital": "Mohali Advanced Care Hospital, Mohali",
+        "speciality": "Plastic Surgery",
+        "gender": "Male",
+        "experience": 19,
+        "availability": {
+          "monday_friday": "10:00 AM - 06:00 PM"
+        }
+      },
+      {
+        "id": 23,
+        "name": "Dr. Divya Saxena",
+        "email": "divya.saxena@medcenter.org",
+        "password": "hashed_pw_tuv505wxy",
+        "registration": {
+          "NMC_id": "NMC/2017/050515"
+        },
+        "hospital": "Mohali Advanced Care Hospital, Mohali",
+        "speciality": "General Medicine",
+        "gender": "Female",
+        "experience": 8,
+        "availability": {
+          "monday_saturday": "10:00 AM - 07:00 PM"
+        }
+      },
+      {
+        "id": 24,
+        "name": "Dr. Manish Choudhary",
+        "email": "manish.choudhary@clinic.in",
+        "password": "hashed_pw_zab525cde",
+        "registration": {
+          "NMC_id": "NMC/2010/052535"
+        },
+        "hospital": "Mohali Advanced Care Hospital, Mohali",
+        "speciality": "Neurology",
+        "gender": "Male",
+        "experience": 15,
+        "availability": {
+          "monday_friday": "09:00 AM - 05:00 PM"
+        }
+      },
+      {
+        "id": 25,
+        "name": "Dr. Aarti Sharma",
+        "email": "aarti.sharma@hospital.com",
+        "password": "hashed_pw_fgh545ijk",
+        "registration": {
+          "NMC_id": "NMC/2019/054555"
+        },
+        "hospital": "Mohali Advanced Care Hospital, Mohali",
+        "speciality": "Pediatrics",
+        "gender": "Female",
+        "experience": 6,
+        "availability": {
+          "monday_saturday": "09:00 AM - 03:00 PM"
+        }
+      },
+      {
+        "id": 26,
+        "name": "Dr. Vinod Kumar",
+        "email": "vinod.kumar@medcenter.org",
+        "password": "hashed_pw_lmn565opq",
+        "registration": {
+          "NMC_id": "NMC/2005/056575"
+        },
+        "hospital": "Bathinda City Hospital, Bathinda",
+        "speciality": "Cardiology",
+        "gender": "Male",
+        "experience": 20,
+        "availability": {
+          "monday_friday": "10:00 AM - 06:00 PM",
+          "saturday": "10:00 AM - 02:00 PM"
+        }
+      },
+      {
+        "id": 27,
+        "name": "Dr. Simran Kaur",
+        "email": "simran.kaur@clinic.in",
+        "password": "hashed_pw_rst585uvw",
+        "registration": {
+          "NMC_id": "NMC/2014/058595"
+        },
+        "hospital": "Bathinda City Hospital, Bathinda",
+        "speciality": "Dermatology",
+        "gender": "Female",
+        "experience": 11,
+        "availability": {
+          "tuesday_saturday": "11:00 AM - 05:00 PM"
+        }
+      },
+      {
+        "id": 28,
+        "name": "Dr. Sanjay Patel",
+        "email": "sanjay.patel@hospital.com",
+        "password": "hashed_pw_xyz606abc",
+        "registration": {
+          "NMC_id": "NMC/2009/060616"
+        },
+        "hospital": "Bathinda City Hospital, Bathinda",
+        "speciality": "Neurology",
+        "gender": "Male",
+        "experience": 16,
+        "availability": {
+          "monday_saturday": "10:00 AM - 06:00 PM"
+        }
+      },
+      {
+        "id": 29,
+        "name": "Dr. Ritu Singh",
+        "email": "ritu.singh@medcenter.org",
+        "password": "hashed_pw_def626ghi",
+        "registration": {
+          "NMC_id": "NMC/2013/062636"
+        },
+        "hospital": "Bathinda City Hospital, Bathinda",
+        "speciality": "Gynecology",
+        "gender": "Female",
+        "experience": 12,
+        "availability": {
+          "monday_friday": "09:00 AM - 04:00 PM"
+        }
+      },
+      {
+        "id": 30,
+        "name": "Dr. Arjun Reddy",
+        "email": "arjun.reddy@clinic.in",
+        "password": "hashed_pw_jkl646mno",
+        "registration": {
+          "NMC_id": "NMC/2015/064656"
+        },
+        "hospital": "Bathinda City Hospital, Bathinda",
+        "speciality": "Orthopedics",
+        "gender": "Male",
+        "experience": 10,
+        "availability": {
+          "monday_saturday": "10:00 AM - 05:00 PM"
+        }
+      }
+    ]
+  }
+  
+  

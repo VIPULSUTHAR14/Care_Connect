@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { UserType } from "@/types/user";
+import { stat } from "fs";
 
 interface FamilyMember {
   fullName: string;
@@ -31,6 +32,7 @@ export default function PatientProfile() {
   const [error, setError] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [showError, setShowError] = useState(false);
+
 
   const [profile, setProfile] = useState<PatientProfile>({
     mobileNumber: "",
@@ -175,7 +177,7 @@ export default function PatientProfile() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 to-indigo-300">
+      <div className="min-h-screen flex items-center  justify-center bg-gradient-to-br from-indigo-100 to-indigo-300">
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-indigo-600 mb-4"></div>
           <span className="text-indigo-700 font-medium font-mono">Loading your profile...</span>

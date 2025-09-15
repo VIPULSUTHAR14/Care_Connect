@@ -1,0 +1,228 @@
+{
+    "hospitals": [
+      {
+        "name": "Punjab Super Speciality Hospital, Jalandhar",
+        "address": "123, GT Road, Jalandhar, Punjab, 144001",
+        "reception_number": "+91-181-222-3333",
+        "ambulance_number": "1021",
+        "nha_registration_number": "NHA/PB/JAL/001",
+        "email": "admin.jalandhar@pssh.com",
+        "password": "hashed_pw_pssh_jal",
+        "premises_image_url": [],
+        "staff": [
+          {
+            "id": 1,
+            "name": "Dr. Priya Sharma",
+            "speciality": "Cardiology"
+          },
+          {
+            "id": 2,
+            "name": "Dr. Rahul Verma",
+            "speciality": "Neurology"
+          },
+          {
+            "id": 3,
+            "name": "Dr. Anjali Singh",
+            "speciality": "Pediatrics"
+          },
+          {
+            "id": 4,
+            "name": "Dr. Vikram Rathore",
+            "speciality": "Orthopedics"
+          },
+          {
+            "id": 5,
+            "name": "Dr. Sneha Patel",
+            "speciality": "Dermatology"
+          }
+        ]
+      },
+      {
+        "name": "Amritsar Institute of Medical Sciences, Amritsar",
+        "address": "456, Lawrence Road, Amritsar, Punjab, 143001",
+        "reception_number": "+91-183-444-5555",
+        "ambulance_number": "1022",
+        "nha_registration_number": "NHA/PB/ASR/002",
+        "email": "contact.amritsar@aims.org",
+        "password": "hashed_pw_aims_asr",
+        "premises_image_url": [],
+        "staff": [
+          {
+            "id": 6,
+            "name": "Dr. Amit Gupta",
+            "speciality": "Gastroenterology"
+          },
+          {
+            "id": 7,
+            "name": "Dr. Neha Reddy",
+            "speciality": "Oncology"
+          },
+          {
+            "id": 8,
+            "name": "Dr. Sameer Khan",
+            "speciality": "Urology"
+          },
+          {
+            "id": 9,
+            "name": "Dr. Pooja Desai",
+            "speciality": "Gynecology"
+          },
+          {
+            "id": 10,
+            "name": "Dr. Alok Mishra",
+            "speciality": "Nephrology"
+          }
+        ]
+      },
+      {
+        "name": "Ludhiana Cardiac and Medical Center, Ludhiana",
+        "address": "789, Ferozepur Road, Ludhiana, Punjab, 141001",
+        "reception_number": "+91-161-666-7777",
+        "ambulance_number": "1023",
+        "nha_registration_number": "NHA/PB/LDH/003",
+        "email": "info.ludhiana@lcmc.in",
+        "password": "hashed_pw_lcmc_ldh",
+        "premises_image_url": [],
+        "staff": [
+          {
+            "id": 11,
+            "name": "Dr. Kavita Joshi",
+            "speciality": "Endocrinology"
+          },
+          {
+            "id": 12,
+            "name": "Dr. Rohan Mehra",
+            "speciality": "Pulmonology"
+          },
+          {
+            "id": 13,
+            "name": "Dr. Sunita Agarwal",
+            "speciality": "Ophthalmology"
+          },
+          {
+            "id": 14,
+            "name": "Dr. Deepak Kumar",
+            "speciality": "ENT"
+          },
+          {
+            "id": 15,
+            "name": "Dr. Ishita Roy",
+            "speciality": "Rheumatology"
+          }
+        ]
+      },
+      {
+        "name": "Patiala General Hospital, Patiala",
+        "address": "101, Mall Road, Patiala, Punjab, 147001",
+        "reception_number": "+91-175-888-9999",
+        "ambulance_number": "1024",
+        "nha_registration_number": "NHA/PB/PTA/004",
+        "email": "support.patiala@pgh.gov",
+        "password": "hashed_pw_pgh_pta",
+        "premises_image_url": [],
+        "staff": [
+          {
+            "id": 16,
+            "name": "Dr. Anand Iyer",
+            "speciality": "Hepatology"
+          },
+          {
+            "id": 17,
+            "name": "Dr. Geeta Menon",
+            "speciality": "General Surgery"
+          },
+          {
+            "id": 18,
+            "name": "Dr. Harish Chandra",
+            "speciality": "Psychiatry"
+          },
+          {
+            "id": 19,
+            "name": "Dr. Meena Kumari",
+            "speciality": "Anesthesiology"
+          },
+          {
+            "id": 20,
+            "name": "Dr. Rajesh Nair",
+            "speciality": "Cardiothoracic Surgery"
+          }
+        ]
+      },
+      {
+        "name": "Mohali Advanced Care Hospital, Mohali",
+        "address": "212, Sector 68, Mohali, Punjab, 160062",
+        "reception_number": "+91-172-111-2222",
+        "ambulance_number": "1025",
+        "nha_registration_number": "NHA/PB/MOH/005",
+        "email": "admin.mohali@mach.com",
+        "password": "hashed_pw_mach_moh",
+        "premises_image_url": [],
+        "staff": [
+          {
+            "id": 21,
+            "name": "Dr. Fatima Bi",
+            "speciality": "Radiology"
+          },
+          {
+            "id": 22,
+            "name": "Dr. Suresh Tiwari",
+            "speciality": "Plastic Surgery"
+          },
+          {
+            "id": 23,
+            "name": "Dr. Divya Saxena",
+            "speciality": "General Medicine"
+          },
+          {
+            "id": 24,
+            "name": "Dr. Manish Choudhary",
+            "speciality": "Neurology"
+          },
+          {
+            "id": 25,
+            "name": "Dr. Aarti Sharma",
+            "speciality": "Pediatrics"
+          }
+        ]
+      },
+      {
+        "name": "Bathinda City Hospital, Bathinda",
+        "address": "345, Goniana Road, Bathinda, Punjab, 151001",
+        "reception_number": "+91-164-333-4444",
+        "ambulance_number": "1026",
+        "nha_registration_number": "NHA/PB/BTI/006",
+        "email": "helpdesk.bathinda@bch.org",
+        "password": "hashed_pw_bch_bti",
+        "premises_image_url": [],
+        "staff": [
+          {
+            "id": 26,
+            "name": "Dr. Vinod Kumar",
+            "speciality": "Cardiology"
+          },
+          {
+            "id": 27,
+            "name": "Dr. Simran Kaur",
+            "speciality": "Dermatology"
+          },
+          {
+            "id": 28,
+            "name": "Dr. Sanjay Patel",
+            "speciality": "Neurology"
+          },
+          {
+            "id": 29,
+            "name": "Dr. Ritu Singh",
+            "speciality": "Gynecology"
+          },
+          {
+            "id": 30,
+            "name": "Dr. Arjun Reddy",
+            "speciality": "Orthopedics"
+          }
+        ]
+      }
+    ]
+  }
+  
+  
