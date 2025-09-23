@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import PastReportsOverview from "@/components/PastReportsOverview";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BriefcaseMedical, ClipboardClock, Pill } from "lucide-react";
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
@@ -105,14 +105,17 @@ export default function Dashboard() {
               </p>
               <div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <div className="h-32 sm:h-40 bg-cyan-900 rounded-2xl text-white flex items-center justify-center">
-                    Quick
+                  <div className="h-32 sm:h-40 bg-sky-600/40 rounded-2xl text-white flex flex-col space-y-4 items-center justify-center">
+                  <ClipboardClock className="size-[40px] text-cyan-900" /> 
+                  <p className="text-md text-black font-mono " >Schedule Appointment</p>
                   </div>
-                  <div className="h-32 sm:h-40 bg-cyan-900 rounded-2xl text-white flex items-center justify-center">
-                    Quick
+                  <div className="h-32 sm:h-40 bg-green-600/40 rounded-2xl text-white flex flex-col space-y-4 items-center justify-center">
+                  <BriefcaseMedical className="size-[40px] text-cyan-900" />
+                  <p className="text-md text-black font-mono " >Talk to doctor</p>
                   </div>
-                  <div className="h-32 sm:h-40 bg-cyan-900 rounded-2xl text-white flex items-center justify-center">
-                    Quick
+                  <div className="h-32 sm:h-40 bg-purple-700/40 rounded-2xl text-white flex flex-col space-y-4 items-center justify-center">
+                  <Pill className="size-[40px] text-cyan-900" />
+                  <p className="text-md text-black font-mono " >Priscription Refill</p>
                   </div>
                 </div>
               </div>

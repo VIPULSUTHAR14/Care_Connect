@@ -20,19 +20,19 @@ export default function Patient_Settings (){
 
     if(status === "loading"){
         return(
-            <div>
+            <div className="flex justify-center items-center bg-gray-200" >
                 Loading
             </div>
         )
     }
     return(
-        <div>
+        <div className="bg-gray-200 h-[90vh]" >
             <ul className="flex flex-col items-center justify-center space-y-9"  >
-                <li className=""><Link href={"/patient/profile"} >Update Profile</Link></li>
-                <li className=""><Link href={""} >HELLO</Link></li>
-                <li className=""><Link href={""} >HELLO</Link></li>
-                <li className=""><Link href={""} >HELLO</Link></li>
-                <li className=""><Link href={""} >HELLO</Link></li>
+                <li className="text-cyan-800 text-xl font-mono"><Link href={"/patient/profile"} >Update Profile</Link></li>
+                <li className="text-cyan-800 text-xl font-mono"><Link href={""} >HELLO</Link></li>
+                <li className="text-cyan-800 text-xl font-mono"><Link href={""} >HELLO</Link></li>
+                <li className="text-cyan-800 text-xl font-mono"><Link href={""} >HELLO</Link></li>
+                <li className="text-cyan-800 text-xl font-mono"><Link href={""} >HELLO</Link></li>
             </ul>
         </div>
     )

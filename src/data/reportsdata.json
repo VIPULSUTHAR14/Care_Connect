@@ -1,0 +1,241 @@
+{
+    "patientReports": [
+      {
+        "reportId": "RPT-20250912-8432",
+        "patientInfo": {
+          "patientId": "PID-SHARMA-001",
+          "name": "Priya Sharma",
+          "age": 32,
+          "gender": "Female",
+          "bloodGroup": "O+"
+        },
+        "visitDetails": {
+          "hospitalName": "Apollo Hospital, Delhi",
+          "visitDate": "2025-09-12",
+          "visitType": "Out-Patient Department (OPD)",
+          "attendingDoctor": "Dr. Rajesh Kumar"
+        },
+        "symptoms": "Fever, sore throat, body aches, and persistent cough.",
+        "diagnosis": "Viral Pharyngitis (Common Cold)",
+        "vitals": {
+          "temperature": "100.4°F",
+          "bloodPressure": "120/80 mmHg",
+          "heartRate": "88 bpm"
+        },
+        "tests": [
+          {
+            "testName": "Rapid Influenza Diagnostic Test (RIDT)",
+            "result": "Negative for Influenza A/B",
+            "status": "Completed"
+          }
+        ],
+        "medicines": [
+          {
+            "name": "Paracetamol 500mg",
+            "dosage": "1 tablet",
+            "frequency": "Thrice a day after meals"
+          },
+          {
+            "name": "Cetirizine 10mg",
+            "dosage": "1 tablet",
+            "frequency": "Once at night"
+          },
+          {
+            "name": "Ascoril D+ Syrup",
+            "dosage": "10ml",
+            "frequency": "Twice a day"
+          }
+        ],
+        "followUpNotes": "Advised to take complete rest and stay hydrated. Follow up after 3 days if symptoms persist."
+      },
+      {
+        "reportId": "RPT-20250910-9154",
+        "patientInfo": {
+          "patientId": "PID-PATEL-002",
+          "name": "Amit Patel",
+          "age": 58,
+          "gender": "Male",
+          "bloodGroup": "A+"
+        },
+        "visitDetails": {
+          "hospitalName": "Fortis Hospital, Mumbai",
+          "visitDate": "2025-09-10",
+          "visitType": "Teleconsultation",
+          "attendingDoctor": "Dr. Anjali Desai"
+        },
+        "symptoms": "Routine follow-up for diabetes management. Patient reports stable health.",
+        "diagnosis": "Type 2 Diabetes Mellitus - Routine Check-up",
+        "vitals": {
+          "temperature": null,
+          "bloodPressure": "Patient-reported: 130/85 mmHg",
+          "heartRate": null
+        },
+        "tests": [
+          {
+            "testName": "HbA1c (Glycated Hemoglobin)",
+            "result": "6.8%",
+            "status": "Reviewed"
+          },
+          {
+            "testName": "Fasting Blood Sugar (FBS)",
+            "result": "115 mg/dL",
+            "status": "Reviewed"
+          }
+        ],
+        "medicines": [
+          {
+            "name": "Metformin 500mg",
+            "dosage": "1 tablet",
+            "frequency": "Twice a day",
+            "notes": "Continue current dosage"
+          },
+          {
+            "name": "Atorvastatin 10mg",
+            "dosage": "1 tablet",
+            "frequency": "Once at night",
+            "notes": "Continue current dosage"
+          }
+        ],
+        "followUpNotes": "Next check-up scheduled in 3 months. Continue monitoring blood sugar levels at home."
+      },
+      {
+        "reportId": "RPT-20250915-1120",
+        "patientInfo": {
+          "patientId": "PID-REDDY-003",
+          "name": "Suresh Reddy",
+          "age": 25,
+          "gender": "Male",
+          "bloodGroup": "B-"
+        },
+        "visitDetails": {
+          "hospitalName": "Manipal Hospital, Bangalore",
+          "visitDate": "2025-09-15",
+          "visitType": "Emergency Department",
+          "attendingDoctor": "Dr. Fatima Khan"
+        },
+        "symptoms": "Deep laceration on the left forearm due to a kitchen accident.",
+        "diagnosis": "Clean Laceration, Left Forearm (4 cm)",
+        "vitals": {
+          "temperature": "98.6°F",
+          "bloodPressure": "125/82 mmHg",
+          "heartRate": "95 bpm"
+        },
+        "tests": [
+          {
+            "testName": "X-Ray of Left Forearm",
+            "result": "No fracture detected.",
+            "status": "Completed"
+          },
+          {
+            "testName": "Tetanus Toxoid (TT) Injection",
+            "result": "Administered",
+            "status": "Completed"
+          }
+        ],
+        "medicines": [
+          {
+            "name": "Ibuprofen 400mg",
+            "dosage": "1 tablet",
+            "frequency": "As needed for pain (max 3 per day)"
+          },
+          {
+            "name": "Amoxicillin-clavulanate 625mg",
+            "dosage": "1 tablet",
+            "frequency": "Twice a day for 5 days"
+          }
+        ],
+        "followUpNotes": "Wound cleaned and sutured (5 stitches). Keep the dressing dry. Return for suture removal in 7-10 days."
+      },
+      {
+        "reportId": "RPT-20250914-4891",
+        "patientInfo": {
+          "patientId": "PID-IYER-004",
+          "name": "Ananya Iyer",
+          "age": 45,
+          "gender": "Female",
+          "bloodGroup": "AB+"
+        },
+        "visitDetails": {
+          "hospitalName": "Medanta - The Medicity, Gurgaon",
+          "visitDate": "2025-09-14",
+          "visitType": "Out-Patient Department (OPD)",
+          "attendingDoctor": "Dr. Vikram Singh"
+        },
+        "symptoms": "Nausea, vomiting, and diarrhea for 2 days with mild abdominal cramps.",
+        "diagnosis": "Acute Gastroenteritis",
+        "vitals": {
+          "temperature": "99.1°F",
+          "bloodPressure": "110/70 mmHg",
+          "heartRate": "90 bpm"
+        },
+        "tests": [
+          {
+            "testName": "Complete Blood Count (CBC)",
+            "result": "Within normal limits, slight dehydration indicated.",
+            "status": "Completed"
+          },
+          {
+            "testName": "Stool Routine Examination",
+            "result": "No parasites or ova seen.",
+            "status": "Completed"
+          }
+        ],
+        "medicines": [
+          {
+            "name": "Ondansetron 4mg",
+            "dosage": "1 tablet",
+            "frequency": "Twice a day before meals"
+          },
+          {
+            "name": "Oral Rehydration Solution (ORS)",
+            "dosage": "1 sachet in 1 litre of water",
+            "frequency": "Sip frequently throughout the day"
+          }
+        ],
+        "followUpNotes": "Advised bland diet (BRAT diet). Monitor for signs of severe dehydration. Follow up if no improvement in 48 hours."
+      },
+      {
+        "reportId": "RPT-20250913-6776",
+        "patientInfo": {
+          "patientId": "PID-DAS-005",
+          "name": "Rohan Das",
+          "age": 19,
+          "gender": "Male",
+          "bloodGroup": "O-"
+        },
+        "visitDetails": {
+          "hospitalName": "Narayana Health, Kolkata",
+          "visitDate": "2025-09-13",
+          "visitType": "Emergency Department",
+          "attendingDoctor": "Dr. Priya Sen"
+        },
+        "symptoms": "Sudden onset of itchy, red welts (hives) on arms and torso after consuming seafood.",
+        "diagnosis": "Urticaria (Hives) - Allergic Reaction",
+        "vitals": {
+          "temperature": "98.7°F",
+          "bloodPressure": "118/75 mmHg",
+          "heartRate": "85 bpm"
+        },
+        "tests": [
+          {
+            "testName": "Allergy Panel (Blood Test)",
+            "result": "Referred to an allergist for a comprehensive panel.",
+            "status": "Referred"
+          }
+        ],
+        "medicines": [
+          {
+            "name": "Diphenhydramine (Benadryl) 25mg",
+            "dosage": "1 tablet",
+            "frequency": "Every 6 hours as needed for itching"
+          },
+          {
+            "name": "Prednisolone 5mg",
+            "dosage": "2 tablets",
+            "frequency": "Once a day for 3 days"
+          }
+        ],
+        "followUpNotes": "Patient's condition stabilized. Advised to avoid suspected allergens. Follow up with a dermatologist or allergist for further evaluation."
+      }
+    ]
+  }

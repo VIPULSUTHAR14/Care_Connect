@@ -1,6 +1,6 @@
 import { MongoClient, Db, Collection, Document } from "mongodb";
 
-const uri = "mongodb+srv://Nabha_Healthcare_Admin:NABHA25018@nabha-healthcare.jy6v8po.mongodb.net/?retryWrites=true&w=majority&appName=nabha-healthcare";
+const uri = process.env.MONGODB_URI;
 const options = {};
 
 // Define your database and collection names here

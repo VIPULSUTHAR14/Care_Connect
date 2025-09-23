@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { signIn, getSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { signIn, getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { UserType } from "@/types/user";
 import { toast } from "react-toastify";
+import { Eye, EyeClosed } from "lucide-react";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -12,10 +13,31 @@ export default function SignIn() {
   const [userType, setUserType] = useState<UserType>(UserType.PATIENT);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [PasswordEyeSymbol , setPasswordEyeSymbol] = useState(true)
+  const [passwordInputType,setPasswordInputType] = useState("password")
   const router = useRouter();
+  
   
   const gotoRegister = ()=>{
     router.push("/Register")
+  }
+
+  const {data : session ,status} = useSession()
+
+  useEffect(()=>{
+    if(status === "authenticated"){
+      router.push("/dashboard")
+    }
+  },[session,status])
+
+  const handlePasswordInputType = ()=>{
+    if(passwordInputType === "password"){
+      setPasswordInputType("text")
+      setPasswordEyeSymbol(false)
+    }else{
+      setPasswordInputType("password")
+      setPasswordEyeSymbol(true)
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -53,12 +75,15 @@ export default function SignIn() {
   };
 
   return (
-    <div className="max-h-screen h-[90vh] bg-green-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="max-h-screen h-[90vh] bg-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="" >
+        <img src="/assets/doctorImage.jpg" alt="sideImage" className="h-[90vh] w-[45vw] " />
+      </div>
       <div className="w-full max-w-screen flex items-center justify-center ">
         {/* Logo and Brand */}
-        {/* Main Card */}
+        {/* Main Card */}  
         <div className="bg-white rounded-2xl shadow-lg p-8  ">
-          <h2 className="text-4xl font-bold font-mono  bg-clip-text text-transparent bg-gradient-to-l from-green-950 via-green-400 to-green-950 text-center mb-8 px-40 py-10 drop-shadow-xl drop-shadow-green-200 cursor-pointer">
+          <h2 className="text-4xl font-bold font-mono  bg-clip-text text-transparent bg-cyan-900 text-center mb-8 px-40 py-10 drop-shadow-xl drop-shadow-green-200 cursor-pointer">
             Welcome Back
           </h2>
 
@@ -78,13 +103,13 @@ export default function SignIn() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="block w-full pl-16 pr-3 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-mono text-green-950 text-xl font-bold"
+                className="block w-full pl-16 pr-3 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-800 focus:border-transparent font-mono text-green-950 text-xl font-bold"
                 placeholder="Email"
               />
             </div>
 
             {/* Password Input */}
-            <div className="relative">
+            <div className="relative flex items-center">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -93,14 +118,17 @@ export default function SignIn() {
               <input
                 id="password"
                 name="password"
-                type="password"
+                type={passwordInputType}
                 autoComplete="current-password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="block w-full pl-16 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-mono text-green-950 text-xl font-bold"
+                className="block w-full pl-16 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-800 focus:border-transparent font-mono text-green-950 text-xl font-bold"
                 placeholder="Password"
               />
+              <button onClick={()=> handlePasswordInputType()} className="p-2" type="button"  >
+              {PasswordEyeSymbol? <Eye className="size-[40px] text-cyan-800 " /> : <EyeClosed className="size-[40px] text-cyan-800" /> }
+              </button>
             </div>
 
             {/* User Type Select */}
@@ -119,7 +147,7 @@ export default function SignIn() {
 
             {/* Forgot Password Link */}
             <div className="text-right">
-              <a href="#" className="text-md text-green-600 hover:text-green-500 font-mono">
+              <a href="#" className="text-md text-cyan-600 hover:text-cyan-800 hover:underline font-mono">
                 Forgot Password?
               </a>
             </div>
@@ -135,7 +163,7 @@ export default function SignIn() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-green-500 text-white py-3 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xl font-mono font-extrabold"
+              className="w-full bg-cyan-800 text-white py-3 px-4 rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xl font-mono font-extrabold"
             >
               {isLoading ? "Signing in..." : "Login"}
             </button>
@@ -146,7 +174,7 @@ export default function SignIn() {
                 type="button"
                 onClick={handleGoogleSignIn}
                 disabled={isLoading}
-                className="w-full bg-white border border-gray-300 py-3 px-4 rounded-lg font-bold hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-mono text-xl text-green-950 "
+                className="w-full bg-white border border-gray-300 py-3 px-4 rounded-lg font-bold hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center font-mono text-xl text-green-950 "
               >
                 <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -164,9 +192,11 @@ export default function SignIn() {
                 Don't have an account?{" "}
                 <button
                   onClick={gotoRegister}
-                  className="text-green-600 hover:text-green-500 font-medium"
+                  className="text-cyan-600 hover:underline hover:text-cyan-700 font-medium"
+                  type="button"
                 >
-                  Sign Up
+                  Register
+                
                 </button>
               </p>
             </div>

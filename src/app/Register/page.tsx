@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { UserType, RegisterData } from "@/types/user";
+import { stat } from "fs";
 
 export default function Register() {
   const [formData, setFormData] = useState<Omit<RegisterData, "confirmPassword">>({
@@ -20,6 +22,13 @@ export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+  const {data : session ,status} = useSession()
+
+  useEffect(()=>{
+    if(status === "authenticated"){
+      router.push("/dashboard")
+    }
+  },[session,status])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
