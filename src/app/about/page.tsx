@@ -189,7 +189,7 @@ export default function AboutPage() {
       </div>
 
       {/* Stats */}
-      <div className="py-16 bg-cyan-800">
+      {/* <div className="py-16 bg-cyan-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-mono font-bold text-white mb-4">
@@ -218,60 +218,109 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Team */}
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-mono font-bold text-cyan-900 mb-4">
-              Leadership Team
+              Our Team
             </h3>
             <p className="text-lg font-mono text-gray-700">
               Meet the people behind Nabha Health Care
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Team Lead */}
             <div className="text-center">
               <div className="w-32 h-32 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-4xl font-mono font-bold text-white">DR</span>
+                <span className="text-4xl font-mono font-bold text-white">SV</span>
               </div>
               <h4 className="text-xl font-mono font-bold text-cyan-900 mb-2">
-                Dr. Rajesh Kumar
+                Mr. Shubham Vaishnav
               </h4>
               <p className="text-lg font-mono text-cyan-700 mb-3">
-                Chief Executive Officer
+                Team Lead
               </p>
               <p className="font-mono text-gray-700">
-                With over 15 years in healthcare management, Dr. Kumar leads our mission to transform healthcare accessibility.
+                Leading the team with vision, dedication, and a passion for healthcare innovation.
               </p>
             </div>
+            {/* AIML */}
+            {/* AIML Specialist - Rajatk Paliwal */}
             <div className="text-center">
               <div className="w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-4xl font-mono font-bold text-white">PS</span>
+                <span className="text-4xl font-mono font-bold text-white">RP</span>
               </div>
               <h4 className="text-xl font-mono font-bold text-cyan-900 mb-2">
-                Priya Sharma
+                Mr. Rajatk Paliwal
               </h4>
               <p className="text-lg font-mono text-cyan-700 mb-3">
-                Chief Technology Officer
+                AIML Specialist
               </p>
               <p className="font-mono text-gray-700">
-                A technology visionary with expertise in healthcare systems and patient data management.
+                Driving AI and Machine Learning solutions for smarter healthcare experiences.
               </p>
             </div>
+            {/* AIML Specialist - Ridhi Jain */}
             <div className="text-center">
-              <div className="w-32 h-32 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-4xl font-mono font-bold text-white">AS</span>
+              <div className="w-32 h-32 bg-gradient-to-br from-green-300 to-green-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <span className="text-4xl font-mono font-bold text-white">RJ</span>
               </div>
               <h4 className="text-xl font-mono font-bold text-cyan-900 mb-2">
-                Dr. Amit Singh
+                Ms. Ridhi Jain
               </h4>
               <p className="text-lg font-mono text-cyan-700 mb-3">
-                Chief Medical Officer
+                AIML Specialist
               </p>
               <p className="font-mono text-gray-700">
-                A renowned cardiologist ensuring our medical standards and quality of care remain exceptional.
+                Innovating with AI and ML to enhance patient care and healthcare intelligence.
+              </p>
+            </div>
+            {/* Web Dev */}
+            <div className="text-center">
+              <div className="w-32 h-32 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <span className="text-4xl font-mono font-bold text-white">VS</span>
+              </div>
+              <h4 className="text-xl font-mono font-bold text-cyan-900 mb-2">
+                Mr. Vipul Suthar
+              </h4>
+              <p className="text-lg font-mono text-cyan-700 mb-3">
+                Web Developer
+              </p>
+              <p className="font-mono text-gray-700">
+                Building robust and scalable web solutions for seamless user experiences.
+              </p>
+            </div>
+            {/* UI/UX Designer */}
+            <div className="text-center md:col-span-1">
+              <div className="w-32 h-32 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <span className="text-4xl font-mono font-bold text-white">GG</span>
+              </div>
+              <h4 className="text-xl font-mono font-bold text-cyan-900 mb-2">
+                Mr. Gunjal Gupta
+              </h4>
+              <p className="text-lg font-mono text-cyan-700 mb-3">
+                UI/UX Designer
+              </p>
+              <p className="font-mono text-gray-700">
+                Crafting intuitive and engaging interfaces for all users.
+              </p>
+            </div>
+            {/* Presentation */}
+            <div className="text-center md:col-span-1">
+              <div className="w-32 h-32 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <span className="text-4xl font-mono font-bold text-white">GK</span>
+              </div>
+              <h4 className="text-xl font-mono font-bold text-cyan-900 mb-2">
+                Ms. Gurbani Kaur
+              </h4>
+              <p className="text-lg font-mono text-cyan-700 mb-3">
+                Presentation
+              </p>
+              <p className="font-mono text-gray-700">
+                Showcasing our work and vision with clarity and creativity.
               </p>
             </div>
           </div>

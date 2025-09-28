@@ -1,17 +1,16 @@
-import { Server as NetServer } from 'http';
-import { NextApiResponse } from 'next';
-import { Server as SocketIOServer } from 'socket.io';
+import { io, Socket } from "socket.io-client";
 
-export type NextApiResponseServerIO = NextApiResponse & {
-  socket: {
-    server: NetServer & {
-      io: SocketIOServer;
-    };
-  };
-};
+export type ClientSocket = Socket;
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+export function connectSocket(token?: string): ClientSocket {
+	return io("", {
+		path: "/api/socket",
+		transports: ["websocket", "polling"],
+		autoConnect: true,
+		reconnection: true,
+		reconnectionAttempts: 10,
+		reconnectionDelay: 1000,
+		withCredentials: false, // don't send cookies; avoid NextAuth session interference
+		auth: token ? { token } : undefined,
+	});
+}

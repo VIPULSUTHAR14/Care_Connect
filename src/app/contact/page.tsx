@@ -120,7 +120,7 @@ export default function ContactPage() {
       {/* Contact Information */}
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-cyan-800 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Phone className="w-8 h-8 text-white" />
@@ -132,13 +132,13 @@ export default function ContactPage() {
                 General Inquiries
               </p>
               <a href="tel:+91-9876543210" className="text-lg font-mono text-cyan-600 hover:text-cyan-800">
-                +91-9876543210
+                +91-9351800864
               </a>
               <p className="font-mono text-gray-700 mt-2">
                 Emergency Support
               </p>
               <a href="tel:+91-9876543211" className="text-lg font-mono text-red-600 hover:text-red-800">
-                +91-9876543211
+                +91-9351800864
               </a>
             </div>
             <div className="text-center">
@@ -151,17 +151,17 @@ export default function ContactPage() {
               <p className="font-mono text-gray-700 mb-2">
                 General Support
               </p>
-              <a href="mailto:support@nabhahealthcare.com" className="text-lg font-mono text-cyan-600 hover:text-cyan-800">
-                support@nabhahealthcare.com
+              <a href="mailto:support@vipulsuthar9351@gmail.com" className="text-lg font-mono text-cyan-600 hover:text-cyan-800">
+                support@vipulsuhtarwork@gmail.com
               </a>
-              <p className="font-mono text-gray-700 mt-2">
+              {/* <p className="font-mono text-gray-700 mt-2">
                 Technical Issues
               </p>
               <a href="mailto:tech@nabhahealthcare.com" className="text-lg font-mono text-cyan-600 hover:text-cyan-800">
                 tech@nabhahealthcare.com
-              </a>
+              </a> */}
             </div>
-            <div className="text-center">
+            {/* <div className="text-center">
               <div className="w-16 h-16 bg-cyan-800 rounded-full flex items-center justify-center mx-auto mb-6">
                 <MapPin className="w-8 h-8 text-white" />
               </div>
@@ -174,7 +174,7 @@ export default function ContactPage() {
                 Chandigarh, Punjab 160017<br />
                 India
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

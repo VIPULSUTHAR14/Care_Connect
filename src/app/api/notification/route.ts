@@ -1,4 +1,4 @@
-    import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { getDatabase } from "@/lib/ConnectDB";
@@ -6,6 +6,12 @@ import { ObjectId } from "mongodb";
 
 // Collection name per requirement: "notification" (singular)
 const COLLECTION_NAME = "notification";
+
+// Helper to get user name by id
+async function getUserNameById(db: any, userId: ObjectId) {
+  const user = await db.collection("users").findOne({ _id: userId }, { projection: { name: 1 } });
+  return user?.name || null;
+}
 
 // POST: Create/send a notification
 // Body: { senderId, receiverId, type, message? }
@@ -26,7 +32,7 @@ export async function POST(request: NextRequest) {
     }
 
     const db = await getDatabase();
-    const collection = db.collection("notification");
+    const collection = db.collection(COLLECTION_NAME);
 
     // Allow "self" as a placeholder meaning the current user
     const resolvedSenderId = senderId === "self" ? session.user.id : senderId;
@@ -39,9 +45,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const senderObjectId = new ObjectId(resolvedSenderId);
+    const receiverObjectId = new ObjectId(resolvedReceiverId);
+
+    // Fetch sender and receiver names
+    const [senderName, receiverName] = await Promise.all([
+      getUserNameById(db, senderObjectId),
+      getUserNameById(db, receiverObjectId),
+    ]);
+
     const doc = {
-      senderId: new ObjectId(resolvedSenderId),
-      receiverId: new ObjectId(resolvedReceiverId),
+      senderId: senderObjectId,
+      senderName: senderName,
+      receiverId: receiverObjectId,
+      receiverName: receiverName,
       type: String(type),
       message: message ? String(message) : undefined,
       createdAt: new Date(),
@@ -100,6 +117,26 @@ export async function GET(request: NextRequest) {
         .toArray(),
     ]);
 
+    // Collect all unique sender and receiver IDs to batch fetch names
+    const userIdsSet = new Set<string>();
+    items.forEach((n) => {
+      if (n.senderId) userIdsSet.add(n.senderId.toString());
+      if (n.receiverId) userIdsSet.add(n.receiverId.toString());
+    });
+    const userIds = Array.from(userIdsSet).map((id) => new ObjectId(id));
+    let userMap: Record<string, string> = {};
+
+    if (userIds.length > 0) {
+      const users = await db
+        .collection("users")
+        .find({ _id: { $in: userIds } }, { projection: { name: 1 } })
+        .toArray();
+      userMap = users.reduce((acc: Record<string, string>, user: any) => {
+        acc[user._id.toString()] = user.name || null;
+        return acc;
+      }, {});
+    }
+
     return NextResponse.json({
       scope,
       page,
@@ -108,7 +145,9 @@ export async function GET(request: NextRequest) {
       notifications: items.map((n) => ({
         _id: n._id,
         senderId: n.senderId,
+        senderName: userMap[n.senderId?.toString()] || null,
         receiverId: n.receiverId,
+        receiverName: userMap[n.receiverId?.toString()] || null,
         type: n.type,
         message: n.message,
         createdAt: n.createdAt,
@@ -142,7 +181,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const db = await getDatabase();
-    const collection = db.collection("notification");
+    const collection = db.collection(COLLECTION_NAME);
 
     // Only the sender can update the message
     const filter = { _id: new ObjectId(notificationId), senderId: new ObjectId(session.user.id) };
@@ -201,5 +240,4 @@ export async function PATCH(request: NextRequest) {
     );
   }
 }
-
 

@@ -4,8 +4,31 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Calendar, Clock, AlertTriangle, MessageCircle } from "lucide-react";
+import { toast } from "react-toastify";
 
 type Severity = "low" | "medium" | "high" | "emergency";
+
+// Add some basic symptoms for selection
+const BASIC_SYMPTOMS = [
+  "Fever",
+  "Headache",
+  "Cough",
+  "Cold",
+  "Sore throat",
+  "Body ache",
+  "Nausea",
+  "Vomiting",
+  "Diarrhea",
+  "Fatigue",
+  "Shortness of breath",
+  "Chest pain",
+  "Dizziness",
+  "Rash",
+  "Stomach pain",
+  "Back pain",
+  "Joint pain",
+  "Other",
+];
 
 function getToday() {
   const now = new Date();
@@ -35,6 +58,8 @@ export default function BookAppointmentPage() {
   const [time, setTime] = useState<string>("");
   const [severity, setSeverity] = useState<Severity>("low");
   const [customMessage, setCustomMessage] = useState<string>("");
+  const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
+  const [otherSymptom, setOtherSymptom] = useState<string>("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -61,6 +86,14 @@ export default function BookAppointmentPage() {
     }
   }, [date]);
 
+  const handleSymptomToggle = (symptom: string) => {
+    setSelectedSymptoms((prev) =>
+      prev.includes(symptom)
+        ? prev.filter((s) => s !== symptom)
+        : [...prev, symptom]
+    );
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -72,13 +105,35 @@ export default function BookAppointmentPage() {
     try {
       setSubmitting(true);
       const when = new Date(`${date}T${time}:00`).toLocaleString();
-      const message = `Appointment request for ${when}. Severity: ${severity.toUpperCase()}.` +
+
+      // Compose symptoms string
+      let symptomsText = "";
+      if (selectedSymptoms.length > 0) {
+        symptomsText =
+          "Symptoms: " +
+          selectedSymptoms
+            .map((s) =>
+              s === "Other" && otherSymptom.trim()
+                ? `Other (${otherSymptom.trim()})`
+                : s
+            )
+            .join(", ");
+      }
+
+      const message =
+        `Appointment request for ${when}. Severity: ${severity.toUpperCase()}.` +
+        (symptomsText ? `\n${symptomsText}` : "") +
         (customMessage.trim() ? `\nMessage: ${customMessage.trim()}` : "");
 
       const res = await fetch("/api/notification", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ senderId: "self", receiverId, type: "appointment", message }),
+        body: JSON.stringify({
+          senderId: "self",
+          receiverId,
+          type: "appointment",
+          message,
+        }),
       });
       if (!res.ok) {
         let data = {};
@@ -90,20 +145,46 @@ export default function BookAppointmentPage() {
         throw new Error((data as any)?.error || "Failed to send request");
       }
       setSuccess("Appointment request sent to hospital");
+      toast.success("Appointment request sent to hospital");
       setTimeout(() => router.push("/notification"), 800);
     } catch (err: any) {
       setError(err?.message || "Something went wrong");
+      toast.error(err?.message || "Something went wrong")
     } finally {
       setSubmitting(false);
     }
   };
 
+  // Check what is causing screen overflow in width
+
+  // 1. The outermost div uses `minWidth: "100vw"` in the style prop.
+  //    - "100vw" includes the width of the scrollbar, which can cause horizontal overflow.
+  //    - Tailwind's `w-screen` or `min-w-screen` can also cause this if used.
+  //    - The className also has an extra space at the start, but that's not a functional issue.
+
+  // 2. The inner container uses `w-full max-w-7xl`, which is fine as long as the parent doesn't overflow.
+
+  // 3. The time slot picker uses a grid with `grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2`.
+  //    - If there are too many time slots, and the parent is too narrow, it could overflow, but with `w-full` on the parent, it should wrap.
+
+  // 4. The symptom picker uses `flex flex-wrap gap-2` for the buttons, which should wrap and not overflow.
+
+  // 5. The form uses `w-full`, which is fine as long as the parent is not overflowing.
+
+  // 6. The action buttons use `w-full sm:w-auto`, so on small screens they stack, on larger screens they are inline.
+
+  // 7. The only thing that can cause horizontal overflow is the use of `minWidth: "100vw"` on the outermost div.
+  //    - On most browsers, `100vw` includes the scrollbar, so the content is wider than the viewport, causing horizontal scroll.
+  //    - The correct approach is to use `w-full` or remove the `minWidth: "100vw"` style.
+
+  // 8. To fix, remove `minWidth: "100vw"` from the style prop.
+
   return (
     <div
-      className=" min-h-screen  flex flex-col items-center justify-center bg-gradient-to-br from-cyan-50 to-white"
-      style={{ minWidth: "100vw", minHeight: "100vh" }}
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-cyan-50 to-white px-2 sm:px-4"
+      style={{ minHeight: "100vh" }}
     >
-      <div className="w-full max-w-7xl   py-10 sm:py-16 bg-white rounded-none sm:rounded-2xl shadow-md border border-gray-100">
+      <div className="w-full max-w-7xl py-10 sm:py-16 px-2 sm:px-8 bg-white rounded-none sm:rounded-2xl shadow-md border border-gray-100 box-border overflow-x-auto">
         <h1 className="text-3xl sm:text-4xl font-mono font-extrabold text-cyan-800 mb-8 tracking-tight text-center">
           Book Appointment
         </h1>
@@ -156,6 +237,40 @@ export default function BookAppointmentPage() {
                 </button>
               ))}
             </div>
+          </div>
+          {/* Symptom Picker */}
+          <div>
+            <label className="flex items-center gap-2 text-sm font-mono font-bold text-cyan-800 mb-2">
+              <span role="img" aria-label="symptom">🩺</span>
+              Select your symptoms <span className="text-xs text-gray-400">(choose all that apply)</span>
+            </label>
+            <div className="flex flex-wrap gap-2">
+              {BASIC_SYMPTOMS.map((symptom) => (
+                <button
+                  type="button"
+                  key={symptom}
+                  className={`px-3 py-1 rounded-full border font-mono text-xs transition shadow-sm ${
+                    selectedSymptoms.includes(symptom)
+                      ? "bg-cyan-600 text-white border-cyan-600 font-bold"
+                      : "bg-white border-cyan-200 text-cyan-800 hover:bg-cyan-50"
+                  }`}
+                  onClick={() => handleSymptomToggle(symptom)}
+                  aria-pressed={selectedSymptoms.includes(symptom)}
+                >
+                  {symptom}
+                </button>
+              ))}
+            </div>
+            {/* Show input for "Other" symptom */}
+            {selectedSymptoms.includes("Other") && (
+              <input
+                type="text"
+                value={otherSymptom}
+                onChange={(e) => setOtherSymptom(e.target.value)}
+                className="mt-2 w-full border border-cyan-200 rounded-lg px-4 py-2 font-mono text-cyan-900 bg-cyan-50 focus:outline-none focus:ring-2 focus:ring-cyan-200 transition"
+                placeholder="Please specify other symptom(s)..."
+              />
+            )}
           </div>
           {/* Severity Picker */}
           <div>

@@ -302,7 +302,7 @@ export default function HospitalsPage() {
 
                     <div className="mt-4 pt-4 border-t">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-gray-500 px-6">
                           NHA: {hospital.nha_registration_number}
                         </span>
                         <button

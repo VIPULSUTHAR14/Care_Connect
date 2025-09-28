@@ -13,7 +13,7 @@ export interface Hospital {
   nha_registration_number: string;
   email: string;
   password?: string; // Optional for security
-  premises_image_url: string[];
+  images: string[];
   staff: HospitalStaff[];
   createdAt?: Date;
   updatedAt?: Date;

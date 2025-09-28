@@ -22,18 +22,18 @@ export default function Navbar (){
     },[session,status])
     return(
         <div className="w-full h-[10vh] flex items-center justify-between bg-slate-50 drop-shadow-sm drop-shadow-green-300 " >
-            <p className="font-mono font-bold text-2xl text-cyan-800 px-10 hover:cursor-pointer " onClick={()=>{
+            <p className="font-mono font-bold text-3xl text-cyan-900 px-10 hover:cursor-pointer  " onClick={()=>{
                 router.push("/dashboard")
-            }} > Nabha Health Care</p>
+            }} > Care Connect</p>
             <div>
                 <ul className="flex space-x-10">
                 {/* <li className={authenticatedstatus?"text-xl text-cyan-800 font-mono font-bold":"hidden"} >{<Link href={"/Settings/Patient_Settings"} >Profile</Link>}</li> */}
-                <li className={authenticatedstatus?"text-xl text-cyan-800 font-mono font-bold":"hidden"} >{<Link href={"/hospitals"} >Book-Appointment</Link>}</li>
-                <li className={authenticatedstatus?"text-xl text-cyan-800 font-mono font-bold":"hidden"} >{<Link href={"/chatbot"} >Chatbot</Link>}</li>
-                <li className={authenticatedstatus?"text-xl text-cyan-800 font-mono font-bold":"hidden"} >{<Link href={"/patient/profile"} >Update-profile</Link>}</li>
-                <li className="text-xl text-cyan-800 font-mono font-bold" >{<Link href={"/about"} >About-Us</Link>}</li>
-                <li className="text-xl text-cyan-800 font-mono font-bold" >{<Link href={"/contact"} >Contect-Us</Link>}</li>
-                <li className={authenticatedstatus?"text-xl text-cyan-800 font-mono font-bold":"hidden"} >{<Link href={"/notification"} ><Bell/></Link>}</li>
+                <li className={authenticatedstatus?"text-xl text-cyan-800 font-mono font-bold hover:text-2xl hover:underline transition-all":"hidden hover:text-2xl hover:underline transition-all"} >{<Link href={"/hospitals"} >Book-Appointment</Link>}</li>
+                <li className={authenticatedstatus?"text-xl text-cyan-800 font-mono font-bold hover:text-2xl hover:underline transition-all ":"hidden hover:text-2xl hover:underline transition-all"} >{<Link href={"/chatbot"} >Chatbot</Link>}</li>
+                <li className={authenticatedstatus?"text-xl text-cyan-800 font-mono font-bold hover:text-2xl hover:underline transition-all":"hidden hover:text-2xl hover:underline transition-all"} >{<Link href={"/patient/profile"} >Update-profile</Link>}</li>
+                <li className="text-xl text-cyan-800 font-mono font-bold hover:text-2xl hover:underline transition-all" >{<Link href={"/about"} >About-Us</Link>}</li>
+                <li className="text-xl text-cyan-800 font-mono font-bold hover:text-2xl hover:underline transition-all" >{<Link href={"/contact"} >Contect-Us</Link>}</li>
+                <li className={authenticatedstatus?"text-xl text-cyan-800 font-mono font-bold hover:text-2xl hover:underline transition-all":"hidden"} >{<Link href={"/notification"} ><Bell/></Link>}</li>
                 </ul>
             </div>
             <div>

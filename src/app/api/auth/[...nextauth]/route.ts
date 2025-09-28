@@ -60,8 +60,8 @@ export const authOptions: NextAuthOptions = {
     }),
     // Google provider (patient-only)
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      clientId: "718358145430-5ji4g9fltnht9d5vqvi4rtgopni0b02i.apps.googleusercontent.com",
+      clientSecret: "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",
       allowDangerousEmailAccountLinking: true,
       // Restrict to patient role in sign-in callback
     }),

@@ -4,6 +4,7 @@ import "./globals.css";
 import { SessionProvider } from "@/components/SessionProvider";
 import ToastProvider from "@/components/ToastProvider";
 import Navbar from "@/components/Navbar";
+import { SocketProvider } from "@/components/SocketContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +32,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SessionProvider>
+          <SocketProvider>
           <Navbar />
           {children}
           <ToastProvider />
+          </SocketProvider>
         </SessionProvider>
       </body>
     </html>

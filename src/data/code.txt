@@ -1,0 +1,35 @@
+  <div className="flex-1 flex flex-col items-center justify-center w-full">
+        <div className="w-full max-w-4xl flex flex-col flex-1 justify-between bg-white/80 rounded-none md:rounded-2xl shadow-lg border border-cyan-100 my-6 h-[70vh]">
+          {/* Messages Area */}
+          <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 font-mono text-cyan-900">
+            {messages.length === 0 && !isLoading ? (
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center">
+                  <BotIcon className="w-16 h-16 text-cyan-200 mx-auto mb-6" />
+                  <h3 className="text-2xl font-bold font-mono text-cyan-900 mb-3">Welcome to Healthcare Assistant</h3>
+                  <p className="text-cyan-700 font-mono text-lg">Start a conversation by typing your health-related questions below.</p>
+                </div>
+              </div>
+            ) : (
+              messages.map((message, index) => renderMessage(message, index))
+            )}
+
+            {/* Loading indicator */}
+            {isLoading && (
+              <div className="flex w-full justify-start mb-2">
+                <div className="flex items-end max-w-[80%]">
+                  <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 border border-cyan-200">
+                    <BotIcon className="w-5 h-5 text-cyan-800" />
+                  </div>
+                  <div className="ml-2 px-4 py-2 rounded-2xl bg-white border border-cyan-100 shadow-sm font-mono">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>

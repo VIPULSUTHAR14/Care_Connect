@@ -3,41 +3,40 @@
 import { useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 
+export type ClientSocket = Socket;
+
 export const useSocket = (userId: string) => {
-  const [socket, setSocket] = useState<Socket | null>(null);
+  const [socket, setSocket] = useState<ClientSocket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    // Initialize socket connection
-    const socketInstance = io(process.env.NODE_ENV === 'production' 
-      ? process.env.NEXT_PUBLIC_APP_URL || 'https://your-domain.com'
-      : 'http://localhost:3000', {
+    if (!userId) return;
+
+    // Same-origin connection; target Next.js app route at /api/socket
+    const socketInstance = io('', {
+      path: '/api/socket',
       transports: ['websocket', 'polling'],
       autoConnect: true,
+      withCredentials: false,
     });
 
-    // Connection event handlers
-    socketInstance.on('connect', () => {
-      console.log('Connected to server');
+    const onConnect = () => {
       setIsConnected(true);
-      // Join user to their personal room
       socketInstance.emit('join-room', userId);
-    });
+    };
+    const onDisconnect = () => setIsConnected(false);
+    const onError = () => setIsConnected(false);
 
-    socketInstance.on('disconnect', () => {
-      console.log('Disconnected from server');
-      setIsConnected(false);
-    });
-
-    socketInstance.on('connect_error', (error) => {
-      console.error('Connection error:', error);
-      setIsConnected(false);
-    });
+    socketInstance.on('connect', onConnect);
+    socketInstance.on('disconnect', onDisconnect);
+    socketInstance.on('connect_error', onError);
 
     setSocket(socketInstance);
 
-    // Cleanup on unmount
     return () => {
+      socketInstance.off('connect', onConnect);
+      socketInstance.off('disconnect', onDisconnect);
+      socketInstance.off('connect_error', onError);
       socketInstance.disconnect();
     };
   }, [userId]);
