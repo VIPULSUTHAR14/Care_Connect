@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Suspense } from "react"; // 1. FIX: Import Suspense
 
 const errorMessages: Record<string, string> = {
   Configuration: "There is a problem with the server configuration.",
@@ -10,9 +11,10 @@ const errorMessages: Record<string, string> = {
   Default: "An error occurred during authentication.",
 };
 
-export default function AuthError() {
+// 2. FIX: Moved the logic into its own component
+function AuthErrorContent() {
   const searchParams = useSearchParams();
-  const error = searchParams.get("error");
+  const error = searchParams?.get("error");
 
   const errorMessage = error ? errorMessages[error] || errorMessages.Default : errorMessages.Default;
 
@@ -108,4 +110,13 @@ export default function AuthError() {
       </div>
     </div>
   );
+}
+
+// 3. FIX: Create a new page component that wraps the logic in a Suspense boundary
+export default function AuthErrorPage() {
+    return (
+        <Suspense fallback={<div>Loading error details...</div>}>
+            <AuthErrorContent />
+        </Suspense>
+    );
 }
