@@ -1,7 +1,7 @@
-const { createServer } = require('http');
-const { parse } = require('url');
-const next = require('next');
-const { Server } = require('socket.io');
+import { createServer } from 'http';
+import { parse } from 'url';
+import next from 'next'; // Changed to default import
+import { Server } from 'socket.io';
 
 const dev = process.env.NODE_ENV !== 'production';
 const hostname = 'localhost';
@@ -35,13 +35,11 @@ app.prepare().then(() => {
   io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
 
-    // Join user to their personal room
     socket.on('join-room', (userId) => {
       socket.join(userId);
       console.log(`User ${userId} joined room`);
     });
 
-    // Handle new messages
     socket.on('send-message', async (data) => {
       try {
         const { userId, message } = data;
@@ -51,7 +49,6 @@ app.prepare().then(() => {
           return;
         }
 
-        // Emit user message to the room
         socket.to(userId).emit('new-message', {
           userId,
           message: message,
@@ -59,11 +56,9 @@ app.prepare().then(() => {
           timestamp: new Date(),
         });
 
-        // Simulate bot response (you can replace this with your actual bot logic)
         setTimeout(() => {
           const botResponse = `I received your message: "${message}". This is a real-time response!`;
           
-          // Emit bot response to the room
           socket.to(userId).emit('new-message', {
             userId,
             message: botResponse,
@@ -78,7 +73,6 @@ app.prepare().then(() => {
       }
     });
 
-    // Handle typing indicators
     socket.on('typing-start', (data) => {
       socket.to(data.userId).emit('user-typing', { isTyping: true });
     });
@@ -87,7 +81,6 @@ app.prepare().then(() => {
       socket.to(data.userId).emit('user-typing', { isTyping: false });
     });
 
-    // Handle disconnection
     socket.on('disconnect', () => {
       console.log('User disconnected:', socket.id);
     });

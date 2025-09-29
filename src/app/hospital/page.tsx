@@ -77,8 +77,9 @@ export default function HospitalRegister() {
 			}
 
 			router.push("/dashboard");
-		} catch (err: any) {
-			setError(err.message || "An error occurred");
+		} catch (err: unknown) {
+			//ts-ignore
+			setError(err instanceof Error ? err.message : "An error occurred");
 		} finally {
 			setIsLoading(false);
 		}

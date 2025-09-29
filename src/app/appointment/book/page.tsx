@@ -76,7 +76,8 @@ export default function BookAppointmentPage() {
     if (date === today) {
       const slots = getTimeSlots();
       const currentMinutes = now.getHours() * 60 + now.getMinutes();
-      let found = slots.find((slot) => {
+      // 1. FIX: Changed 'let' to 'const' as 'found' is not reassigned
+      const found = slots.find((slot) => {
         const [h, m] = slot.split(":").map(Number);
         return h * 60 + m > currentMinutes;
       });
@@ -142,14 +143,15 @@ export default function BookAppointmentPage() {
         } catch {
           // ignore
         }
+        //ts-ignore
         throw new Error((data as any)?.error || "Failed to send request");
       }
       setSuccess("Appointment request sent to hospital");
       toast.success("Appointment request sent to hospital");
       setTimeout(() => router.push("/notification"), 800);
-    } catch (err: any) {
-      setError(err?.message || "Something went wrong");
-      toast.error(err?.message || "Something went wrong")
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+      toast.error(err instanceof Error ? err.message : "Something went wrong")
     } finally {
       setSubmitting(false);
     }

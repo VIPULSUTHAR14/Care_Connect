@@ -2,22 +2,33 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCollectionByUserType } from "@/lib/ConnectDB";
 import { UserType } from "@/types/user";
 import bcrypt from "bcryptjs";
+import { Document } from "mongodb"; // Import the Document type
+
+// Define a more specific type for the user data
+interface PatientData extends Document {
+  name: string;
+  email: string;
+  password: string;
+  userType: UserType;
+  createdAt: Date;
+  updatedAt: Date;
+  mobileNumber: string;
+  age: number | null;
+  gender: string;
+  role: string;
+  address: string;
+  bloodGroup: string;
+  pastReports: unknown[];
+  family: unknown[];
+  isActive: boolean;
+  profileCompleted: boolean;
+}
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { 
-      name, 
-      email, 
-      password, 
-      userType: receivedUserType, 
-      phone, 
-      address, 
-      specialization, 
-      licenseNumber, 
-      hospitalName, 
-      pharmacyName 
-    } = body;
+    // Only destructure fields that are actually used
+    const { name, email, password } = body;
 
     // Validation
     if (!name || !email || !password) {
@@ -27,10 +38,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // For this endpoint (patient register), force user type to PATIENT
+    // This endpoint is for patient registration only
     const userType = UserType.PATIENT;
-
-    // Get the appropriate collection based on user type
     const collection = await getCollectionByUserType(userType);
 
     // Check if user already exists
@@ -42,22 +51,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    // Prepare user data based on user type
-    let userData: any = {
+    // FIX: Combine object creation and use the specific PatientData interface
+    const userData: PatientData = {
       name,
       email,
       password: hashedPassword,
       userType,
       createdAt: new Date(),
       updatedAt: new Date(),
-    };
-
-    // Add patient specific defaults (this endpoint is patient-only)
-    userData = {
-      ...userData,
       mobileNumber: "",
       age: null,
       gender: "",
@@ -70,11 +73,9 @@ export async function POST(request: NextRequest) {
       profileCompleted: false,
     };
 
-    // Insert the new user
     const result = await collection.insertOne(userData);
 
     if (result.insertedId) {
-      // Remove password from response
       const { password: _, ...userWithoutPassword } = userData;
       
       return NextResponse.json({
@@ -84,9 +85,7 @@ export async function POST(request: NextRequest) {
           _id: result.insertedId,
         },
         userType,
-        collection: userType === UserType.PATIENT ? "patients" : 
-                   userType === UserType.DOCTOR ? "doctors" :
-                   userType === UserType.HOSPITAL ? "hospitals" : "pharmacy"
+        collection: "patients"
       }, { status: 201 });
     } else {
       return NextResponse.json(
@@ -94,7 +93,7 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-  } catch (error) {
+  } catch (error: unknown) { // Bonus fix: Type the error as 'unknown'
     console.error("Registration error:", error);
     return NextResponse.json(
       { error: "Internal server error" },

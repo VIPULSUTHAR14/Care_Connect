@@ -2,10 +2,21 @@
 
 import { getDatabase } from '@/lib/ConnectDB';
 import CryptoJS from "crypto-js";
-import { GoogleGenerativeAI, Content, SafetySetting, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
+// 1. FIX: Removed unused 'SafetySetting' import
+import { GoogleGenerativeAI, Content, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 import { NextRequest, NextResponse } from 'next/server';
-import medicine from '@/data/medicine_data.json';
+import { Document } from 'mongodb'; // Import Document type for better typing
 
+// 2. FIX: Removed unused 'medicine' import
+
+// --- TYPE DEFINITION ---
+// 3. FIX: Define a specific type for message documents from the database
+interface MessageDocument extends Document {
+    userId: string;
+    message: string;
+    sender: 'user' | 'bot';
+    timestamp: Date;
+}
 
 // --- ENCRYPTION SETUP ---
 const secretKey: string | undefined = process.env.SECRET_KEY;
@@ -37,7 +48,7 @@ if (!geminiApiKey) {
     throw new Error('Please define the GEMINI_API_KEY environment variable inside .env.local');
 }
 const genAI = new GoogleGenerativeAI(geminiApiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 
 // --- GET HANDLER (Fetch Chat History) ---
@@ -51,16 +62,17 @@ export async function GET(request: NextRequest) {
 
     try {
         const db = await getDatabase();
-        const messagesCollection = db.collection('messages');
+        const messagesCollection = db.collection<MessageDocument>('messages');
         const messagesFromDb = await messagesCollection.find({ userId }).sort({ timestamp: 1 }).toArray();
 
-        const decryptedMessages = messagesFromDb.map((msg: any) => ({
+        // 3. FIX: Use the specific MessageDocument type instead of 'any'
+        const decryptedMessages = messagesFromDb.map((msg: MessageDocument) => ({
             ...msg,
             message: msg.sender === 'user' ? decryptMessage(msg.message) : msg.message
         }));
 
         return NextResponse.json({ success: true, messages: decryptedMessages });
-    } catch (error) {
+    } catch (error: unknown) { // Bonus fix
         console.error('GET Error:', error);
         return NextResponse.json({ success: false, error: 'Server error while fetching messages' }, { status: 500 });
     }
@@ -78,13 +90,13 @@ export async function POST(request: NextRequest) {
         }
 
         const db = await getDatabase();
-        const messagesCollection = db.collection('messages');
+        const messagesCollection = db.collection<MessageDocument>('messages');
 
         // 1. Encrypt and save the user's message
         const userMessage = {
             userId,
             message: encryptMessage(message),
-            sender: 'user',
+            sender: 'user' as const,
             timestamp: new Date(),
         };
         await messagesCollection.insertOne(userMessage);
@@ -142,8 +154,8 @@ export async function POST(request: NextRequest) {
             const result = await chat.sendMessage(message);
             botResponseText = result.response.text();
 
-        } catch(err: any) {
-            console.error("Error calling Gemini API:", err?.message);
+        } catch(err: unknown) { // 4. FIX: Use the type-safe 'unknown' instead of 'any'
+            console.error("Error calling Gemini API:", err instanceof Error ? err.message : err);
             botResponseText = "Sorry, I'm having trouble connecting to the AI service right now. Please try again later.";
         }
         
@@ -159,7 +171,7 @@ export async function POST(request: NextRequest) {
         const botMessage = {
             userId,
             message: botResponseText,
-            sender: 'bot',
+            sender: 'bot' as const,
             timestamp: new Date(),
         };
         await messagesCollection.insertOne(botMessage);
@@ -167,7 +179,7 @@ export async function POST(request: NextRequest) {
         // 7. Send the bot's response back to the frontend
         return NextResponse.json({ success: true, botResponse: botResponseText });
 
-    } catch (error) {
+    } catch (error: unknown) { // Bonus fix
         console.error('POST Error:', error);
         return NextResponse.json({ success: false, error: 'Server error while processing message' }, { status: 500 });
     }

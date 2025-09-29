@@ -14,6 +14,22 @@ export const COLLECTION_MAPPING = {
   [UserType.PHARMACY]: "pharmacy"
 } as const;
 
+// --- FIX: Define specific interfaces for complex array types ---
+export interface PastReport {
+  id: string;
+  date: string; // or Date
+  title: string;
+  summary?: string;
+  fileUrl?: string;
+}
+
+export interface FamilyMember {
+  fullName: string;
+  relation: string;
+  age: number | null;
+  medicalCondition: string;
+}
+
 // Patient specific interface
 export interface PatientData {
   name: string;
@@ -24,8 +40,11 @@ export interface PatientData {
   role?: string;
   address?: string;
   bloodGroup?: string;
-  pastReports?: any[]; // Array of past medical reports
-  family?: any[]; // Array of family members/medical history
+  // --- FIX: Use the specific interfaces instead of any[] ---
+  pastReports?: PastReport[];
+  family?: FamilyMember[];
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 // Doctor specific interface
@@ -50,14 +69,13 @@ export interface PharmacyData {
   pharmacyName?: string;
 }
 
-// Simplified registration interface (only required fields for initial registration)
+// Simplified registration interface
 export interface RegisterData {
   name: string;
   email: string;
   password: string;
   confirmPassword: string;
   userType: UserType;
-  // Additional fields based on user type (optional for initial registration)
   phone?: string;
   address?: string;
   specialization?: string; // for doctors

@@ -13,7 +13,7 @@ export interface Notification {
     appointmentId?: string;
     medicationId?: string;
     reportId?: string;
-    [key: string]: any;
+    [key: string]: string | undefined;
   };
 }
 

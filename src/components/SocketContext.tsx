@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { connectSocket, ClientSocket } from '@/lib/socket';
+import { User } from 'next-auth';
 
 interface SocketContextValue {
 	socket: ClientSocket | null;
@@ -32,7 +33,7 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 		s.on('disconnect', handleDisconnect);
 
 		// Join personal room when authenticated and have a user id
-		const userId = (session?.user as any)?.id as string | undefined;
+		const userId = (session?.user as User)?.id as string | undefined;
 		if (userId) {
 			const join = () => s.emit('join-room', userId);
 			if (s.connected) join(); else s.once('connect', join);

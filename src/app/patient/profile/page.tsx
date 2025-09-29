@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { UserType } from "@/types/user";
-import { stat } from "fs";
 
+// --- INTERFACES ---
 interface FamilyMember {
   fullName: string;
   relation: string;
@@ -24,6 +24,18 @@ interface PatientProfile {
   family: FamilyMember[];
 }
 
+// Type for the raw family member data coming from the API
+interface ApiFamilyMember {
+    fullName?: string;
+    name?: string;
+    relation?: string;
+    age?: number | string | null;
+    gender?: string;
+    condition?: string;
+    notes?: string;
+}
+
+
 export default function PatientProfile() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -32,7 +44,6 @@ export default function PatientProfile() {
   const [error, setError] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [showError, setShowError] = useState(false);
-
 
   const [profile, setProfile] = useState<PatientProfile>({
     mobileNumber: "",
@@ -44,7 +55,7 @@ export default function PatientProfile() {
     family: [],
   });
 
-  // For better UX, auto-dismiss messages
+  // Auto-dismiss messages
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (showMessage || showError) {
@@ -56,9 +67,9 @@ export default function PatientProfile() {
     return () => clearTimeout(timer);
   }, [showMessage, showError]);
 
-  // Fetch profile data for better UX (pre-fill form)
+  // Fetch profile data
   useEffect(() => {
-    if (status === "authenticated" && (session?.user as any)?.userType === UserType.PATIENT) {
+    if (status === "authenticated" && session?.user.userType === UserType.PATIENT) {
       fetch("/api/patient/profile")
         .then(res => res.json())
         .then(data => {
@@ -70,10 +81,10 @@ export default function PatientProfile() {
               role: data.patient.role || "",
               address: data.patient.address || "",
               bloodGroup: data.patient.bloodGroup || "",
-              family: (data.patient.family || []).map((m: any) => ({
+              family: (data.patient.family || []).map((m: ApiFamilyMember) => ({
                 fullName: m.fullName || m.name || "",
                 relation: m.relation || "",
-                age: typeof m.age === "number" ? m.age : (m.age ? parseInt(m.age, 10) : null),
+                age: typeof m.age === "number" ? m.age : (m.age ? parseInt(String(m.age), 10) : null),
                 gender: m.gender || "",
                 condition: m.condition || m.notes || "",
               })),
@@ -83,10 +94,11 @@ export default function PatientProfile() {
     }
   }, [status, session]);
 
+  // Handle routing based on session status
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/auth/signin");
-    } else if (status === "authenticated" && (session?.user as any)?.userType !== UserType.PATIENT) {
+    } else if (status === "authenticated" && session?.user.userType !== UserType.PATIENT) {
       router.push("/dashboard");
     }
   }, [status, session, router]);
@@ -104,7 +116,7 @@ export default function PatientProfile() {
       ...prev,
       family: [
         ...prev.family,
-        { fullName: "", relation: "", age: null, gender: "", condition: "" } as FamilyMember,
+        { fullName: "", relation: "", age: null, gender: "", condition: "" },
       ],
     }));
   };
@@ -122,13 +134,16 @@ export default function PatientProfile() {
     value: string
   ) => {
     setProfile(prev => {
-      const updated = [...prev.family];
+      const updatedFamily = [...prev.family];
+      const memberToUpdate = updatedFamily[index];
+      
       if (field === "age") {
-        (updated[index] as FamilyMember).age = value ? parseInt(value, 10) : null;
+        memberToUpdate.age = value ? parseInt(value, 10) : null;
       } else {
-        (updated[index] as any)[field] = value;
+        memberToUpdate[field] = value;
       }
-      return { ...prev, family: updated };
+      
+      return { ...prev, family: updatedFamily };
     });
   };
 
@@ -146,16 +161,7 @@ export default function PatientProfile() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          mobileNumber: profile.mobileNumber,
-          age: profile.age,
-          gender: profile.gender,
-          role: profile.role,
-          address: profile.address,
-          bloodGroup: profile.bloodGroup,
-          // Do not send pastReports anymore; backend will default to [] if missing
-          family: profile.family,
-        }),
+        body: JSON.stringify(profile),
       });
 
       const data = await response.json();
@@ -167,7 +173,7 @@ export default function PatientProfile() {
         setError(data.error || "Failed to update profile");
         setShowError(true);
       }
-    } catch (error) {
+    } catch {
       setError("An error occurred while updating profile");
       setShowError(true);
     } finally {
@@ -177,7 +183,7 @@ export default function PatientProfile() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center  justify-center bg-gradient-to-br from-indigo-100 to-indigo-300">
+      <div className="min-h-screen flex items-center 	justify-center bg-gradient-to-br from-indigo-100 to-indigo-300">
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-indigo-600 mb-4"></div>
           <span className="text-indigo-700 font-medium font-mono">Loading your profile...</span>
@@ -186,7 +192,7 @@ export default function PatientProfile() {
     );
   }
 
-  if (!session || (session?.user as any)?.userType !== UserType.PATIENT) {
+  if (!session || session.user.userType !== UserType.PATIENT) {
     return null;
   }
 
@@ -197,7 +203,6 @@ export default function PatientProfile() {
           <div className="px-6 py-8 sm:p-10">
             <h1 className="text-3xl font-extrabold text-black mb-2 flex items-center gap-2 font-mono">
               <span className="inline-block bg-cyan-800 rounded-full p-2">
-                {/* User icon SVG (no heroicons) */}
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" fill="none" />
                   <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" strokeWidth="2" fill="none" />
@@ -220,7 +225,7 @@ export default function PatientProfile() {
                     id="mobileNumber"
                     value={profile.mobileNumber}
                     onChange={handleInputChange}
-                    className="mt-1 block w-full   rounded-lg shadow-sm sm:text-lg  px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
+                    className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
                     placeholder="Enter your mobile number"
                     required
                   />
@@ -237,7 +242,7 @@ export default function PatientProfile() {
                     id="age"
                     value={profile.age || ""}
                     onChange={handleInputChange}
-                    className="mt-1 block w-full   rounded-lg shadow-sm sm:text-lg  px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
+                    className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
                     placeholder="Enter your age"
                     min="0"
                     max="150"
@@ -255,7 +260,7 @@ export default function PatientProfile() {
                     id="gender"
                     value={profile.gender}
                     onChange={handleInputChange}
-                    className="mt-1 block w-full   rounded-lg shadow-sm sm:text-lg  px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
+                    className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
                     required
                   >
                     <option value="" className="text-gray-900">Select gender</option>
@@ -276,7 +281,7 @@ export default function PatientProfile() {
                     id="bloodGroup"
                     value={profile.bloodGroup}
                     onChange={handleInputChange}
-                    className="mt-1 block w-full   rounded-lg shadow-sm sm:text-lg  px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
+                    className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
                     required
                   >
                     <option value="" className="text-gray-400">Select blood group</option>
@@ -292,23 +297,6 @@ export default function PatientProfile() {
                 </div>
               </div>
 
-              {/* Role */}
-              {/* <div>
-                <label htmlFor="role" className="block text-sm font-semibold text-black mb-1 font-mono">
-                  Role/Profession <span className="text-red-400">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="role"
-                  id="role"
-                  value={profile.role}
-                  onChange={handleInputChange}
-                  className="mt-1 block w-full   rounded-lg shadow-sm sm:text-lg  px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0 "
-                  placeholder="e.g., Student, Engineer, Teacher, etc."
-                  required
-                />
-              </div> */}
-
               {/* Address */}
               <div>
                 <label htmlFor="address" className="block text-xl font-semibold text-black mb-1 font-mono">
@@ -320,7 +308,7 @@ export default function PatientProfile() {
                   rows={3}
                   value={profile.address}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full   rounded-lg shadow-sm sm:text-lg  px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
+                  className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
                   placeholder="Enter your complete address"
                   required
                 />
@@ -424,7 +412,6 @@ export default function PatientProfile() {
               <div className="relative min-h-[32px]">
                 {showError && error && (
                   <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900 border border-red-700 p-3 rounded-lg shadow-sm animate-fade-in font-mono">
-                    {/* Exclamation SVG */}
                     <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
                       <line x1="12" y1="8" x2="12" y2="13" stroke="currentColor" strokeWidth="2" />
@@ -435,7 +422,6 @@ export default function PatientProfile() {
                 )}
                 {showMessage && message && (
                   <div className="flex items-center gap-2 text-green-300 text-sm bg-green-900 border border-green-700 p-3 rounded-lg shadow-sm animate-fade-in font-mono">
-                    {/* Check SVG */}
                     <svg className="w-5 h-5 text-green-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
                       <path d="M8 12l2 2l4-4" stroke="currentColor" strokeWidth="2" fill="none" />
@@ -472,7 +458,6 @@ export default function PatientProfile() {
           </div>
         </div>
       </div>
-      {/* Subtle background illustration for better UX */}
       <div
         aria-hidden="true"
         className="fixed inset-0 pointer-events-none z-0"

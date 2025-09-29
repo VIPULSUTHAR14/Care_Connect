@@ -40,6 +40,7 @@ export default function NotificationPage() {
       const res = await fetch(`/api/notification?scope=${scope}`);
       if (!res.ok) throw new Error("Failed to fetch notifications");
       const data = await res.json();
+      //ts-ignore
       const items: SimpleNotification[] = (data.notifications || []).map((n: any) => ({
         _id: String(n._id),
         senderId: String(n.senderId),
@@ -53,7 +54,8 @@ export default function NotificationPage() {
       }));
       if (scope === "received") setReceived(items);
       else setSent(items);
-    } catch (e: any) {
+    } catch (e: unknown) {
+      //ts-ignore
       setError(e?.message || "Error fetching notifications");
     } finally {
       setLoading(false);

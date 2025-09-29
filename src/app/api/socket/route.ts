@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { Server as SocketIOServer } from "socket.io";
 import { Server as HTTPServer } from "http";
+import { IncomingMessage } from "http";
 
 // Keep a global reference so we don’t reinitialize on hot reload
 const globalForSocket = global as unknown as { io?: SocketIOServer };
@@ -8,9 +9,8 @@ const globalForSocket = global as unknown as { io?: SocketIOServer };
 export async function GET(req: NextRequest) {
   if (!globalForSocket.io) {
     console.log("Starting Socket.IO server...");
-
     // @ts-ignore - req is actually IncomingMessage here
-    const server: HTTPServer = (req as any).socket?.server;
+    const server: HTTPServer = (req as IncomingMessage).socket?.server;
 
     // @ts-expect-error - server may not have 'io' property, but we attach it dynamically
     if (!server.io) {

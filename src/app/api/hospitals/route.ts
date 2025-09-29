@@ -2,6 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getDatabase } from "@/lib/ConnectDB";
+import { Filter, Document } from "mongodb"; // 1. Import specific types from mongodb
 
 // GET: Fetch hospital data (with optional search, city filter, and pagination)
 export async function GET(request: NextRequest) {
@@ -13,10 +14,11 @@ export async function GET(request: NextRequest) {
     const city = searchParams.get('city') || '';
 
     const db = await getDatabase();
-    const hospitalsCollection = db.collection("Hospital");
+    // 4. CONSISTENCY FIX: Changed "Hospital" to "hospital" to match your POST route
+    const hospitalsCollection = db.collection("hospital"); 
 
-    // Build query for filtering hospitals
-    let query: any = {};
+    // 2. FIX: Changed `let` to `const` and `any` to `Filter<Document>`
+    const query: Filter<Document> = {};
     if (search) {
       query.$or = [
         { name: { $regex: search, $options: 'i' } },
@@ -25,13 +27,12 @@ export async function GET(request: NextRequest) {
       ];
     }
     if (city) {
+      // To avoid conflicts, merge this with the existing address query if needed
       query.address = { $regex: city, $options: 'i' };
     }
 
-    // Get total count of hospitals matching the query
     const total = await hospitalsCollection.countDocuments(query);
 
-    // Fetch hospitals with pagination, excluding password field
     const hospitals = await hospitalsCollection
       .find(query, { projection: { password: 0 } })
       .sort({ name: 1 })
@@ -46,7 +47,7 @@ export async function GET(request: NextRequest) {
       limit,
       totalPages: Math.ceil(total / limit)
     });
-  } catch (error) {
+  } catch (error: unknown) { // 3. BONUS FIX: Use 'unknown' for type-safe errors
     console.error("Error fetching hospitals:", error);
     return NextResponse.json(
       { error: "Failed to fetch hospitals" },
@@ -62,7 +63,6 @@ export async function POST(request: NextRequest) {
     const db = await getDatabase();
     const hospitalsCollection = db.collection("hospital");
 
-    // Validate required fields
     const requiredFields = [
       'name',
       'address',
@@ -80,7 +80,6 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Check if hospital already exists (by email or registration number)
     const existingHospital = await hospitalsCollection.findOne({
       $or: [
         { email: body.email },
@@ -95,7 +94,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create new hospital document
     const newHospital = {
       ...body,
       createdAt: new Date(),
@@ -109,7 +107,7 @@ export async function POST(request: NextRequest) {
       hospitalId: result.insertedId,
       message: "Hospital created successfully"
     }, { status: 201 });
-  } catch (error) {
+  } catch (error: unknown) { // 3. BONUS FIX: Use 'unknown'
     console.error("Error creating hospital:", error);
     return NextResponse.json(
       { error: "Failed to create hospital" },

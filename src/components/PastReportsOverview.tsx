@@ -103,17 +103,22 @@ export default function PastReportsOverview() {
         setReports(data.reports || []);
         setTotalReports(data.total || 0);
 
-      } catch (err: any) {
+      } catch (err: unknown) { // 1. FIX: Use 'unknown' for type safety
         console.error("Error fetching reports:", err);
         
-        if (err.name === 'TypeError' && err.message.includes('fetch')) {
-          setError("Network error. Please check your connection and try again.");
-        } else if (err.message?.includes("Unexpected token '<'")) {
-          setError("Server error. Please try again later.");
+        // Add a type guard to safely access error properties
+        if (err instanceof Error) {
+          if (err.name === 'TypeError' && err.message.includes('fetch')) {
+            setError("Network error. Please check your connection and try again.");
+          } else if (err.message.includes("Unexpected token '<'")) {
+            setError("Server error. Please try again later.");
+          } else {
+            setError(err.message);
+          }
         } else {
-          setError(err.message || "An unexpected error occurred while loading reports.");
+          setError("An unexpected error occurred while loading reports.");
         }
-      } finally {
+      }  finally {
         setLoading(false);
       }
     };
@@ -242,7 +247,7 @@ export default function PastReportsOverview() {
             <div className="text-center">
               <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-600 mb-2 font-mono">No Reports Found</h3>
-              <p className="text-gray-500 mb-2 font-mono">You don't have any medical reports yet.</p>
+              <p className="text-gray-500 mb-2 font-mono">You don&apos;t have any medical reports yet.</p>
               <p className="text-sm text-gray-400 font-mono">
                 Your health reports will appear here after your appointments.
               </p>

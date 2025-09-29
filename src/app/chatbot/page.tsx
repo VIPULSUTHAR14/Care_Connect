@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Send as SendIcon, Bot as BotIcon, User as UserIcon, LoaderCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 // Defines the structure for a chat message
 interface Message {
@@ -24,10 +24,7 @@ export default function ChatbotPage() {
     
     const router = useRouter();
     const { data: session, status } = useSession();
-
-    // CRITICAL FIX: Use the authenticated user's ID for persistent chat history.
-    // This can be the user's database ID, email, or any unique identifier from the session.
-    const userId = session?.user?.id; // Adjust 'id' if your session user object uses a different key (e.g., email)
+    const userId = session?.user?.id;
 
     // Redirect unauthenticated users
     useEffect(() => {
@@ -43,10 +40,10 @@ export default function ChatbotPage() {
 
     useEffect(scrollToBottom, [messages]);
 
-    // Load chat history from the backend when the user is authenticated
+    // Load chat history
     useEffect(() => {
         const loadChatHistory = async () => {
-            if (!userId) return; // Don't fetch if there's no userId
+            if (!userId) return;
 
             setIsHistoryLoading(true);
             try {
@@ -58,8 +55,9 @@ export default function ChatbotPage() {
                 if (data.success) {
                     setMessages(data.messages);
                 }
-            } catch (error : any) {
-                toast.error('Error loading chat history:', error);
+            } catch (error: unknown) { // 1. FIX: Use 'unknown' for type safety
+                const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+                toast.error(`Error loading chat history: ${errorMessage}`);
             } finally {
                 setIsHistoryLoading(false);
             }
@@ -68,7 +66,7 @@ export default function ChatbotPage() {
         if (status === 'authenticated') {
             loadChatHistory();
         }
-    }, [status, userId]); // Re-run if status or userId changes
+    }, [status, userId]);
 
     // Handle sending a new message
     const sendMessage = async (e: React.FormEvent) => {
@@ -83,7 +81,7 @@ export default function ChatbotPage() {
         };
 
         setMessages(prev => [...prev, userMessage]);
-        const currentInput = inputMessage; // Store current input before clearing
+        const currentInput = inputMessage;
         setInputMessage('');
         setIsLoading(true);
 
@@ -106,15 +104,17 @@ export default function ChatbotPage() {
             } else {
                 throw new Error(data.error || 'API returned an error');
             }
-        } catch (error : any) {
-            toast.error('Failed to send message:', error);
-            const errorMessage: Message = {
+        } catch (error: unknown) { // 2. FIX: Use 'unknown' for type safety
+            const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+            toast.error(`Failed to send message: ${errorMessage}`);
+            
+            const errorBotMessage: Message = {
                 userId,
                 message: "Sorry, I'm having trouble connecting. Please try again later.",
                 sender: 'bot',
                 timestamp: new Date(),
             };
-            setMessages(prev => [...prev, errorMessage]);
+            setMessages(prev => [...prev, errorBotMessage]);
         } finally {
             setIsLoading(false);
         }
@@ -145,7 +145,6 @@ export default function ChatbotPage() {
             <div className="flex-1 flex flex-col items-center justify-center w-full">
                 <div className="w-full max-w-4xl flex flex-col flex-1 bg-white/80 rounded-none md:rounded-2xl shadow-lg border border-cyan-100 my-6 h-[70vh]">
                     <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 font-mono text-cyan-900">
-                        {/* CRITICAL FIX: Render dynamic messages from state, not a static array */}
                         {isHistoryLoading ? (
                             <div className="flex justify-center items-center h-full">
                                 <LoaderCircle className="w-8 h-8 text-cyan-800 animate-spin" />

@@ -3,8 +3,9 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Pill, MapPin, Phone, BadgeCheck } from "lucide-react"
 
+// 1. FIX: Defined a more specific type for _id
 type Pharmacy = {
-  _id: any
+  _id: string | { $oid: string }
   name?: string
   email?: string
   createdAt?: string
@@ -31,8 +32,14 @@ export default function PharmacyPage() {
         if (!res.ok) throw new Error('Failed to load pharmacies')
         const data = await res.json()
         setPharmacies(data.pharmacies || [])
-      } catch (e: any) {
-        if (e.name !== 'AbortError') setError(e.message || 'Something went wrong')
+      } catch (e: unknown) { // 2. FIX: Used 'unknown' for type safety
+        if (e instanceof Error) {
+          if (e.name !== 'AbortError') {
+            setError(e.message || 'Something went wrong');
+          }
+        } else {
+          setError('An unexpected error occurred');
+        }
       } finally {
         setLoading(false)
       }
@@ -65,9 +72,10 @@ export default function PharmacyPage() {
             </div>
           ) : (
             pharmacies.map((p) => {
-              const raw = (p as any)._id
+              // 3. FIX: Removed all 'as any' casts. The specific type makes them unnecessary.
+              const raw = p._id
               const id = (raw && typeof raw === 'object' && '$oid' in raw)
-                ? (raw as any).$oid
+                ? raw.$oid
                 : typeof raw === 'string'
                   ? raw
                   : String(raw)

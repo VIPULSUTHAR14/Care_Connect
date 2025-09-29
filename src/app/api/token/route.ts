@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     
     return NextResponse.json({ token });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error generating Agora token:", error);
     return NextResponse.json({ error: 'Failed to generate token' }, { status: 500 });
   }

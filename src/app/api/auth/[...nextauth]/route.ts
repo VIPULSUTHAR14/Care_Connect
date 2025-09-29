@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthOptions, Session, User } from "next-auth";
+import NextAuth, { NextAuthOptions, Profile, Session, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { getCollectionByUserType } from "@/lib/ConnectDB";
@@ -88,7 +88,7 @@ export const authOptions: NextAuthOptions = {
           (token as any).userType = user.userType;
         }
         if ("id" in user && user.id !== undefined) {
-          (token as any).id = user.id;
+          (token as JWT).id = user.id;
         }
         // NextAuth expects email to be string | null | undefined
         if ("email" in user) {
@@ -99,10 +99,11 @@ export const authOptions: NextAuthOptions = {
       if (account?.provider === "google") {
         try {
           const email = token.email as string | null | undefined;
-          const name = (profile as any)?.name || user?.name || null;
+          const name = (profile as Profile)?.name || user?.name || null;
           if (email) {
             const patients = await getCollectionByUserType(UserType.PATIENT);
             const existing = await patients.findOne({ email });
+            //ts-ignore
             if (!existing) {
               const now = new Date();
               const newPatient = {
@@ -124,11 +125,11 @@ export const authOptions: NextAuthOptions = {
                 // No password for OAuth users
               } as any;
               const result = await patients.insertOne(newPatient);
-              (token as any).id = result.insertedId.toString();
-              (token as any).userType = UserType.PATIENT;
+              (token as JWT).id = result.insertedId.toString();
+              (token as JWT).userType = UserType.PATIENT;
             } else {
-              (token as any).id = existing._id.toString();
-              (token as any).userType = existing.userType || UserType.PATIENT;
+              (token as JWT).id = existing._id.toString();
+              (token as JWT).userType = existing.userType || UserType.PATIENT;
             }
           } else {
             // No email from Google? reject by returning token unchanged (session callback can handle)
@@ -142,14 +143,17 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       // session.user is { name, email, image } by default
       // Add id and userType if present in token
+      //ts-ignore
       if (session.user) {
         if ("id" in token) {
-          (session.user as any).id = (token as any).id;
+          (session.user as User).id = (token as any).id;
         }
         if ("userType" in token) {
+          //ts-ignore
           (session.user as any).userType = (token as any).userType;
         }
         // email is already present, but ensure it's string | null | undefined
+        //ts-ignore
         if ("email" in token) {
           session.user.email = token.email ?? null;
         }

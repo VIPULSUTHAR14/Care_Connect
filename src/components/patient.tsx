@@ -44,7 +44,7 @@ export default function PatientDashboardPage() {
 	useEffect(() => {
 		if (!socket) return;
 
-		const onAccepted = ({ callId, calleeId }: { callId: string; calleeId: string }) => {
+		const onAccepted = ({ callId, callerId }: { callId: string; callerId: string }) => {
 			setActiveCall((prev) => {
 				if (prev.callId !== callId) return prev;
 				return { ...prev, status: "in_call" };
@@ -91,23 +91,6 @@ export default function PatientDashboardPage() {
 					<DoctorList onCall={handleCallDoctor} />
 				</section>
 
-				<section className="bg-white rounded-lg shadow p-6 min-h-[400px] flex flex-col">
-					<h2 className="text-xl font-semibold mb-4">Active Call</h2>
-					{activeCall.status === "idle" && (
-						<div className="text-gray-500">No active call</div>
-					)}
-					{activeCall.status === "requesting" && (
-						<div className="text-blue-600">Waiting for doctor…</div>
-					)}
-					{activeCall.status === "in_call" && socket && activeCall.callId && activeDoctor && (
-						<VideoCall
-							socket={socket}
-							callId={activeCall.callId}
-							remoteUserId={activeDoctor.id}
-							onEndCall={handleEndCall}
-						/>
-					)}
-				</section>
 			</div>
 		</div>
 	);

@@ -171,12 +171,12 @@ export async function GET(request: NextRequest) {
         totalPages: Math.ceil(total / limit)
       }
     });
-  } catch (error : any) {
+  } catch (error : unknown) {
     console.error("Error fetching patient reports:", error);
     return NextResponse.json(
       { 
         message: "Failed to fetch reports due to an internal server error",
-        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+        error: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
       },
       { status: 500 }
     );
@@ -184,7 +184,7 @@ export async function GET(request: NextRequest) {
 }
 
 // Helper function to format a single report document
-function formatSingleReport(r: any) {
+function formatSingleReport(r:any) {
   return {
     _id: r._id?.toString?.() ?? "",
     appointmentId: r.appointmentId ? String(r.appointmentId) : "",

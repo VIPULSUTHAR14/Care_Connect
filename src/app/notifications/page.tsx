@@ -179,9 +179,7 @@ export default function NotificationsPage() {
             <h3 className="text-lg font-medium text-gray-900 mb-2">
               No notifications
             </h3>
-            <p className="text-gray-500">
-              You're all caught up! Check back later for updates.
-            </p>
+            <p>You&apos;re all caught up on notifications!</p>
           </div>
         ) : (
           <div className="space-y-4">

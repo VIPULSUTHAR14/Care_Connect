@@ -189,7 +189,7 @@ export default function SignIn() {
             {/* Sign Up Link */}
             <div className="text-center">
               <p className="text-lg  font-mono text-gray-600">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <button
                   onClick={gotoRegister}
                   className="text-cyan-600 hover:underline hover:text-cyan-700 font-medium"

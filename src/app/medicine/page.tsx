@@ -1,7 +1,8 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 
+// --- TYPE DEFINITIONS ---
 type Medicine = {
   medicine_name: string
   active_ingredient?: string
@@ -10,14 +11,20 @@ type Medicine = {
   stock?: string
 }
 
-export default function MedicinePage() {
+type ApiResponse = {
+  medicines: Medicine[];
+}
+
+type Availability = 'all' | 'available' | 'not-available';
+
+// The component logic that uses searchParams
+function MedicinePageComponent() {
   const [medicines, setMedicines] = useState<Medicine[]>([])
   const [allMedicines, setAllMedicines] = useState<Medicine[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [search, setSearch] = useState("")
-  const [availability, setAvailability] = useState<'all' | 'available' | 'not-available'>('all')
-  // Showing all medicines regardless of stock; toggle removed
+  const [availability, setAvailability] = useState<Availability>('all')
   const searchParams = useSearchParams()
 
   useEffect(() => {
@@ -30,18 +37,24 @@ export default function MedicinePage() {
         params.set('medicines', 'all')
         params.set('page', '1')
         params.set('limit', '200')
-        const pharmacyId = searchParams.get('pharmacyId')
+        const pharmacyId = searchParams?.get('pharmacyId')
         if (pharmacyId) params.set('pharmacyId', pharmacyId)
-        // Fetch from /api/pharmacy, but expect a flat array of medicines as per the DB format
+        
         const res = await fetch(`/api/pharmacy?${params.toString()}`, { signal: controller.signal })
         if (!res.ok) throw new Error('Failed to load medicines')
-        const data = await res.json()
-        // If the API returns { medicines: [...] }, use that, else fallback to [].
+        
+        const data: ApiResponse = await res.json()
         const list: Medicine[] = Array.isArray(data.medicines) ? data.medicines : []
         setAllMedicines(list)
         setMedicines(list)
-      } catch (e: any) {
-        if (e.name !== 'AbortError') setError(e.message || 'Something went wrong')
+      } catch (e: unknown) { // 1. FIX: Use 'unknown' for type safety
+        if (e instanceof Error) {
+            if (e.name !== 'AbortError') {
+                setError(e.message || 'Something went wrong');
+            }
+        } else {
+            setError('An unexpected error occurred');
+        }
       } finally {
         setLoading(false)
       }
@@ -58,21 +71,13 @@ export default function MedicinePage() {
   function applyFilters() {
     const query = search.trim().toLowerCase()
     const filtered = allMedicines.filter((m) => {
-      // Availability filter
       if (availability === 'available' && !isAvailable(m.stock)) return false
       if (availability === 'not-available' && isAvailable(m.stock)) return false
-
-      // Text search over key fields
       if (!query) return true
       const hay = [
-        m.medicine_name,
-        m.active_ingredient,
-        m.summary,
+        m.medicine_name, m.active_ingredient, m.summary,
         Array.isArray(m.causes_for_use) ? m.causes_for_use.join(' ') : undefined,
-      ]
-        .filter(Boolean)
-        .join(' ')
-        .toLowerCase()
+      ].filter(Boolean).join(' ').toLowerCase()
       return hay.includes(query)
     })
     setMedicines(filtered)
@@ -98,7 +103,8 @@ export default function MedicinePage() {
           <select
             className="border rounded px-3 py-2 text-black"
             value={availability}
-            onChange={(e) => setAvailability(e.target.value as any)}
+            // 2. FIX: Use a specific type assertion instead of 'any'
+            onChange={(e) => setAvailability(e.target.value as Availability)}
           >
             <option className="text-black" value="all">All</option>
             <option className="text-black" value="available">Available</option>
@@ -114,7 +120,7 @@ export default function MedicinePage() {
           </button>
         </div>
       </div>
-      {(() => { const pid = searchParams.get('pharmacyId'); if (pid) { return (
+      {(() => { const pid = searchParams?.get('pharmacyId'); if (pid) { return (
         <div className="mb-4 text-sm text-gray-600">Showing medicines for pharmacy ID: <span className="font-mono">{pid}</span></div>
       ); } return null; })()}
 
@@ -123,9 +129,7 @@ export default function MedicinePage() {
 
       {!loading && !error && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {medicines.length === 0 && (
-            <p className="text-gray-600">No medicines to display.</p>
-          )}
+          {medicines.length === 0 && <p className="text-gray-600">No medicines to display.</p>}
           {medicines.map((m, idx) => (
             <div key={idx} className="border rounded-lg p-4 bg-white shadow-sm">
               <div className="flex items-center justify-between">
@@ -134,23 +138,26 @@ export default function MedicinePage() {
                   {m.stock || 'Unknown'}
                 </span>
               </div>
-              {m.active_ingredient && (
-                <p className="text-sm text-gray-700 mt-1">{m.active_ingredient}</p>
-              )}
+              {m.active_ingredient && <p className="text-sm text-gray-700 mt-1">{m.active_ingredient}</p>}
               {Array.isArray(m.causes_for_use) && m.causes_for_use.length > 0 && (
                 <ul className="text-xs text-gray-600 mt-2 list-disc list-inside">
-                  {m.causes_for_use.map((cause, i) => (
-                    <li key={i}>{cause}</li>
-                  ))}
+                  {m.causes_for_use.map((cause, i) => <li key={i}>{cause}</li>)}
                 </ul>
               )}
-              {m.summary && (
-                <p className="text-sm text-gray-600 mt-2 line-clamp-3">{m.summary}</p>
-              )}
+              {m.summary && <p className="text-sm text-gray-600 mt-2 line-clamp-3">{m.summary}</p>}
             </div>
           ))}
         </div>
       )}
     </div>
+  )
+}
+
+// 3. FIX: Wrap the component in a Suspense boundary
+export default function MedicinePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MedicinePageComponent />
+    </Suspense>
   )
 }

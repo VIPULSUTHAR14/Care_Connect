@@ -8,7 +8,7 @@ export async function PUT(request: NextRequest) {
   try {
     // Check if user is authenticated
     const session = await getServerSession(authOptions);
-    
+    //ts-ignore
     if (!session || (session.user as any)?.userType !== UserType.PATIENT) {
       return NextResponse.json(
         { error: "Unauthorized" },
@@ -76,6 +76,7 @@ export async function GET(request: NextRequest) {
     // Check if user is authenticated
     const session = await getServerSession(authOptions);
     
+    //ts-ignore
     if (!session || (session.user as any)?.userType !== UserType.PATIENT) {
       return NextResponse.json(
         { error: "Unauthorized" },
