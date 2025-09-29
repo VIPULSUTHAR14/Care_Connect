@@ -1,33 +1,18 @@
 "use client";
 
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
 import { Calendar, Clock, AlertTriangle, MessageCircle } from "lucide-react";
 import { toast } from "react-toastify";
 
 type Severity = "low" | "medium" | "high" | "emergency";
+type ErrorResponse = { error?: string };
 
-// Add some basic symptoms for selection
 const BASIC_SYMPTOMS = [
-  "Fever",
-  "Headache",
-  "Cough",
-  "Cold",
-  "Sore throat",
-  "Body ache",
-  "Nausea",
-  "Vomiting",
-  "Diarrhea",
-  "Fatigue",
-  "Shortness of breath",
-  "Chest pain",
-  "Dizziness",
-  "Rash",
-  "Stomach pain",
-  "Back pain",
-  "Joint pain",
-  "Other",
+  "Fever", "Headache", "Cough", "Cold", "Sore throat", "Body ache",
+  "Nausea", "Vomiting", "Diarrhea", "Fatigue", "Shortness of breath",
+  "Chest pain", "Dizziness", "Rash", "Stomach pain", "Back pain", "Joint pain", "Other",
 ];
 
 function getToday() {
@@ -37,7 +22,6 @@ function getToday() {
 }
 
 function getTimeSlots() {
-  // 9:00 to 17:00, every 30 min
   const slots: string[] = [];
   for (let h = 9; h <= 17; h++) {
     slots.push(`${h.toString().padStart(2, "0")}:00`);
@@ -46,7 +30,7 @@ function getTimeSlots() {
   return slots;
 }
 
-export default function BookAppointmentPage() {
+function BookAppointment() {
   const { status } = useSession();
   const router = useRouter();
   const params = useSearchParams();
@@ -76,7 +60,6 @@ export default function BookAppointmentPage() {
     if (date === today) {
       const slots = getTimeSlots();
       const currentMinutes = now.getHours() * 60 + now.getMinutes();
-      // 1. FIX: Changed 'let' to 'const' as 'found' is not reassigned
       const found = slots.find((slot) => {
         const [h, m] = slot.split(":").map(Number);
         return h * 60 + m > currentMinutes;
@@ -107,18 +90,14 @@ export default function BookAppointmentPage() {
       setSubmitting(true);
       const when = new Date(`${date}T${time}:00`).toLocaleString();
 
-      // Compose symptoms string
       let symptomsText = "";
       if (selectedSymptoms.length > 0) {
-        symptomsText =
-          "Symptoms: " +
-          selectedSymptoms
-            .map((s) =>
-              s === "Other" && otherSymptom.trim()
-                ? `Other (${otherSymptom.trim()})`
-                : s
-            )
-            .join(", ");
+        symptomsText = "Symptoms: " + selectedSymptoms
+          .map((s) =>
+            s === "Other" && otherSymptom.trim()
+              ? `Other (${otherSymptom.trim()})`
+              : s
+          ).join(", ");
       }
 
       const message =
@@ -137,49 +116,23 @@ export default function BookAppointmentPage() {
         }),
       });
       if (!res.ok) {
-        let data = {};
+        let data: ErrorResponse = {};
         try {
           data = await res.json();
-        } catch {
-          // ignore
-        }
-        //ts-ignore
-        throw new Error((data as any)?.error || "Failed to send request");
+        } catch { /* ignore */ }
+        throw new Error(data.error || "Failed to send request");
       }
       setSuccess("Appointment request sent to hospital");
       toast.success("Appointment request sent to hospital");
       setTimeout(() => router.push("/notification"), 800);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
-      toast.error(err instanceof Error ? err.message : "Something went wrong")
+      const errorMessage = err instanceof Error ? err.message : "Something went wrong";
+      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setSubmitting(false);
     }
   };
-
-  // Check what is causing screen overflow in width
-
-  // 1. The outermost div uses `minWidth: "100vw"` in the style prop.
-  //    - "100vw" includes the width of the scrollbar, which can cause horizontal overflow.
-  //    - Tailwind's `w-screen` or `min-w-screen` can also cause this if used.
-  //    - The className also has an extra space at the start, but that's not a functional issue.
-
-  // 2. The inner container uses `w-full max-w-7xl`, which is fine as long as the parent doesn't overflow.
-
-  // 3. The time slot picker uses a grid with `grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2`.
-  //    - If there are too many time slots, and the parent is too narrow, it could overflow, but with `w-full` on the parent, it should wrap.
-
-  // 4. The symptom picker uses `flex flex-wrap gap-2` for the buttons, which should wrap and not overflow.
-
-  // 5. The form uses `w-full`, which is fine as long as the parent is not overflowing.
-
-  // 6. The action buttons use `w-full sm:w-auto`, so on small screens they stack, on larger screens they are inline.
-
-  // 7. The only thing that can cause horizontal overflow is the use of `minWidth: "100vw"` on the outermost div.
-  //    - On most browsers, `100vw` includes the scrollbar, so the content is wider than the viewport, causing horizontal scroll.
-  //    - The correct approach is to use `w-full` or remove the `minWidth: "100vw"` style.
-
-  // 8. To fix, remove `minWidth: "100vw"` from the style prop.
 
   return (
     <div
@@ -263,7 +216,6 @@ export default function BookAppointmentPage() {
                 </button>
               ))}
             </div>
-            {/* Show input for "Other" symptom */}
             {selectedSymptoms.includes("Other") && (
               <input
                 type="text"
@@ -344,4 +296,12 @@ export default function BookAppointmentPage() {
       </div>
     </div>
   );
+}
+
+export default function BookAppointmentPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+            <BookAppointment />
+        </Suspense>
+    );
 }
