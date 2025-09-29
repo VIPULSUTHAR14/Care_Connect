@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { SimpleNotification } from "@/types/simple-notification";
 import { Bell, Send, Inbox, Loader2, CheckCircle2, XCircle } from "lucide-react";
-import { send } from "process";
+// 1. FIX: Removed unused 'send' import from "process"
 
 type Tab = "received" | "sent";
 
@@ -40,7 +40,7 @@ export default function NotificationPage() {
       const res = await fetch(`/api/notification?scope=${scope}`);
       if (!res.ok) throw new Error("Failed to fetch notifications");
       const data = await res.json();
-      //ts-ignore
+      
       const items: SimpleNotification[] = (data.notifications || []).map((n: any) => ({
         _id: String(n._id),
         senderId: String(n.senderId),
@@ -50,13 +50,19 @@ export default function NotificationPage() {
         type: String(n.type),
         createdAt: n.createdAt,
         isRead: Boolean(n.isRead),
-        message: n.message || "", // Add message field
+        message: n.message || "",
       }));
+
       if (scope === "received") setReceived(items);
       else setSent(items);
-    } catch (e: unknown) {
-      //ts-ignore
-      setError(e?.message || "Error fetching notifications");
+
+    } catch (e: unknown) { // 2. FIX: Changed 'any' to 'unknown' for type safety
+      // 3. FIX: Added a type guard to safely access the error message
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError("An unknown error occurred while fetching notifications.");
+      }
     } finally {
       setLoading(false);
     }
@@ -73,7 +79,7 @@ export default function NotificationPage() {
         setReceived((prev) => prev.map((n) => (n._id === id ? { ...n, isRead: true } : n)));
       }
     } catch {
-      // no-op
+      // Intentional: Fail silently on the UI for a better user experience
     }
   };
 
@@ -88,14 +94,17 @@ export default function NotificationPage() {
         await fetchNotifications("received");
         await fetchNotifications("sent");
       }
-    } catch {
-      // ignore
+    } catch (e: unknown) {
+        if (e instanceof Error) {
+            setError(`Failed to create test notification: ${e.message}`);
+        } else {
+            setError("An unknown error occurred while creating a test notification.");
+        }
     }
   };
 
   const list = activeTab === "received" ? received : sent;
 
-  // Custom notification UI
   return (
     <div className="min-h-[100vh] bg-gradient-to-br from-cyan-50 via-white to-cyan-100">
       <div className="max-w-3xl mx-auto px-2 py-10 ">
