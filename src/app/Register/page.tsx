@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { UserType, RegisterData } from "@/types/user";
 
 export default function Register() {
@@ -62,7 +62,17 @@ export default function Register() {
       const data = await response.json();
 
       if (response.ok) {
-        router.push("/auth/signin?message=Registration successful. Please sign in.");
+        const signInResponse = await signIn("credentials", {
+          email: submitData.email,
+          password: submitData.password,
+          redirect: false,
+        });
+
+        if (signInResponse?.ok) {
+          router.push("/dashboard");
+        } else {
+          setError(signInResponse?.error || "Sign-in failed after registration.");
+        }
       } else {
         setError(data.error || "Registration failed");
       }
