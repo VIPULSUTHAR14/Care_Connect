@@ -74,16 +74,20 @@ export default function Register() {
   };
 
   return (
-    <div className="max-h-screen h-[90vh] bg-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div>
-        <img src="/assets/doctorImage.jpg" alt="sideImage" className="h-[90vh] w-[50vw]" />
+    <div className="min-h-screen bg-white flex flex-col lg:flex-row items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="hidden lg:block lg:w-1/2">
+        <img
+          src="/assets/register_Login_image.png"
+          alt="sideImage"
+          className="object-cover w-full h-full"
+        />
       </div>
-      <div className="w-full max-w-screen flex items-center justify-center">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <h2 className="text-4xl font-bold font-mono bg-clip-text text-transparent bg-cyan-900 text-center mb-8 px-40 py-10 drop-shadow-xl drop-shadow-green-200 cursor-pointer">
+      <div className="w-full max-w-md lg:w-1/2 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl shadow-lg p-8 w-full">
+          <h2 className="text-4xl font-bold font-mono bg-clip-text text-transparent bg-cyan-900 text-center mb-8 py-10 drop-shadow-xl cursor-pointer">
             Create your account
           </h2>
-          <form className="space-y-10" onSubmit={handleSubmit}>
+          <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Name */}
             <div>
               <label htmlFor="name" className="block text-sm font-mono font-medium text-cyan-900 mb-1">
@@ -96,13 +100,13 @@ export default function Register() {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                className="block w-full pl-4 pr-3 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-800 focus:border-transparent font-mono text-green-950 text-xl font-bold"
+                className="block w-full pl-4 pr-3 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-800 focus:border-transparent font-mono text-green-950 text-xl font-bold"
                 placeholder="Enter your full name"
               />
             </div>
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-mono font-medium text-green-900 mb-1">
+              <label htmlFor="email" className="block text-sm font-mono font-medium text-cyan-900 mb-1">
                 Email address
               </label>
               <input
@@ -113,13 +117,13 @@ export default function Register() {
                 required
                 value={formData.email}
                 onChange={handleInputChange}
-                className="block w-full pl-4 pr-3 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-800 focus:border-transparent font-mono text-green-950 text-xl font-bold"
+                className="block w-full pl-4 pr-3 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-800 focus:border-transparent font-mono text-green-950 text-xl font-bold"
                 placeholder="Enter your email"
               />
             </div>
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-mono font-medium text-green-900 mb-1">
+              <label htmlFor="password" className="block text-sm font-mono font-medium text-cyan-900 mb-1">
                 Password
               </label>
               <input
@@ -130,7 +134,7 @@ export default function Register() {
                 required
                 value={formData.password}
                 onChange={handleInputChange}
-                className="block w-full pl-4 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800 focus:border-transparent font-mono text-green-950 text-xl font-bold"
+                className="block w-full pl-4 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-800 focus:border-transparent font-mono text-green-950 text-xl font-bold"
                 placeholder="Enter your password"
               />
             </div>
