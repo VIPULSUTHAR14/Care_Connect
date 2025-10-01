@@ -66,7 +66,7 @@ export default function Home() {
                 Sign In
               </a>
               <a
-                href="/register"
+                href="/Register"
                 className="bg-white hover:bg-gray-50 text-indigo-600 font-medium py-3 px-8 rounded-lg border border-indigo-600 transition-colors"
               >
                 Create Account
