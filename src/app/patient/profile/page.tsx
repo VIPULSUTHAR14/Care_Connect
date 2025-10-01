@@ -183,7 +183,7 @@ export default function PatientProfile() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center 	justify-center bg-gradient-to-br from-indigo-100 to-indigo-300">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 to-indigo-300">
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-indigo-600 mb-4"></div>
           <span className="text-indigo-700 font-medium font-mono">Loading your profile...</span>
@@ -196,210 +196,135 @@ export default function PatientProfile() {
     return null;
   }
 
+  const inputStyles = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 text-gray-900 placeholder:text-gray-500";
+
   return (
-    <div className="min-h-screen bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 font-mono">
-      <div className=" max-w-[80vw] mx-auto">
-        <div className=" rounded-2xl">
-          <div className="px-6 py-8 sm:p-10">
-            <h1 className="text-3xl font-extrabold text-black mb-2 flex items-center gap-2 font-mono">
-              <span className="inline-block bg-cyan-800 rounded-full p-2">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <div className="min-h-screen bg-gray-100 py-8 sm:py-12 px-4 sm:px-6 lg:px-8 font-mono">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div className="px-4 py-6 sm:p-8">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-3">
+              <span className="inline-block bg-indigo-600 rounded-full p-2">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" fill="none" />
                   <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" strokeWidth="2" fill="none" />
                 </svg>
               </span>
               Patient Profile
             </h1>
-            <p className="text-cyan-900 text-lg mb-8 font-mono">Please complete or update your profile to help us serve you better.</p>
+            <p className="text-gray-700 text-sm sm:text-base mb-8">Please complete or update your profile to help us serve you better.</p>
             
-            <form onSubmit={handleSubmit} className="space-y-7">
-              <div className="grid grid-cols-2 gap-6 sm:grid-cols-2">
-                {/* Mobile Number */}
-                <div className="col-span-1" >
-                  <label htmlFor="mobileNumber" className="block text-xl font-semibold text-black mb-1 font-mono">
-                    Mobile Number <span className="text-red-400">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    name="mobileNumber"
-                    id="mobileNumber"
-                    value={profile.mobileNumber}
-                    onChange={handleInputChange}
-                    className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
-                    placeholder="Enter your mobile number"
-                    required
-                  />
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* --- Personal Information --- */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Mobile Number */}
+                  <div>
+                    <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-800">
+                      Mobile Number <span className="text-red-500">*</span>
+                    </label>
+                    <input type="tel" name="mobileNumber" id="mobileNumber" value={profile.mobileNumber} onChange={handleInputChange} className={inputStyles + " bg-gray-50"} placeholder="Enter your mobile number" required />
+                  </div>
+
+                  {/* Age */}
+                  <div>
+                    <label htmlFor="age" className="block text-sm font-medium text-gray-800">
+                      Age <span className="text-red-500">*</span>
+                    </label>
+                    <input type="number" name="age" id="age" value={profile.age || ""} onChange={handleInputChange} className={inputStyles + " bg-gray-50"} placeholder="Enter your age" min="0" max="150" required />
+                  </div>
+
+                  {/* Gender */}
+                  <div>
+                    <label htmlFor="gender" className="block text-sm font-medium text-gray-800">
+                      Gender <span className="text-red-500">*</span>
+                    </label>
+                    <select name="gender" id="gender" value={profile.gender} onChange={handleInputChange} className={inputStyles + " bg-gray-50"} required>
+                      <option value="">Select gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                      <option value="prefer-not-to-say">Prefer not to say</option>
+                    </select>
+                  </div>
+
+                  {/* Blood Group */}
+                  <div>
+                    <label htmlFor="bloodGroup" className="block text-sm font-medium text-gray-800">
+                      Blood Group <span className="text-red-500">*</span>
+                    </label>
+                    <select name="bloodGroup" id="bloodGroup" value={profile.bloodGroup} onChange={handleInputChange} className={inputStyles + " bg-gray-50"} required>
+                      <option value="">Select blood group</option>
+                      <option value="A+">A+</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
+                    </select>
+                  </div>
                 </div>
 
-                {/* Age */}
+                {/* Address */}
                 <div>
-                  <label htmlFor="age" className="block text-xl font-semibold text-black mb-1 font-mono">
-                    Age <span className="text-red-400">*</span>
+                  <label htmlFor="address" className="block text-sm font-medium text-gray-800">
+                    Address <span className="text-red-500">*</span>
                   </label>
-                  <input
-                    type="number"
-                    name="age"
-                    id="age"
-                    value={profile.age || ""}
-                    onChange={handleInputChange}
-                    className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
-                    placeholder="Enter your age"
-                    min="0"
-                    max="150"
-                    required
-                  />
-                </div>
-
-                {/* Gender */}
-                <div>
-                  <label htmlFor="gender" className="block text-xl font-semibold text-black mb-1 font-mono">
-                    Gender <span className="text-red-400">*</span>
-                  </label>
-                  <select
-                    name="gender"
-                    id="gender"
-                    value={profile.gender}
-                    onChange={handleInputChange}
-                    className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
-                    required
-                  >
-                    <option value="" className="text-gray-900">Select gender</option>
-                    <option value="male" className="text-black">Male</option>
-                    <option value="female" className="text-black">Female</option>
-                    <option value="other" className="text-black">Other</option>
-                    <option value="prefer-not-to-say" className="text-black">Prefer not to say</option>
-                  </select>
-                </div>
-
-                {/* Blood Group */}
-                <div>
-                  <label htmlFor="bloodGroup" className="block text-xl font-semibold text-black mb-1 font-mono">
-                    Blood Group <span className="text-red-400">*</span>
-                  </label>
-                  <select
-                    name="bloodGroup"
-                    id="bloodGroup"
-                    value={profile.bloodGroup}
-                    onChange={handleInputChange}
-                    className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
-                    required
-                  >
-                    <option value="" className="text-gray-400">Select blood group</option>
-                    <option value="A+" className="text-white">A+</option>
-                    <option value="A-" className="text-white">A-</option>
-                    <option value="B+" className="text-white">B+</option>
-                    <option value="B-" className="text-white">B-</option>
-                    <option value="AB+" className="text-white">AB+</option>
-                    <option value="AB-" className="text-white">AB-</option>
-                    <option value="O+" className="text-white">O+</option>
-                    <option value="O-" className="text-white">O-</option>
-                  </select>
+                  <textarea name="address" id="address" rows={3} value={profile.address} onChange={handleInputChange} className={inputStyles + " bg-gray-50"} placeholder="Enter your complete address" required />
                 </div>
               </div>
 
-              {/* Address */}
-              <div>
-                <label htmlFor="address" className="block text-xl font-semibold text-black mb-1 font-mono">
-                  Address <span className="text-red-400">*</span>
-                </label>
-                <textarea
-                  name="address"
-                  id="address"
-                  rows={3}
-                  value={profile.address}
-                  onChange={handleInputChange}
-                  className="mt-1 block w-full 	 rounded-lg shadow-sm sm:text-lg 	px-3 py-2 transition bg-gray-400 text-cyan-900 font-mono placeholder-cyan-900 outline-0"
-                  placeholder="Enter your complete address"
-                  required
-                />
-              </div>
-
-              {/* Family Members */}
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <label className="block text-sm font-semibold text-cyan-800 underline font-mono">
-                    Family Members <span className="text-cyan-700">(Optional)</span>
+              {/* --- Family Members --- */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <label className="block text-lg font-medium text-gray-900">
+                    Family Members <span className="text-gray-600 text-sm">(Optional)</span>
                   </label>
-                  <button
-                    type="button"
-                    onClick={addFamilyMember}
-                    className="bg-cyan-800 hover:bg-cyan-700 text-white text-sm font-semibold py-1.5 px-3 rounded-md transition-colors shadow-sm"
-                  >
-                    Add member
+                  <button type="button" onClick={addFamilyMember} className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-1.5 px-3 rounded-md transition-colors shadow-sm">
+                    Add Member
                   </button>
                 </div>
 
                 {profile.family.length === 0 && (
-                  <p className="text-lg text-cyan-900 font-mono mb-2">No family members added yet.</p>
+                  <div className="text-center text-gray-500 border-2 border-dashed border-gray-300 rounded-lg p-6">
+                    <p>No family members added yet.</p>
+                  </div>
                 )}
 
-                <div className="space-y-5">
+                <div className="space-y-4">
                   {profile.family.map((member, index) => (
-                    <div key={index} className="border border-cyan-800 rounded-lg p-4 bg-gray-400/40">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div key={index} className="border border-gray-200 rounded-lg p-4 bg-gray-50/80 relative">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
                         <div>
-                          <label className="block text-xl font-semibold text-black mb-1 font-mono">Full name</label>
-                          <input
-                            type="text"
-                            value={member.fullName}
-                            onChange={(e) => updateFamilyMember(index, "fullName", e.target.value)}
-                            className="mt-1 block w-full rounded-lg shadow-sm sm:text-xl px-4 py-3 transition bg-gray-400 text-cyan-900 font-mono placeholder-black outline-0"
-                            placeholder="e.g., John Doe"
-                          />
+                          <label className="block text-xs font-medium text-gray-700">Full name</label>
+                          <input type="text" value={member.fullName} onChange={(e) => updateFamilyMember(index, "fullName", e.target.value)} className={inputStyles + " bg-white"} placeholder="e.g., John Doe" />
                         </div>
                         <div>
-                          <label className="block text-xl font-semibold text-black mb-1 font-mono">Relation</label>
-                          <input
-                            type="text"
-                            value={member.relation}
-                            onChange={(e) => updateFamilyMember(index, "relation", e.target.value)}
-                            className="mt-1 block w-full rounded-lg shadow-sm sm:text-xl px-4 py-3 transition bg-gray-400 text-cyan-900 font-mono placeholder-black outline-0"
-                            placeholder="e.g., Father, Mother, Spouse"
-                          />
+                          <label className="block text-xs font-medium text-gray-700">Relation</label>
+                          <input type="text" value={member.relation} onChange={(e) => updateFamilyMember(index, "relation", e.target.value)} className={inputStyles + " bg-white"} placeholder="e.g., Father, Spouse" />
                         </div>
                         <div>
-                          <label className="block text-xl font-semibold text-black mb-1 font-mono">Age</label>
-                          <input
-                            type="number"
-                            value={member.age ?? ""}
-                            min="0"
-                            max="150"
-                            onChange={(e) => updateFamilyMember(index, "age", e.target.value)}
-                            className="mt-1 block w-full rounded-lg shadow-sm sm:text-xl px-4 py-3 transition bg-gray-400 text-cyan-900 font-mono placeholder-black outline-0"
-                            placeholder="Age"
-                          />
+                          <label className="block text-xs font-medium text-gray-700">Age</label>
+                          <input type="number" value={member.age ?? ""} min="0" max="150" onChange={(e) => updateFamilyMember(index, "age", e.target.value)} className={inputStyles + " bg-white"} placeholder="Age" />
                         </div>
                         <div>
-                          <label className="block text-xl font-semibold text-black mb-1 font-mono">Gender</label>
-                          <select
-                            value={member.gender}
-                            onChange={(e) => updateFamilyMember(index, "gender", e.target.value)}
-                            className="mt-1 block w-full rounded-lg shadow-sm sm:text-xl px-4 py-3 transition bg-gray-400 text-cyan-900 font-mono outline-0"
-                          >
-                            <option value="" className="text-gray-400 text-lg">Select gender</option>
-                            <option value="male" className="text-black text-lg">Male</option>
-                            <option value="female" className="text-black text-lg">Female</option>
-                            <option value="other" className="text-black text-lg">Other</option>
-                            <option value="prefer-not-to-say" className="text-black text-lg">Prefer not to say</option>
+                          <label className="block text-xs font-medium text-gray-700">Gender</label>
+                          <select value={member.gender} onChange={(e) => updateFamilyMember(index, "gender", e.target.value)} className={inputStyles + " bg-white"}>
+                            <option value="">Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
                           </select>
                         </div>
                         <div className="sm:col-span-2">
-                          <label className="block text-xl font-semibold text-black mb-1 font-mono">Medical conditions / notes</label>
-                          <input
-                            type="text"
-                            value={member.condition}
-                            onChange={(e) => updateFamilyMember(index, "condition", e.target.value)}
-                            className="mt-1 block w-full rounded-lg shadow-sm sm:text-xl px-4 py-3 transition bg-gray-400 text-cyan-900 font-mono placeholder-black outline-0"
-                            placeholder="e.g., Diabetes, Hypertension"
-                          />
+                          <label className="block text-xs font-medium text-gray-700">Medical conditions / notes</label>
+                          <input type="text" value={member.condition} onChange={(e) => updateFamilyMember(index, "condition", e.target.value)} className={inputStyles + " bg-white"} placeholder="e.g., Diabetes, Hypertension" />
                         </div>
                       </div>
-                      <div className="flex justify-end mt-3">
-                        <button
-                          type="button"
-                          onClick={() => removeFamilyMember(index)}
-                          className="text-base bg-gray-400 border border-gray-600 hover:bg-gray-300 text-cyan-900 font-semibold py-1.5 px-3 rounded-lg transition-colors shadow-sm font-mono"
-                        >
+                      <div className="absolute top-2 right-2">
+                        <button type="button" onClick={() => removeFamilyMember(index)} className="text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-1 px-2 rounded-md transition-colors">
                           Remove
                         </button>
                       </div>
@@ -408,51 +333,37 @@ export default function PatientProfile() {
                 </div>
               </div>
 
-              {/* Feedback messages */}
-              <div className="relative min-h-[32px]">
-                {showError && error && (
-                  <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900 border border-red-700 p-3 rounded-lg shadow-sm animate-fade-in font-mono">
-                    <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
-                      <line x1="12" y1="8" x2="12" y2="13" stroke="currentColor" strokeWidth="2" />
-                      <circle cx="12" cy="16" r="1" fill="currentColor" />
-                    </svg>
-                    <span>{error}</span>
-                  </div>
-                )}
-                {showMessage && message && (
-                  <div className="flex items-center gap-2 text-green-300 text-sm bg-green-900 border border-green-700 p-3 rounded-lg shadow-sm animate-fade-in font-mono">
-                    <svg className="w-5 h-5 text-green-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
-                      <path d="M8 12l2 2l4-4" stroke="currentColor" strokeWidth="2" fill="none" />
-                    </svg>
-                    <span>{message}</span>
-                  </div>
-                )}
-              </div>
-
-              <div className="flex justify-end space-x-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => router.push("/dashboard")}
-                  className="bg-cyan-800 border border-cyan-600 hover:bg-cyan-700 text-gray-200 font-semibold py-2 px-5 rounded-lg transition-colors shadow-sm font-mono"
-                  disabled={isSaving}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={isSaving}
-                  className="bg-cyan-900 hover:bg-cyan-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors shadow-md disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-2 font-mono"
-                >
-                  {isSaving && (
-                    <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
-                    </svg>
+              {/* --- Feedback & Actions --- */}
+              <div className="pt-5">
+                <div className="relative min-h-[48px] mb-4">
+                  {showError && error && (
+                    <div className="flex items-center gap-3 text-red-800 text-sm bg-red-100 border border-red-300 p-3 rounded-lg shadow-sm animate-fade-in font-mono">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" /></svg>
+                      <span>{error}</span>
+                    </div>
                   )}
-                  {isSaving ? "Saving..." : "Save Profile"}
-                </button>
+                  {showMessage && message && (
+                    <div className="flex items-center gap-3 text-green-800 text-sm bg-green-100 border border-green-300 p-3 rounded-lg shadow-sm animate-fade-in font-mono">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8-0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                      <span>{message}</span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex justify-end space-x-3">
+                  <button type="button" onClick={() => router.push("/dashboard")} className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 font-medium py-2 px-4 rounded-md transition-colors shadow-sm" disabled={isSaving}>
+                    Cancel
+                  </button>
+                  <button type="submit" disabled={isSaving} className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-5 rounded-md transition-colors shadow-md disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-2">
+                    {isSaving && (
+                      <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V4a10 10 0 00-10 10h2zm2 8a8 8 0 018-8h-2a10 10 0 00-8 8v2z" />
+                      </svg>
+                    )}
+                    {isSaving ? "Saving..." : "Save Profile"}
+                  </button>
+                </div>
               </div>
             </form>
           </div>
@@ -463,7 +374,7 @@ export default function PatientProfile() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           background:
-            "radial-gradient(ellipse at 80% 10%, rgba(99,102,241,0.18) 0%, transparent 70%), radial-gradient(ellipse at 10% 90%, rgba(99,102,241,0.20) 0%, transparent 70%)"
+            "radial-gradient(ellipse at 80% 10%, rgba(99,102,241,0.1) 0%, transparent 70%), radial-gradient(ellipse at 10% 90%, rgba(99,102,241,0.1) 0%, transparent 70%)"
         }}
       />
     </div>

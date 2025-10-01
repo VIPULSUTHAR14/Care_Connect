@@ -14,6 +14,12 @@ interface Message {
     sender: 'user' | 'bot';
     timestamp: Date;
 }
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth', // for smooth scrolling
+    });
+  };
 
 export default function ChatbotPage() {
     const [messages, setMessages] = useState<Message[]>([]);
@@ -21,6 +27,7 @@ export default function ChatbotPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [isHistoryLoading, setIsHistoryLoading] = useState(true);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    
     
     const router = useRouter();
     const { data: session, status } = useSession();
@@ -124,45 +131,56 @@ export default function ChatbotPage() {
     function renderMessage(message: Message, index: number) {
         const isUser = message.sender === 'user';
         return (
-            <div key={index} className={`flex w-full ${isUser ? 'justify-end' : 'justify-start'} mb-2`}>
-                <div className={`flex items-end ${isUser ? 'flex-row-reverse' : ''} max-w-[80%]`}>
-                    <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${isUser ? 'bg-cyan-800' : 'bg-gray-200'} border border-cyan-200`}>
-                        {isUser ? <UserIcon className="w-5 h-5 text-white" /> : <BotIcon className="w-5 h-5 text-cyan-800" />}
+            <div key={index} className={`flex items-end gap-2 ${isUser ? 'justify-end' : 'justify-start'}`}>
+                {!isUser && (
+                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-gray-200 border border-cyan-200">
+                        <BotIcon className="h-5 w-5 text-cyan-800" />
                     </div>
-                    <div className={`ml-2 mr-2 px-4 py-2 rounded-2xl shadow-sm font-mono text-base break-words ${isUser ? 'bg-cyan-800 text-white rounded-br-none' : 'bg-white text-cyan-900 rounded-bl-none border border-cyan-100'}`}>
-                        <span className="block" style={{ whiteSpace: 'pre-wrap' }}>{message.message}</span>
-                        <span className={`block text-xs mt-1 ${isUser ? 'text-cyan-200' : 'text-cyan-500'}`}>
-                            {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                        </span>
-                    </div>
+                )}
+                <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 shadow-sm sm:max-w-[80%] ${isUser ? 'rounded-br-none bg-cyan-800 text-white' : 'rounded-bl-none border border-cyan-100 bg-white text-cyan-900'}`}>
+                    <p className="block" style={{ whiteSpace: 'pre-wrap' }}>{message.message}</p>
+                    <span className={`mt-1 block text-right text-xs ${isUser ? 'text-cyan-200' : 'text-cyan-500'}`}>
+                        {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </span>
                 </div>
+                {isUser && (
+                     <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-cyan-800 border border-cyan-200">
+                        <UserIcon className="h-5 w-5 text-white" />
+                    </div>
+                )}
             </div>
         );
     }
 
     return (
-        <div className="min-h-[90vh] bg-gray-100 flex flex-col font-mono text-cyan-900">
-            <div className="flex-1 flex flex-col items-center justify-center w-full">
-                <div className="w-full max-w-4xl flex flex-col flex-1 bg-white/80 rounded-none md:rounded-2xl shadow-lg border border-cyan-100 my-6 h-[70vh]">
-                    <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 font-mono text-cyan-900">
+        <div className="flex h-screen flex-col bg-gray-50 font-mono text-cyan-900">
+            <div className="flex-1 overflow-hidden">
+                <div className="mx-auto flex h-full w-full max-w-4xl flex-col bg-white/80 shadow-lg md:my-6 md:rounded-2xl">
+                    <div className="flex-1 space-y-4 overflow-y-auto px-4 py-6 font-mono text-cyan-900 md:px-6">
                         {isHistoryLoading ? (
-                            <div className="flex justify-center items-center h-full">
-                                <LoaderCircle className="w-8 h-8 text-cyan-800 animate-spin" />
-                                <p className="ml-2">Loading history...</p>
+                            <div className="flex h-full items-center justify-center">
+                                <LoaderCircle className="h-8 w-8 animate-spin text-cyan-800" />
+                                <p className="ml-3 text-lg">Loading chat history...</p>
                             </div>
-                        ) : (
+                        ) : messages.length > 0 ? (
                             messages.map((message, index) => renderMessage(message, index))
+                        ) : (
+                            <div className="flex h-full flex-col items-center justify-center text-center">
+                                <BotIcon className="h-16 w-16 text-cyan-700" />
+                                <h2 className="mt-4 text-2xl font-semibold text-cyan-800">Chatbot Assistant</h2>
+                                <p className="mt-2 text-cyan-600">Ask me anything about your health</p>
+                            </div>
                         )}
                         <div ref={messagesEndRef} />
                     </div>
-                    <div className="bg-white/90 px-4 py-4 rounded-b-2xl">
-                        <form onSubmit={sendMessage} className="flex items-center space-x-2 p-5 border border-cyan-800 rounded-full">
+                    <div className="rounded-b-2xl border-t border-cyan-100 bg-white/90 px-4 py-3 sticky bottom-0">
+                        <form onSubmit={sendMessage} className="flex items-center space-x-3">
                             <input
                                 type="text"
                                 value={inputMessage}
                                 onChange={(e) => setInputMessage(e.target.value)}
-                                placeholder={status === 'authenticated' ? "Type your health question here..." : "Authenticating..."}
-                                className="flex-1 px-4 py-3 border border-cyan-200 rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-500 font-mono text-base text-cyan-900 bg-white shadow-sm"
+                                placeholder={status === 'authenticated' ? "Ask a health question..." : "Authenticating..."}
+                                className="flex-1 rounded-full border border-cyan-200 bg-white px-5 py-3 font-mono text-sm text-cyan-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 sm:text-base"
                                 disabled={isLoading || status !== 'authenticated'}
                                 autoFocus
                                 autoComplete="off"
@@ -170,10 +188,12 @@ export default function ChatbotPage() {
                             <button
                                 type="submit"
                                 disabled={!inputMessage.trim() || isLoading || status !== 'authenticated'}
-                                className="px-4 py-3 bg-cyan-800 text-white rounded-full hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center font-mono text-base font-bold transition"
+                                
+                                
+                                className="flex h-12 w-12 items-center justify-center rounded-full bg-cyan-800 font-bold text-white transition hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                             >
-                                <SendIcon className="w-5 h-5 mr-1" />
-                                <span className="text-xl hover:underline">Send</span>
+                                <SendIcon onClick={()=>scrollToBottom()} className="h-5 w-5" />
+                                <span className="sr-only">Send</span>
                             </button>
                         </form>
                     </div>

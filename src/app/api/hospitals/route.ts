@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
 
     const db = await getDatabase();
     // 4. CONSISTENCY FIX: Changed "Hospital" to "hospital" to match your POST route
-    const hospitalsCollection = db.collection("hospital"); 
+    const hospitalsCollection = db.collection("Hospital"); 
 
     // 2. FIX: Changed `let` to `const` and `any` to `Filter<Document>`
     const query: Filter<Document> = {};

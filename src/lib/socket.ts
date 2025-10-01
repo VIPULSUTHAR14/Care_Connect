@@ -4,7 +4,7 @@ export type ClientSocket = Socket;
 
 export function connectSocket(token?: string): ClientSocket {
 	return io("", {
-		path: "/api/socket",
+		path: "/api/socket/",
 		transports: ["websocket", "polling"],
 		autoConnect: true,
 		reconnection: true,

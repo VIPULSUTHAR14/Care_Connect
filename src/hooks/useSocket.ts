@@ -13,8 +13,8 @@ export const useSocket = (userId: string) => {
     if (!userId) return;
 
     // Same-origin connection; target Next.js app route at /api/socket
-    const socketInstance = io('', {
-      path: '/api/socket',
+    const socketInstance = io(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3002', {
+      path: '/socket.io',
       transports: ['websocket', 'polling'],
       autoConnect: true,
       withCredentials: false,

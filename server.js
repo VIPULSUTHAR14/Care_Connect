@@ -25,6 +25,7 @@ app.prepare().then(() => {
 
   // Create Socket.IO server
   const io = new Server(httpServer, {
+    path: "/api/socket/",
     cors: {
       origin: dev ? "http://localhost:3000" : process.env.NEXT_PUBLIC_APP_URL,
       methods: ["GET", "POST"]
@@ -48,6 +49,9 @@ app.prepare().then(() => {
           socket.emit('error', { message: 'User ID and message are required' });
           return;
         }
+
+        // Join the user to the correct room
+        socket.join(userId);
 
         socket.to(userId).emit('new-message', {
           userId,

@@ -2,8 +2,9 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Hospital } from "@/types/hospital";
+import Image from "next/image";
 import { 
   MapPin, 
   Phone, 
@@ -14,9 +15,12 @@ import {
   Filter,
   ArrowLeft,
   Building2,
-  Stethoscope,
-  Clock
+  Stethoscope
 } from "lucide-react";
+
+interface StaffMember {
+  speciality: string;
+}
 
 export default function HospitalsPage() {
   const { data: session, status } = useSession();
@@ -30,19 +34,7 @@ export default function HospitalsPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/auth/signin");
-    }
-  }, [status, router]);
-
-  useEffect(() => {
-    if (session?.user?.id) {
-      fetchHospitals();
-    }
-  }, [session, currentPage, searchTerm, cityFilter]);
-
-  const fetchHospitals = async () => {
+  const fetchHospitals = useCallback(async () => {
     try {
       setLoading(true);
       const params = new URLSearchParams({
@@ -67,7 +59,19 @@ export default function HospitalsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, searchTerm, cityFilter]);
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/auth/signin");
+    }
+  }, [status, router]);
+
+  useEffect(() => {
+    if (session?.user?.id) {
+      fetchHospitals();
+    }
+  }, [session, fetchHospitals]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,8 +85,11 @@ export default function HospitalsPage() {
     setCurrentPage(1);
   };
 
-  const getSpecialities = (staff: any[]) => {
-    const specialities = staff.map(s => s.speciality);
+  const getSpecialities = (staff: StaffMember[] | undefined) => {
+    if (!Array.isArray(staff)) {
+      return [];
+    }
+    const specialities = staff.map(s => s.speciality).filter(Boolean);
     return [...new Set(specialities)].slice(0, 3);
   };
 
@@ -102,7 +109,7 @@ export default function HospitalsPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
-        <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <button
@@ -113,7 +120,7 @@ export default function HospitalsPage() {
               </button>
               <div className="flex items-center space-x-3">
                 <Building2 className="w-6 h-6 text-cyan-800" />
-                <h1 className="text-2xl font-mono font-bold text-cyan-800">
+                <h1 className="text-xl md:text-2xl font-mono font-bold text-cyan-800">
                   Hospitals
                 </h1>
               </div>
@@ -138,7 +145,7 @@ export default function HospitalsPage() {
                     placeholder="Search hospitals, specialties, or locations..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent font-mono text-cyan-900 text-xl font-bold"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent font-mono text-cyan-900 text-base font-bold"
                   />
                 </div>
               </div>
@@ -162,7 +169,7 @@ export default function HospitalsPage() {
               </div>
               <button
                 type="submit"
-                className="px-6 py-3 bg-cyan-700 text-white font-mono text-xl font-bold rounded-lg hover:bg-cyan-700 transition-colors"
+                className="px-6 py-3 bg-cyan-700 text-white font-mono text-base font-bold rounded-lg hover:bg-cyan-800 transition-colors"
               >
                 Search
               </button>
@@ -200,83 +207,82 @@ export default function HospitalsPage() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {hospitals.map((hospital) => (
                 <div
                   key={hospital._id}
-                  className="col-span-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
+                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 flex flex-col"
                 >
-                  <div className="p-6">
-                    <div className="flex items-center justify-start space-x-30">
-                      <div>
-                      {hospital.images && hospital.images.length > 0 ? (
-                        <div className="flex space-x-2 overflow-x-auto mb-4">
-                          {hospital.images.map((imgUrl: string, idx: number) => (
-                            <img
-                              key={idx}
-                              src={imgUrl}
-                              alt={`Hospital Premises ${idx + 1}`}
-                              className="size-[300px] hover:size-[350px] transition-all object-cover rounded-lg border border-gray-200 shadow-sm"
-                            />
-                          ))}
-                        </div>
-                      ) : (
-                        <div className="mb-4 flex items-center justify-center h-32 bg-gray-100 rounded-lg">
-                          <span className="text-gray-400 font-mono">No premises images available</span>
-                        </div>
-                      )}
+                  <div className="p-6 flex-grow">
+                    <div className="flex flex-col md:flex-row md:space-x-6">
+                      <div className="md:w-1/3 mb-4 md:mb-0 flex-shrink-0">
+                        {hospital.images && hospital.images.length > 0 ? (
+                          <Image
+                            src={hospital.images[0]}
+                            alt={`${hospital.name} premises`}
+                            width={500}
+                            height={300}
+                            className="w-full h-48 object-cover rounded-lg border border-gray-200 shadow-sm"
+                          />
+                        ) : (
+                          <div className="w-full h-48 flex items-center justify-center bg-gray-100 rounded-lg">
+                            <Building2 className="w-12 h-12 text-gray-300" />
+                          </div>
+                        )}
                       </div>
-                      <div>
-                      <div className="flex items-start justify-between mb-4">
-                      <h3 className="text-xl text-cyan-900 font-mono font-bold line-clamp-2">
-                        {hospital.name}
-                      </h3>
-                      <span className="inline-flex items-center font-mono px-3 py-2 rounded-full text-xs font-medium bg-green-100 text-green-800 hover:bg-green-200 hover:cursor-pointer">
-                        Verified
-                      </span>
+                      <div className="md:w-2/3">
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-lg text-cyan-900 font-mono font-bold line-clamp-2">
+                            {hospital.name}
+                          </h3>
+                          <span className="inline-flex items-center font-mono px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 flex-shrink-0 ml-2">
+                            Verified
+                          </span>
+                        </div>
+
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-start space-x-2">
+                            <MapPin className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+                            <p className="text-teal-800 font-mono font-bold">
+                              {hospital.address}
+                            </p>
+                          </div>
+
+                          <div className="flex items-center space-x-2">
+                            <Phone className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                            <a 
+                              href={`tel:${hospital.reception_number}`}
+                              className="text-teal-800 font-mono font-bold hover:text-cyan-800"
+                            >
+                              {hospital.reception_number}
+                            </a>
+                          </div>
+
+                          <div className="flex items-center space-x-2">
+                            <Ambulance className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                            <span className="text-teal-800 font-mono font-bold">
+                              Ambulance: {hospital.ambulance_number}
+                            </span>
+                          </div>
+
+                          <div className="flex items-center space-x-2">
+                            <Mail className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                            <a 
+                              href={`mailto:${hospital.email}`}
+                              className="text-teal-800 font-mono font-bold hover:text-cyan-800 truncate"
+                            >
+                              {hospital.email}
+                            </a>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="space-y-3 mb-4">
-                      <div className="flex items-center space-x-3">
-                        <MapPin className="size-6 text-gray-400 mt-1 flex-shrink-0" />
-                        <p className="text-lg text-teal-800 font-mono font-bold line-clamp-2">
-                          {hospital.address}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center space-x-3">
-                        <Phone className="size-6 text-gray-400 flex-shrink-0" />
-                        <a 
-                          href={`tel:${hospital.reception_number}`}
-                          className="text-lg text-teal-800 font-mono font-bold hover:text-cyan-800    "
-                        >
-                          {hospital.reception_number}
-                        </a>
-                      </div>
-
-                      <div className="flex items-center space-x-3">
-                        <Ambulance className="size-6 text-gray-400 flex-shrink-0" />
-                        <span className="text-lg text-teal-800 font-mono font-bold">
-                          Ambulance: {hospital.ambulance_number}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center space-x-3">
-                        <Mail className="size-6 text-gray-400 flex-shrink-0" />
-                        <a 
-                          href={`mailto:${hospital.email}`}
-                          className="text-lg text-teal-800 font-mono font-bold hover:text-cyan-800 truncate"
-                        >
-                          {hospital.email}
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="border-t pt-4">
+                    <div className="border-t mt-4 pt-4">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2">
-                              <Users className="size-6 text-gray-400" />
-                          <span className="text-lg font-medium text-teal-800 font-mono">
+                          <Users className="w-5 h-5 text-gray-400" />
+                          <span className="text-base font-medium text-teal-800 font-mono">
                             Staff ({hospital.staff.length})
                           </span>
                         </div>
@@ -293,29 +299,26 @@ export default function HospitalsPage() {
                           </span>
                         ))}
                         {hospital.staff.length > 3 && (
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-500 ml-1">
                             +{hospital.staff.length - 3} more
                           </span>
                         )}
                       </div>
                     </div>
-
-                    <div className="mt-4 pt-4 border-t">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500 px-6">
-                          NHA: {hospital.nha_registration_number}
-                        </span>
-                        <button
-                          onClick={() => {
-                            router.push(`/appointment/book?receiverId=${hospital._id}&hospital=${encodeURIComponent(hospital.name)}`);
-                          }}
-                          className="px-4 py-2 bg-cyan-800 text-white text-sm rounded-lg hover:bg-cyan-700 transition-colors"
-                        >
-                          Book Appointment
-                        </button>
-                      </div>
-                    </div>
-                      </div>
+                  </div>
+                  <div className="border-t px-6 py-4 bg-gray-50 rounded-b-lg">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-gray-500">
+                        NHA: {hospital.nha_registration_number}
+                      </span>
+                      <button
+                        onClick={() => {
+                          router.push(`/appointment/book?receiverId=${hospital._id}&hospital=${encodeURIComponent(hospital.name)}`);
+                        }}
+                        className="px-4 py-2 bg-cyan-800 text-white text-sm font-semibold rounded-lg hover:bg-cyan-700 transition-colors"
+                      >
+                        Book Appointment
+                      </button>
                     </div>
                   </div>
                 </div>

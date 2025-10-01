@@ -66,8 +66,8 @@ interface ReportsListPageProps {
   onViewMedicines?: (reportId: string) => void;
 }
 
-const ReportsListPage: React.FC<ReportsListPageProps> = ({ 
-  onViewMedicines 
+const ReportsListPage: React.FC<ReportsListPageProps> = ({
+  onViewMedicines
 }) => {
   const { data: session } = useSession() as { data: Session | null };
   const [reports, setReports] = useState<Report[]>([]);
@@ -118,7 +118,7 @@ const ReportsListPage: React.FC<ReportsListPageProps> = ({
     const matchesSearch = searchTerm === '' || 
       report.diagnosis.toLowerCase().includes(searchTerm.toLowerCase()) ||
       report.treatment.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      report.patient.name.toLowerCase().includes(searchTerm.toLowerCase());
+      (report.patient && report.patient.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     if (filterType === 'all') return matchesSearch;
     if (filterType === 'recent') {
@@ -171,15 +171,16 @@ const ReportsListPage: React.FC<ReportsListPageProps> = ({
 
   if (loading && reports.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6">
-        <div className="max-w-6xl mx-auto">
+      <div className="min-h-screen bg-slate-50 p-4 sm:p-6 font-sans">
+        <div className="max-w-7xl mx-auto">
           <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="bg-white rounded-lg p-6 mb-4">
-                <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
-                <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+            <div className="h-8 bg-slate-200 rounded w-1/3 mb-6"></div>
+            <div className="h-12 bg-slate-200 rounded w-full mb-6"></div>
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="bg-white rounded-lg p-6 mb-4 border border-slate-200">
+                <div className="h-6 bg-slate-200 rounded w-1/2 mb-4"></div>
+                <div className="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
+                <div className="h-4 bg-slate-200 rounded w-2/3"></div>
               </div>
             ))}
           </div>
@@ -189,37 +190,37 @@ const ReportsListPage: React.FC<ReportsListPageProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-slate-50 p-4 sm:p-6 font-sans text-slate-800">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Medical Reports</h1>
-          <p className="text-lg text-gray-900">View and manage your medical reports and prescriptions</p>
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-1">Medical Reports</h1>
+          <p className="text-base md:text-lg text-slate-600">View and manage your medical reports and prescriptions.</p>
         </div>
 
         {/* Search and Filter Bar */}
-        <div className="bg-white rounded-lg p-4 mb-6 shadow-sm">
+        <div className="bg-white rounded-xl p-4 mb-6 border border-slate-200/80 shadow-sm">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search reports by diagnosis, treatment, or patient name..."
+                placeholder="Search by diagnosis, treatment, patient..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 text-lg"
+                className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 text-base"
               />
             </div>
             <div className="flex items-center gap-2">
-              <Filter className="text-gray-400 w-5 h-5" />
+              <Filter className="text-slate-400 w-5 h-5 ml-2" />
               <select
                 value={filterType}
                 onChange={handleFilterChange}
-                className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 text-lg"
+                className="w-full md:w-auto px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 text-slate-900 text-base bg-white"
               >
-                <option className='text-gray-900' value="all">All Reports</option>
-                <option className='text-gray-900' value="recent">Recent (Last 7 days)</option>
-                <option className='text-gray-900' value="followup">With Follow-up</option>
+                <option value="all">All Reports</option>
+                <option value="recent">Recent (Last 7 days)</option>
+                <option value="followup">With Follow-up</option>
               </select>
             </div>
           </div>
@@ -227,7 +228,7 @@ const ReportsListPage: React.FC<ReportsListPageProps> = ({
 
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-            <p className="text-red-700 text-lg">{error}</p>
+            <p className="text-red-700 text-base">{error}</p>
           </div>
         )}
 
@@ -235,72 +236,72 @@ const ReportsListPage: React.FC<ReportsListPageProps> = ({
         <div className="grid gap-6">
           {filteredReports.length > 0 ? (
             filteredReports.map((report: Report) => (
-              <div key={report._id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 hover:shadow-md transition-shadow">
-                <div className="flex justify-between items-start mb-6">
+              <div key={report._id} className="bg-white rounded-xl shadow-sm border border-slate-200/80 p-6 sm:p-8 hover:shadow-lg transition-shadow duration-300">
+                <div className="flex flex-col sm:flex-row justify-between items-start mb-6 gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
-                      <FileText className="w-7 h-7 text-blue-600" />
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <FileText className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-semibold text-gray-900">
+                      <h3 className="text-xl sm:text-2xl font-semibold text-slate-900">
                         {report.diagnosis || 'General Consultation'}
                       </h3>
-                      <p className="text-gray-700 text-lg">Report #{report._id.slice(-6)}</p>
+                      <p className="text-slate-500 text-sm">Report #{report._id.slice(-6)}</p>
                     </div>
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 w-full sm:w-auto">
                     <button
                       onClick={() => handleViewMedicines(report._id)}
-                      className="flex items-center gap-2 px-4 py-3 bg-green-50 text-green-800 rounded-lg hover:bg-green-100 transition-colors text-lg font-medium"
+                      className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 bg-green-50 text-green-800 rounded-lg hover:bg-green-100 transition-colors text-sm font-medium"
                     >
-                      <Pill className="w-5 h-5" />
-                      Medicines
+                      <Pill className="w-4 h-4" />
+                      <span>Medicines</span>
                     </button>
-                    <button className="flex items-center gap-2 px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition-colors text-lg font-medium">
-                      <Eye className="w-5 h-5" />
-                      View Details
+                    <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium">
+                      <Eye className="w-4 h-4" />
+                      <span>View Details</span>
                     </button>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                   {/* Patient Info */}
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3 text-gray-900 text-lg">
-                      <User className="w-5 h-5" />
-                      <span className="font-semibold">Patient:</span>
-                      <span>{report.patient.name || 'N/A'}</span>
+                  <div className="space-y-3 text-base">
+                    <div className="flex items-center gap-3 text-slate-700">
+                      <User className="w-5 h-5 text-slate-400" />
+                      <span className="font-semibold text-slate-800">Patient:</span>
+                      <span>{report.patient?.name || 'N/A'}</span>
                     </div>
                     
-                    {report.patient.age > 0 && (
-                      <div className="text-lg text-gray-900">
-                        Age: {report.patient.age} • Gender: {report.patient.gender || 'N/A'}
+                    {report.patient?.age > 0 && (
+                      <div className="text-slate-700 pl-8">
+                        Age: {report.patient.age} &bull; Gender: {report.patient.gender || 'N/A'}
                       </div>
                     )}
 
-                    <div className="flex items-center gap-3 text-gray-900 text-lg">
-                      <Calendar className="w-5 h-5" />
-                      <span className="font-semibold">Date:</span>
+                    <div className="flex items-center gap-3 text-slate-700">
+                      <Calendar className="w-5 h-5 text-slate-400" />
+                      <span className="font-semibold text-slate-800">Date:</span>
                       <span>{formatDate(report.createdAt)}</span>
                     </div>
                   </div>
 
                   {/* Clinical Info */}
-                  <div className="space-y-4">
-                    {report.symptoms.length > 0 && (
+                  <div className="space-y-4 text-base">
+                    {report.symptoms?.length > 0 && (
                       <div>
-                        <span className="font-semibold text-gray-900 text-lg">Symptoms:</span>
-                        <div className="flex flex-wrap gap-2 mt-2">
+                        <h4 className="font-semibold text-slate-800 mb-2">Symptoms:</h4>
+                        <div className="flex flex-wrap gap-2">
                           {report.symptoms.slice(0, 3).map((symptom: string, index: number) => (
                             <span
                               key={index}
-                              className="px-3 py-1 bg-yellow-100 text-yellow-900 text-base rounded-full"
+                              className="px-2.5 py-1 bg-yellow-100 text-yellow-900 text-sm rounded-full font-medium"
                             >
                               {symptom}
                             </span>
                           ))}
                           {report.symptoms.length > 3 && (
-                            <span className="px-3 py-1 bg-gray-100 text-gray-900 text-base rounded-full">
+                            <span className="px-2.5 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">
                               +{report.symptoms.length - 3} more
                             </span>
                           )}
@@ -310,31 +311,31 @@ const ReportsListPage: React.FC<ReportsListPageProps> = ({
 
                     {report.treatment && (
                       <div>
-                        <span className="font-semibold text-gray-900 text-lg">Treatment:</span>
-                        <p className="text-gray-900 text-lg mt-2 line-clamp-2">{report.treatment}</p>
+                        <h4 className="font-semibold text-slate-800 mb-1">Treatment:</h4>
+                        <p className="text-slate-700 line-clamp-2">{report.treatment}</p>
                       </div>
                     )}
                   </div>
                 </div>
 
                 {/* Prescription Summary */}
-                {report.prescription.length > 0 && (
-                  <div className="mt-6 pt-6 border-t border-gray-100">
-                    <div className="flex items-center justify-between">
-                      <span className="font-semibold text-gray-900 text-lg">
+                {report.prescription?.length > 0 && (
+                  <div className="mt-6 pt-6 border-t border-slate-100">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                      <h4 className="font-semibold text-slate-800 text-base">
                         Prescribed Medicines: {report.prescription.length}
-                      </span>
-                      <div className="flex gap-2">
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
                         {report.prescription.slice(0, 3).map((med: Medicine, index: number) => (
                           <span
                             key={index}
-                            className="px-3 py-1 bg-blue-100 text-blue-900 text-base rounded-full"
+                            className="px-2.5 py-1 bg-blue-100 text-blue-900 text-sm rounded-full font-medium"
                           >
                             {med.medicine}
                           </span>
                         ))}
                         {report.prescription.length > 3 && (
-                          <span className="px-3 py-1 bg-gray-100 text-gray-900 text-base rounded-full">
+                          <span className="px-2.5 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">
                             +{report.prescription.length - 3} more
                           </span>
                         )}
@@ -345,22 +346,22 @@ const ReportsListPage: React.FC<ReportsListPageProps> = ({
 
                 {/* Follow-up Info */}
                 {report.followUpDate && (
-                  <div className="mt-6 pt-6 border-t border-gray-100">
-                    <div className="flex items-center gap-3 text-orange-700 text-lg">
-                      <Calendar className="w-5 h-5" />
-                      <span className="font-semibold">Follow-up:</span>
-                      <span>{formatDate(report.followUpDate)}</span>
+                  <div className="mt-6 pt-6 border-t border-slate-200/60">
+                    <div className="flex items-center gap-3 text-orange-800 bg-orange-50 rounded-lg p-3">
+                      <Calendar className="w-5 h-5 flex-shrink-0" />
+                      <span className="font-semibold text-base">Follow-up Date:</span>
+                      <span className='text-base'>{formatDate(report.followUpDate)}</span>
                     </div>
                   </div>
                 )}
               </div>
             ))
           ) : (
-            <div className="text-center py-16">
-              <FileText className="w-20 h-20 text-gray-300 mx-auto mb-6" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">No Reports Found</h3>
-              <p className="text-lg text-gray-900">
-                {searchTerm ? 'No reports match your search criteria.' : 'You have no medical reports yet.'}
+            <div className="text-center py-16 sm:py-24">
+              <FileText className="w-16 h-16 text-slate-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-slate-800 mb-2">No Reports Found</h3>
+              <p className="text-base text-slate-500 max-w-md mx-auto">
+                {searchTerm ? 'No reports match your search criteria. Try a different search.' : 'You do not have any medical reports available at the moment.'}
               </p>
             </div>
           )}
@@ -368,26 +369,26 @@ const ReportsListPage: React.FC<ReportsListPageProps> = ({
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex justify-center items-center mt-10 gap-6">
+          <div className="flex justify-center items-center mt-8 md:mt-10 gap-4 sm:gap-6">
             <button
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
-              className="flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-lg text-gray-900 font-semibold"
+              className="flex items-center gap-2 px-4 py-2.5 border border-slate-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-100 text-sm sm:text-base text-slate-800 font-semibold transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
-              Previous
+              <span>Previous</span>
             </button>
             
-            <span className="text-gray-900 text-lg font-semibold">
+            <span className="text-slate-700 text-sm sm:text-base font-semibold">
               Page {currentPage} of {totalPages}
             </span>
             
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              className="flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-lg text-gray-900 font-semibold"
+              className="flex items-center gap-2 px-4 py-2.5 border border-slate-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-100 text-sm sm:text-base text-slate-800 font-semibold transition-colors"
             >
-              Next
+              <span>Next</span>
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>

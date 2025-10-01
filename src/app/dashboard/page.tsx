@@ -11,14 +11,6 @@ export default function Dashboard() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const To_report = () => {
-    router.push("/patient/patient_health_reports");
-  };
-
-  const To_chatbot = () => {
-    router.push("/chatbot");
-  };
-
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/");
@@ -38,18 +30,17 @@ export default function Dashboard() {
   }
 
   return (
-    <div className=" bg-gray-50 flex flex-col md:flex-row">
+    <div className=" bg-gray-50 flex flex-col xl:flex-row h-screen overflow-y-auto">
       <div
-        className="w-full md:w-[20vw] flex flex-col items-center justify-start pt-4 px-4"
-        style={{ height: "90vh", minHeight: "600px" }}
+        className="w-full xl:w-[20vw] flex flex-col  items-center justify-start pt-4 px-4"
       >
         <p className="text-2xl text-cyan-800 font-mono font-bold mb-2">
           Medication Management
         </p>
-        <div className="w-full max-w-sm flex flex-col flex-1 gap-3 h-full">
+        <div className=" w-full  xl:w-[20vw] grid grid-cols-2 lg:flex xl:flex-col gap-4 p-2">
           {/* Reminders Card */}
           <div
-            className="group relative bg-gradient-to-br from-rose-100 via-red-200 to-rose-200 rounded-3xl flex flex-col justify-center items-center border-2 border-rose-400 px-3 py-4 shadow-xl cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-br hover:from-red-300 hover:to-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 flex-1 min-h-0"
+            className="   group relative bg-gradient-to-br from-rose-100 via-red-200 to-rose-200 rounded-3xl flex flex-col justify-center items-center border-2 border-rose-400 px-4 py-4 shadow-xl cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-br hover:from-red-300 hover:to-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 flex-1  "
             tabIndex={0}
             role="button"
             aria-label="Go to Pill Reminders"
@@ -57,13 +48,13 @@ export default function Dashboard() {
             onKeyDown={e => { if (e.key === "Enter" || e.key === " ") router.push("/pill"); }}
           >
             <div className="absolute top-3 right-3 animate-pulse drop-shadow-lg">
-              <Pill className="w-8 h-8 text-rose-600 opacity-80 group-hover:scale-110 transition-transform" />
+              <Pill className="w-8 h-8 text-rose-600 opacity-80 group-hover:scale-110 animate-bounce duration-300 transition-transform" />
             </div>
             <p className="font-mono text-lg font-bold text-rose-900 flex px-4 text-center mb-1 group-hover:underline transition-all drop-shadow">
               Pill Reminders
             </p>
-            <p className="text-sm text-rose-700 font-mono text-center mb-2 max-w-xs">
-              Never miss a dose. Get timely reminders for all your medications.
+            <p className=" hidden sm:block text-sm text-rose-700 font-mono text-center mb-2 max-w-xs">
+              Get timely reminders for all your medications.
             </p>
             <button
               type="button"
@@ -90,8 +81,8 @@ export default function Dashboard() {
             <p className="font-mono text-lg font-bold text-blue-900 flex px-4 text-center mb-1 group-hover:underline transition-all drop-shadow">
             Pharmacies
             </p>
-            <p className="text-sm text-blue-700 font-mono text-center mb-2 max-w-xs">
-              Learn about your prescriptions, side effects, and safe usage.
+            <p className="hidden sm:block text-sm text-blue-700 font-mono text-center mb-2 max-w-xs">
+              Check nearby Pharmacies.
             </p>
             <button
               type="button"
@@ -118,8 +109,8 @@ export default function Dashboard() {
             <p className="font-mono text-lg font-bold text-violet-900 flex px-4 text-center mb-1 group-hover:underline transition-all drop-shadow">
               Know Your Medications
             </p>
-            <p className="text-sm text-violet-700 font-mono text-center mb-2 max-w-xs">
-              Stay organized and never forget what you’re taking. See your full medication history at a glance.
+            <p className=" hidden sm:block text-sm text-violet-700 font-mono text-center mb-2 max-w-xs">
+             your medication Information.
             </p>
             <button
               type="button"
@@ -146,7 +137,7 @@ export default function Dashboard() {
             <p className="font-mono text-lg font-extrabold text-yellow-900 flex px-4 text-center mb-1 group-hover:underline transition-all drop-shadow">
               Book an Appointment
             </p>
-            <p className="text-sm text-yellow-800 font-mono text-center mb-2 max-w-xs">
+            <p className=" hidden sm:block text-sm text-yellow-800 font-mono text-center mb-2 max-w-xs">
               Secure your spot with a doctor in seconds. Fast, easy, and convenient.
             </p>
             <button
@@ -160,7 +151,7 @@ export default function Dashboard() {
           </div>
 
           {/* Add a fifth section if needed */}
-          <div
+          {/* <div
             className="group relative bg-gradient-to-br from-cyan-100 via-cyan-200 to-cyan-300 rounded-3xl flex flex-col justify-center items-center border-2 border-cyan-500 px-3 py-4 shadow-xl cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:from-cyan-200 hover:to-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 flex-1 min-h-0"
             tabIndex={0}
             role="button"
@@ -185,7 +176,7 @@ export default function Dashboard() {
               <span>Ask Now</span>
               <ArrowRight className="transition-transform group-hover:translate-x-1 w-4 h-4" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="flex flex-col flex-1 w-full px-4 md:px-6">
@@ -219,20 +210,20 @@ export default function Dashboard() {
                 </button>
               </div>
             </div>
-            <div className="flex flex-col w-full max-w-full md:max-w-5xl h-auto md:h-[30vh] bg-gray-100 rounded-2xl drop-shadow-lg drop-shadow-cyan-950 m-3 md:m-5 p-4">
+            <div className=" flex flex-col w-full max-w-full md:max-w-5xl h-full md:h-[30vh] bg-gray-100 rounded-2xl drop-shadow-lg drop-shadow-cyan-950 m-3 md:m-5 p-4">
               {/* this is for the quick action  */}
               <p className="text-2xl font-mono font-bold text-cyan-800 p-4">
                 Quick Action
               </p>
               <div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-                <div className="h-32 sm:h-40 bg-sky-600/40 rounded-2xl text-white flex flex-col space-y-4 items-center justify-center">
+                <div className="h-24 bg-sky-600/40 rounded-2xl text-white flex flex-col space-y-4 items-center justify-center">
                     <ClipboardClock className="size-[40px] text-cyan-900" />
                     <p className="text-md text-black font-mono ">
-                      <Link href="/hospitals">Schedule Appointment</Link>
+                      <Link href="/hospitals">Appointment</Link>
                     </p>
                   </div>
-                  <div className="h-32 sm:h-40 bg-green-600/40 rounded-2xl text-white flex flex-col space-y-4 items-center justify-center">
+                  <div onClick={()=>{router.push("/doctors")}}  className="h-24 bg-green-600/40 rounded-2xl text-white flex flex-col space-y-4 items-center justify-center">
                     <BriefcaseMedical className="size-[40px] text-cyan-900" />
                     <p className="text-md text-black font-mono ">
                       <Link href="/doctors" >Talk To doctor</Link>

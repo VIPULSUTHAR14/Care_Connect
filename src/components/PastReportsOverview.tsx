@@ -354,42 +354,42 @@ export default function PastReportsOverview() {
 
       {/* Report Details Modal */}
       {showReportModal && selectedReport && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50 p-2 sm:p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-800 font-mono flex items-center gap-2">
+            <div className="p-4 sm:p-6">
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 font-mono flex items-center gap-2">
                   <FileText className="w-6 h-6 text-cyan-600" />
                   Medical Report Details
                 </h3>
                 <button
                   onClick={closeReportModal}
-                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                  className="text-gray-500 hover:text-gray-700 text-3xl"
                 >
-                  ✕
+                  &times;
                 </button>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {/* Patient Information */}
                 {selectedReport.patient && selectedReport.patient.name && (
-                  <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-blue-50 p-3 sm:p-4 rounded-lg">
                     <div className="flex items-center mb-3">
                       <User className="w-5 h-5 text-blue-600 mr-2" />
-                      <h4 className="text-lg font-semibold text-gray-800 font-mono">Patient Information</h4>
+                      <h4 className="text-md sm:text-lg font-semibold text-gray-800 font-mono">Patient Information</h4>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-4 text-base">
+                    <div className="grid sm:grid-cols-3 gap-x-4 gap-y-2 text-sm sm:text-base">
                       <div>
-                        <span className="font-medium font-mono text-gray-700">Name:</span>
-                        <p className="font-mono text-gray-900 text-lg">{selectedReport.patient.name}</p>
+                        <span className="font-medium font-mono text-gray-600">Name:</span>
+                        <p className="font-mono text-gray-900">{selectedReport.patient.name}</p>
                       </div>
                       <div>
-                        <span className="font-medium font-mono text-gray-700">Age:</span>
-                        <p className="font-mono text-gray-900 text-lg">{selectedReport.patient.age} years</p>
+                        <span className="font-medium font-mono text-gray-600">Age:</span>
+                        <p className="font-mono text-gray-900">{selectedReport.patient.age} years</p>
                       </div>
                       <div>
-                        <span className="font-medium font-mono text-gray-700">Gender:</span>
-                        <p className="font-mono text-gray-900 text-lg">{selectedReport.patient.gender}</p>
+                        <span className="font-medium font-mono text-gray-600">Gender:</span>
+                        <p className="font-mono text-gray-900">{selectedReport.patient.gender}</p>
                       </div>
                     </div>
                   </div>
@@ -397,11 +397,11 @@ export default function PastReportsOverview() {
 
                 {/* Symptoms */}
                 {selectedReport.symptoms && selectedReport.symptoms.length > 0 && (
-                  <div className="bg-red-50 p-4 rounded-lg">
-                    <h4 className="text-lg font-semibold text-gray-800 mb-3 font-mono">Symptoms</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  <div className="bg-red-50 p-3 sm:p-4 rounded-lg">
+                    <h4 className="text-md sm:text-lg font-semibold text-gray-800 mb-3 font-mono">Symptoms</h4>
+                    <div className="flex flex-wrap gap-2">
                       {selectedReport.symptoms.map((symptom, idx) => (
-                        <span key={idx} className="bg-red-100 text-red-900 text-base px-3 py-2 rounded font-mono font-semibold">
+                        <span key={idx} className="bg-red-100 text-red-900 text-sm sm:text-base px-3 py-1 rounded font-mono font-semibold">
                           {symptom}
                         </span>
                       ))}
@@ -410,47 +410,47 @@ export default function PastReportsOverview() {
                 )}
 
                 {/* Clinical Assessment */}
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-3 font-mono">Clinical Assessment</h4>
+                <div className="bg-green-50 p-3 sm:p-4 rounded-lg">
+                  <h4 className="text-md sm:text-lg font-semibold text-gray-800 mb-3 font-mono">Clinical Assessment</h4>
                   <div className="space-y-3">
                     <div>
-                      <span className="font-medium font-mono text-gray-700 block">Diagnosis:</span>
-                      <p className="font-mono text-gray-900 text-lg">{selectedReport.diagnosis || 'Not specified'}</p>
+                      <span className="font-medium font-mono text-gray-600 block">Diagnosis:</span>
+                      <p className="font-mono text-gray-900 text-sm sm:text-base">{selectedReport.diagnosis || 'Not specified'}</p>
                     </div>
                     <div>
-                      <span className="font-medium font-mono text-gray-700 block">Treatment:</span>
-                      <p className="font-mono text-gray-900 text-lg">{selectedReport.treatment || 'Not specified'}</p>
+                      <span className="font-medium font-mono text-gray-600 block">Treatment:</span>
+                      <p className="font-mono text-gray-900 text-sm sm:text-base">{selectedReport.treatment || 'Not specified'}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Prescription */}
                 {selectedReport.prescription && selectedReport.prescription.length > 0 && (
-                  <div className="bg-purple-50 p-4 rounded-lg">
+                  <div className="bg-purple-50 p-3 sm:p-4 rounded-lg">
                     <div className="flex items-center mb-3">
                       <Pill className="w-5 h-5 text-purple-600 mr-2" />
-                      <h4 className="text-lg font-semibold text-gray-800 font-mono">Prescription</h4>
+                      <h4 className="text-md sm:text-lg font-semibold text-gray-800 font-mono">Prescription</h4>
                     </div>
                     <div className="space-y-3">
                       {selectedReport.prescription.map((medicine, idx) => (
                         <div key={idx} className="bg-white p-3 rounded border border-purple-200">
-                          <h5 className="font-semibold text-gray-900 text-lg font-mono">{medicine.medicine}</h5>
-                          <div className="text-base text-gray-800 font-mono mt-1">
-                            {medicine.dosage && <span><strong>Dosage:</strong> {medicine.dosage} | </span>}
+                          <h5 className="font-semibold text-gray-900 text-base sm:text-lg font-mono">{medicine.medicine}</h5>
+                          <div className="flex flex-wrap gap-x-2 text-sm sm:text-base text-gray-700 font-mono mt-1">
+                            {medicine.dosage && <span><strong>Dosage:</strong> {medicine.dosage}</span>}
                             {medicine.frequency && <span><strong>Frequency:</strong> {medicine.frequency}</span>}
                           </div>
                           {medicine.timing && medicine.timing.length > 0 && (
-                            <div className="text-base text-gray-800 font-mono">
+                            <div className="text-sm sm:text-base text-gray-700 font-mono">
                               <strong>Timing:</strong> {medicine.timing.join(', ')}
                             </div>
                           )}
                           {medicine.duration && (
-                            <div className="text-base text-gray-800 font-mono">
+                            <div className="text-sm sm:text-base text-gray-700 font-mono">
                               <strong>Duration:</strong> {medicine.duration}
                             </div>
                           )}
                           {medicine.instructions && (
-                            <div className="text-base text-gray-800 font-mono">
+                            <div className="mt-1 text-sm sm:text-base text-gray-700 font-mono">
                               <strong>Instructions:</strong> {medicine.instructions}
                             </div>
                           )}
@@ -461,45 +461,45 @@ export default function PastReportsOverview() {
                 )}
 
                 {/* Follow-up and Notes */}
-                <div className="bg-yellow-50 p-4 rounded-lg">
+                <div className="bg-yellow-50 p-3 sm:p-4 rounded-lg">
                   <div className="flex items-center mb-3">
                     <Calendar className="w-5 h-5 text-yellow-600 mr-2" />
-                    <h4 className="text-lg font-semibold text-gray-800 font-mono">Follow-up & Notes</h4>
+                    <h4 className="text-md sm:text-lg font-semibold text-gray-800 font-mono">Follow-up & Notes</h4>
                   </div>
                   <div className="space-y-3">
                     {selectedReport.followUpDate && (
                       <div>
-                        <span className="font-medium font-mono text-gray-700 block">Follow-up Date:</span>
-                        <p className="font-mono text-gray-900 text-lg">{formatDate(selectedReport.followUpDate)}</p>
+                        <span className="font-medium font-mono text-gray-600 block">Follow-up Date:</span>
+                        <p className="font-mono text-gray-900 text-sm sm:text-base">{formatDate(selectedReport.followUpDate)}</p>
                       </div>
                     )}
                     {selectedReport.followUpInstructions && (
                       <div>
-                        <span className="font-medium font-mono text-gray-700 block">Follow-up Instructions:</span>
-                        <p className="font-mono text-gray-900 text-lg">{selectedReport.followUpInstructions}</p>
+                        <span className="font-medium font-mono text-gray-600 block">Follow-up Instructions:</span>
+                        <p className="font-mono text-gray-900 text-sm sm:text-base">{selectedReport.followUpInstructions}</p>
                       </div>
                     )}
                     {selectedReport.notes && (
                       <div>
-                        <span className="font-medium font-mono text-gray-700 block">Additional Notes:</span>
-                        <p className="font-mono text-gray-900 text-lg">{selectedReport.notes}</p>
+                        <span className="font-medium font-mono text-gray-600 block">Additional Notes:</span>
+                        <p className="font-mono text-gray-900 text-sm sm:text-base">{selectedReport.notes}</p>
                       </div>
                     )}
                   </div>
                 </div>
 
                 {/* Report Metadata */}
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-3 font-mono">Report Information</h4>
-                  <div className="grid md:grid-cols-2 gap-4 text-base">
+                <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                  <h4 className="text-md sm:text-lg font-semibold text-gray-800 mb-3 font-mono">Report Information</h4>
+                  <div className="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm sm:text-base">
                     <div>
-                      <span className="font-medium font-mono text-gray-700">Created:</span>
-                      <p className="font-mono text-gray-900 text-lg">{formatDate(selectedReport.createdAt)}</p>
+                      <span className="font-medium font-mono text-gray-600">Created:</span>
+                      <p className="font-mono text-gray-900">{formatDate(selectedReport.createdAt)}</p>
                     </div>
                     <div>
-                      <span className="font-medium font-mono text-gray-700">Status:</span>
-                      <p className="font-mono text-gray-900 text-lg">
-                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs ${getStatusColor(selectedReport)} text-white`}>
+                      <span className="font-medium font-mono text-gray-600">Status:</span>
+                      <p className="font-mono text-gray-900">
+                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${getStatusColor(selectedReport)} text-white`}>
                           {selectedReport.completedAt ? <CheckCircle className="w-3 h-3 mr-1" /> : <Clock className="w-3 h-3 mr-1" />}
                           {getStatusText(selectedReport)}
                         </span>

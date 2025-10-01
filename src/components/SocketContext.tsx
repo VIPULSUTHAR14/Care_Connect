@@ -18,12 +18,23 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 	const [isConnected, setIsConnected] = useState(false);
 
 	useEffect(() => {
-		// Only initialize after we know the session state
 		if (status === 'loading') return;
+
+		// --- Fix for "WebSocket is closed before the connection is established" ---
+		// Only create socket if window is defined (client-side) and user is authenticated
+		if (typeof window === 'undefined' || status !== 'authenticated') {
+			if (socket) {
+				socket.disconnect();
+				setSocket(null);
+				setIsConnected(false);
+			}
+			return;
+		}
 
 		// Optional: pass a token if you use it server-side; otherwise omit
 		const token = undefined;
 		const s = connectSocket(token);
+
 		setSocket(s);
 
 		const handleConnect = () => setIsConnected(true);
@@ -46,6 +57,7 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 			setSocket(null);
 			setIsConnected(false);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [status, session?.user]);
 
 	const value = useMemo<SocketContextValue>(() => ({ socket, isConnected }), [socket, isConnected]);
