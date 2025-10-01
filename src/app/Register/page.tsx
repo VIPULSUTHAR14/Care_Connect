@@ -65,6 +65,7 @@ export default function Register() {
         const signInResponse = await signIn("credentials", {
           email: submitData.email,
           password: submitData.password,
+          userType: submitData.userType,
           redirect: false,
         });
 
