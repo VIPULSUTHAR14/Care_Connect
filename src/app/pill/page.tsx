@@ -131,8 +131,8 @@ const AllMedicinesPage: React.FC<AllMedicinesPageProps> = ({
         );
         
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.message || `HTTP ${response.status}: Failed to fetch reports`);
+          setReports([]);
+          break;
         }
         
         const data: ReportsResponse = await response.json();

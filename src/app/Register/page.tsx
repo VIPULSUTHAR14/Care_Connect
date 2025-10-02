@@ -85,12 +85,12 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col lg:flex-row items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white flex flex-col lg:flex-row items-center lg:justify-center xl:justify-between px-4 sm:px-6 lg:px-2">
       <div className="hidden lg:block lg:w-1/2">
         <img
           src="/assets/register_Login_image.png"
           alt="sideImage"
-          className="object-cover w-full h-full"
+          className="object-cover w-[50vw]"
         />
       </div>
       <div className="w-full max-w-md lg:w-1/2 flex items-center justify-center p-4">
@@ -179,6 +179,9 @@ export default function Register() {
             </div>
           </form>
         </div>
+      </div>
+      <div className="hidden xl:block" >
+
       </div>
     </div>
   );

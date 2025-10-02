@@ -30,14 +30,14 @@ export default function Dashboard() {
   }
 
   return (
-    <div className=" bg-gray-50 flex flex-col xl:flex-row h-screen overflow-y-auto">
+    <div className=" bg-gray-50 flex flex-col xl:flex-row h-[93vh] overflow-y-auto xl:pt-10">
       <div
         className="w-full xl:w-[20vw] flex flex-col  items-center justify-start pt-4 px-4"
       >
         <p className="text-2xl text-cyan-800 font-mono font-bold mb-2">
           Medication Management
         </p>
-        <div className=" w-full  xl:w-[20vw] grid grid-cols-2 lg:flex xl:flex-col gap-4 p-2">
+        <div className=" w-full  xl:w-[20vw] grid grid-cols-2 lg:flex xl:flex-col gap-6 p-2">
           {/* Reminders Card */}
           <div
             className="   group relative bg-gradient-to-br from-rose-100 via-red-200 to-rose-200 rounded-3xl flex flex-col justify-center items-center border-2 border-rose-400 px-4 py-4 shadow-xl cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-br hover:from-red-300 hover:to-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 flex-1  "
@@ -48,7 +48,7 @@ export default function Dashboard() {
             onKeyDown={e => { if (e.key === "Enter" || e.key === " ") router.push("/pill"); }}
           >
             <div className="absolute top-3 right-3 animate-pulse drop-shadow-lg">
-              <Pill className="w-8 h-8 text-rose-600 opacity-80 group-hover:scale-110 animate-bounce duration-300 transition-transform" />
+              <Pill className="w-8 h-8 text-rose-600 opacity-80 group-hover:scale-110 animate-bounce duration-300 transition-transform hidden md:block" />
             </div>
             <p className="font-mono text-lg font-bold text-rose-900 flex px-4 text-center mb-1 group-hover:underline transition-all drop-shadow">
               Pill Reminders
@@ -61,7 +61,7 @@ export default function Dashboard() {
               className="font-mono font-bold text-white flex items-center gap-2 mt-auto px-4 py-1.5 rounded-full bg-gradient-to-r from-rose-500 to-red-400 shadow-lg hover:from-rose-400 hover:to-red-300 hover:scale-105 transition-all group-hover:bg-white group-hover:text-rose-700 group-hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm"
               onClick={e => { e.stopPropagation(); router.push("/pill"); }}
             >
-              <span>Remind me</span>
+              <span className="text-[10px] sm:text-sm " >Remind me</span>
               <ArrowRight className="transition-transform group-hover:translate-x-1 w-4 h-4" />
             </button>
           </div>
@@ -76,7 +76,7 @@ export default function Dashboard() {
             onKeyDown={e => { if (e.key === "Enter" || e.key === " ") router.push("/pharmacy"); }}
           >
             <div className="absolute top-3 right-3 animate-bounce drop-shadow-lg">
-              <BriefcaseMedical className="w-8 h-8 text-blue-700 opacity-80 group-hover:scale-110 transition-transform" />
+              <BriefcaseMedical className="w-8 h-8 text-blue-700 opacity-80 group-hover:scale-110 transition-transform hidden md:block" />
             </div>
             <p className="font-mono text-lg font-bold text-blue-900 flex px-4 text-center mb-1 group-hover:underline transition-all drop-shadow">
             Pharmacies
@@ -89,7 +89,7 @@ export default function Dashboard() {
               className="font-mono font-bold text-white flex items-center gap-2 mt-auto px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-400 shadow-lg hover:from-blue-400 hover:to-blue-300 hover:scale-105 transition-all group-hover:bg-white group-hover:text-blue-700 group-hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
               onClick={e => { e.stopPropagation(); router.push("/pharmacy"); }}
             >
-              <span>Go to Pharmacy</span>
+              <span className="text-[10px] sm:text-sm " >Go to Pharmacy</span>
               <ArrowRight className="transition-transform group-hover:translate-x-1 w-4 h-4" />
             </button>
           </div>
@@ -104,7 +104,7 @@ export default function Dashboard() {
             onKeyDown={e => { if (e.key === "Enter" || e.key === " ") router.push("/what-you-taking"); }}
           >
             <div className="absolute top-3 right-3 animate-spin-slow drop-shadow-lg">
-              <ClipboardClock className="w-8 h-8 text-violet-800 opacity-80 group-hover:scale-110 transition-transform" />
+              <ClipboardClock className="w-8 h-8 text-violet-800 opacity-80 group-hover:scale-110 transition-transform hidden md:block" />
             </div>
             <p className="font-mono text-lg font-bold text-violet-900 flex px-4 text-center mb-1 group-hover:underline transition-all drop-shadow">
               Know Your Medications
@@ -117,7 +117,7 @@ export default function Dashboard() {
               className="font-mono font-bold text-white flex items-center gap-2 mt-auto px-4 py-1.5 rounded-full bg-gradient-to-r from-violet-500 to-violet-400 shadow-lg hover:from-violet-400 hover:to-violet-300 hover:scale-105 transition-all group-hover:bg-white group-hover:text-violet-700 group-hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-violet-400 text-sm"
               onClick={e => { e.stopPropagation(); router.push("/what-you-taking"); }}
             >
-              <span>Learn more</span>
+              <span className="text-[10px] sm:text-sm " >Learn more</span>
               <ArrowRight className="transition-transform group-hover:translate-x-1 w-4 h-4" />
             </button>
           </div>
@@ -132,7 +132,7 @@ export default function Dashboard() {
             onKeyDown={e => { if (e.key === "Enter" || e.key === " ") router.push("/hospitals"); }}
           >
             <div className="absolute top-3 right-3 animate-pulse drop-shadow-lg">
-              <ClipboardClock className="w-9 h-9 text-yellow-700 opacity-80 group-hover:scale-110 transition-transform" />
+              <ClipboardClock className="w-9 h-9 text-yellow-700 opacity-80 group-hover:scale-110 transition-transform hidden md:block" />
             </div>
             <p className="font-mono text-lg font-extrabold text-yellow-900 flex px-4 text-center mb-1 group-hover:underline transition-all drop-shadow">
               Book an Appointment
@@ -145,7 +145,7 @@ export default function Dashboard() {
               className="font-mono font-bold text-white flex items-center gap-2 mt-auto px-4 py-1.5 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400 shadow-lg hover:from-yellow-400 hover:to-yellow-300 hover:scale-105 transition-all group-hover:bg-white group-hover:text-yellow-700 group-hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
               onClick={e => { e.stopPropagation(); router.push("/hospitals"); }}
             >
-              <span>Book Now</span>
+              <span className="text-[10px] sm:text-sm " >Book Now</span>
               <ArrowRight className="transition-transform group-hover:translate-x-1 w-4 h-4" />
             </button>
           </div>
@@ -204,19 +204,19 @@ export default function Dashboard() {
                   onClick={() => {
                     router.push("/chatbot");
                   }}
-                  className="bg-cyan-800 hover:bg-cyan-700 transition-all text-xl md:text-2xl hover:underline px-6 py-3 md:p-5 rounded-full font-mono font-bold "
+                  className="bg-cyan-800 hover:bg-cyan-700 transition-all text-xl md:text-2xl hover:underline px-6   py-3 md:py-3 rounded-full font-mono font-bold "
                 >
                   Start Chatting Now
                 </button>
               </div>
             </div>
-            <div className=" flex flex-col w-full max-w-full md:max-w-5xl h-full md:h-[30vh] bg-gray-100 rounded-2xl drop-shadow-lg drop-shadow-cyan-950 m-3 md:m-5 p-4">
+            <div className=" flex flex-col w-full max-w-full md:max-w-5xl h-full md:h-[30vh] bg-gray-100 rounded-2xl drop-shadow-lg drop-shadow-cyan-950 mt-5 p-4">
               {/* this is for the quick action  */}
               <p className="text-2xl font-mono font-bold text-cyan-800 p-4">
                 Quick Action
               </p>
-              <div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+              <div className="">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2  gap-4">
                 <div className="h-24 bg-sky-600/40 rounded-2xl text-white flex flex-col space-y-4 items-center justify-center">
                     <ClipboardClock className="size-[40px] text-cyan-900" />
                     <p className="text-md text-black font-mono ">

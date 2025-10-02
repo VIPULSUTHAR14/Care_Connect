@@ -79,12 +79,12 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col lg:flex-row items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="hidden lg:block lg:w-1/2">
+    <div className="min-h-screen bg-white flex flex-col lg:flex-row items-center lg:justify-center xl:justify-between py-12 px-4 sm:px-6 lg:px-8">
+      <div className="hidden lg:block">
         <img
           src="/assets/doctorImage.jpg"
           alt="sideImage"
-          className="object-cover w-full h-full"
+          className="object-cover  h-[90vh]"
         />
       </div>
       <div className="w-full max-w-md lg:w-1/2 flex items-center justify-center p-4">
@@ -94,7 +94,7 @@ export default function SignIn() {
             Welcome Back
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 ">
             {/* Username/Email Input */}
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -217,6 +217,9 @@ export default function SignIn() {
             </div>
           </form>
         </div>
+      </div>
+      <div className="hidden xl:block">
+
       </div>
     </div>
   );
