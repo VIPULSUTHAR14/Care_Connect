@@ -126,20 +126,20 @@ export default function Navbar() {
                     >
                         Book Appointment
                     </Link>
-                    <Link
+                    {/* <Link
                         href="/appointments"
                         onClick={() => setMenuOpen(false)}
                         className={authenticatedstatus ? "flex items-center text-cyan-800 font-mono font-bold rounded-md px-3 py-2 text-base hover:bg-cyan-100" : "hidden"}
                     >
                         My Appointments
-                    </Link>
-                    <Link
+                    </Link> */}
+                    {/* <Link
                         href="/prescriptions"
                         onClick={() => setMenuOpen(false)}
                         className={authenticatedstatus ? "flex items-center text-cyan-800 font-mono font-bold rounded-md px-3 py-2 text-base hover:bg-cyan-100" : "hidden"}
                     >
                         Prescriptions
-                    </Link>
+                    </Link> */}
                     <Link
                         href="/chatbot"
                         onClick={() => setMenuOpen(false)}
