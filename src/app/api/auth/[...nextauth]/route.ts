@@ -1,14 +1,16 @@
 import NextAuth, { NextAuthOptions, Profile, Session, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { getCollectionByUserType } from "@/lib/ConnectDB";
-import { UserType } from "@/types/user";
+import { getDatabase } from "@/lib/db";
+import { UserType, COLLECTION_MAPPING } from "@/types/user";
 import bcrypt from "bcryptjs";
 import { JWT } from "next-auth/jwt";
 
 // Helper to get user by email and userType
 const getUserByEmail = async (email: string, userType: UserType) => {
-  const collection = await getCollectionByUserType(userType);
+  const db = await getDatabase();
+  const collectionName = COLLECTION_MAPPING[userType];
+  const collection = db.collection(collectionName);
   return await collection.findOne({ email });
 };
 
@@ -85,10 +87,16 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         // Only assign if defined
         if ("userType" in user && user.userType !== undefined) {
+          //ts-ignore
           (token as any).userType = user.userType;
         }
         if ("id" in user && user.id !== undefined) {
+          //ts-ignore
           (token as JWT).id = user.id;
+        }
+        // Store role from DB user into token
+        if ("role" in user && (user as any).role !== undefined) {
+          (token as any).role = (user as any).role;
         }
         // NextAuth expects email to be string | null | undefined
         if ("email" in user) {
@@ -101,7 +109,8 @@ export const authOptions: NextAuthOptions = {
           const email = token.email as string | null | undefined;
           const name = (profile as Profile)?.name || user?.name || null;
           if (email) {
-            const patients = await getCollectionByUserType(UserType.PATIENT);
+            const db = await getDatabase();
+            const patients = db.collection(COLLECTION_MAPPING[UserType.PATIENT]);
             const existing = await patients.findOne({ email });
             //ts-ignore
             if (!existing) {
@@ -127,9 +136,11 @@ export const authOptions: NextAuthOptions = {
               const result = await patients.insertOne(newPatient);
               (token as JWT).id = result.insertedId.toString();
               (token as JWT).userType = UserType.PATIENT;
+              (token as any).role = "patient";
             } else {
               (token as JWT).id = existing._id.toString();
               (token as JWT).userType = existing.userType || UserType.PATIENT;
+              (token as any).role = existing.role || "patient";
             }
           } else {
             // No email from Google? reject by returning token unchanged (session callback can handle)
@@ -146,11 +157,16 @@ export const authOptions: NextAuthOptions = {
       //ts-ignore
       if (session.user) {
         if ("id" in token) {
+          //ts-ignore
           (session.user as User).id = (token as any).id;
         }
         if ("userType" in token) {
           //ts-ignore
-          (session.user as any).userType = (token as any).userType;
+          (session.user as any).userType = (token as JWT).userType;
+        }
+        // Add role to session
+        if ("role" in token) {
+          (session.user as any).role = (token as any).role;
         }
         // email is already present, but ensure it's string | null | undefined
         //ts-ignore

@@ -1,6 +1,6 @@
 // /src/app/api/messages/route.ts
 
-import { getDatabase } from '@/lib/ConnectDB';
+import { getDatabase } from '@/lib/db';
 import CryptoJS from "crypto-js";
 // 1. FIX: Removed unused 'SafetySetting' import
 import { GoogleGenerativeAI, Content, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
             .limit(10)
             .toArray();
 
-        const chatHistory: Content[] = recentMessages.reverse().map(msg => ({
+        const chatHistory: Content[] = recentMessages.reverse().map((msg: MessageDocument) => ({
             role: msg.sender === 'user' ? 'user' : 'model',
             parts: [{ text: msg.sender === 'user' ? decryptMessage(msg.message) : msg.message }],
         }));

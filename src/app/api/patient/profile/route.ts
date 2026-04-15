@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { getCollectionByUserType } from "@/lib/ConnectDB";
+import { getDatabase, getCollectionByUserType } from "@/lib/db";
 import { UserType } from "@/types/user";
 
 export async function PUT(request: NextRequest) {

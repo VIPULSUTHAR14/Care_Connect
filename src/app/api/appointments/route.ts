@@ -1,6 +1,6 @@
 // Import WithId and Document for better typing
 import { NextResponse } from "next/server";
-import { getDatabase } from "@/lib/ConnectDB";
+import { getDatabase } from "@/lib/db";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { ObjectId, WithId, Document } from "mongodb";

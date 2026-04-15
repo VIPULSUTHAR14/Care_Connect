@@ -1,7 +1,7 @@
 // Yes, this route is fetching hospital data.
 
 import { NextRequest, NextResponse } from "next/server";
-import { getDatabase } from "@/lib/ConnectDB";
+import { getDatabase } from "@/lib/db";
 import { Filter, Document } from "mongodb"; // 1. Import specific types from mongodb
 
 // GET: Fetch hospital data (with optional search, city filter, and pagination)
@@ -15,8 +15,7 @@ export async function GET(request: NextRequest) {
 
     const db = await getDatabase();
     // 4. CONSISTENCY FIX: Changed "Hospital" to "hospital" to match your POST route
-    const hospitalsCollection = db.collection("Hospital"); 
-
+    const hospitalsCollection = db.collection("Hospital");
     // 2. FIX: Changed `let` to `const` and `any` to `Filter<Document>`
     const query: Filter<Document> = {};
     if (search) {
@@ -61,7 +60,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const db = await getDatabase();
-    const hospitalsCollection = db.collection("hospital");
+    const hospitalsCollection = db.collection("Hospital");
 
     const requiredFields = [
       'name',

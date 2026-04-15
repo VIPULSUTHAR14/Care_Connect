@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { getDatabase } from "@/lib/ConnectDB";
+import { getDatabase } from "@/lib/db";
 import { ObjectId } from "mongodb";
 
 const REPORTS_COLLECTION = "reports";
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const patientId = searchParams.get("patientId");
     const reportId = searchParams.get("reportId");
-    
+
     // If requesting a specific report
     if (reportId) {
       if (!ObjectId.isValid(reportId)) {
@@ -28,9 +28,9 @@ export async function GET(request: NextRequest) {
 
       const db = await getDatabase();
       const collection = db.collection(REPORTS_COLLECTION);
-      
+
       const report = await collection.findOne({ _id: new ObjectId(reportId) });
-      
+
       if (!report) {
         return NextResponse.json(
           { message: "Report not found" },
@@ -90,7 +90,7 @@ export async function GET(request: NextRequest) {
       // Get sample documents to understand data structure
       const sampleDocs = await collection.find({}).limit(3).toArray();
       console.log("Sample documents count:", sampleDocs.length);
-      
+
       sampleDocs.forEach((doc, index) => {
         console.log(`Sample doc ${index + 1}:`, {
           _id: doc._id,
@@ -120,7 +120,7 @@ export async function GET(request: NextRequest) {
       const query = queries[i];
       const count = await collection.countDocuments(query);
       console.log(`Query ${i + 1} (${JSON.stringify(query)}): ${count} results`);
-      
+
       if (count > 0 && !matchQuery) {
         matchQuery = query;
         total = count;
@@ -132,7 +132,7 @@ export async function GET(request: NextRequest) {
     if (!matchQuery || total === 0) {
       console.log("No reports found with any query approach");
       return NextResponse.json(
-        { 
+        {
           message: "No reports found for this patient",
           debug: {
             patientId,
@@ -171,10 +171,10 @@ export async function GET(request: NextRequest) {
         totalPages: Math.ceil(total / limit)
       }
     });
-  } catch (error : unknown) {
+  } catch (error: unknown) {
     console.error("Error fetching patient reports:", error);
     return NextResponse.json(
-      { 
+      {
         message: "Failed to fetch reports due to an internal server error",
         error: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
       },
@@ -184,13 +184,14 @@ export async function GET(request: NextRequest) {
 }
 
 // Helper function to format a single report document
-function formatSingleReport(r:any) {
+//ts-ignore
+function formatSingleReport(r: any) {
   return {
     _id: r._id?.toString?.() ?? "",
     appointmentId: r.appointmentId ? String(r.appointmentId) : "",
     patientId: r.patientId ? String(r.patientId) : "",
     hospitalId: r.hospitalId ? String(r.hospitalId) : "",
-    
+
     // Enhanced patient information
     patient: r.patient ? {
       name: r.patient.name || "",
@@ -201,40 +202,41 @@ function formatSingleReport(r:any) {
       age: 0,
       gender: ""
     },
-    
+
     // Symptoms array
     symptoms: Array.isArray(r.symptoms) ? r.symptoms : [],
-    
+
     // Clinical information
     diagnosis: r.diagnosis ?? "",
     treatment: r.treatment ?? "",
-    
+
     // Enhanced prescription structure
-    prescription: Array.isArray(r.prescription) 
+    prescription: Array.isArray(r.prescription)
+      //ts-ignore
       ? r.prescription.map((med: any) => ({
-          medicine: med.medicine || med.name || "",
-          dosage: med.dosage || "",
-          frequency: med.frequency || "",
-          timing: Array.isArray(med.timing) ? med.timing : [],
-          duration: med.duration || "",
-          instructions: med.instructions || ""
-        }))
-      : typeof r.prescription === 'string' 
-        ? [{ 
-            medicine: "Legacy Prescription",
-            dosage: "",
-            frequency: "",
-            timing: [],
-            duration: "",
-            instructions: r.prescription
-          }]
+        medicine: med.medicine || med.name || "",
+        dosage: med.dosage || "",
+        frequency: med.frequency || "",
+        timing: Array.isArray(med.timing) ? med.timing : [],
+        duration: med.duration || "",
+        instructions: med.instructions || ""
+      }))
+      : typeof r.prescription === 'string'
+        ? [{
+          medicine: "Legacy Prescription",
+          dosage: "",
+          frequency: "",
+          timing: [],
+          duration: "",
+          instructions: r.prescription
+        }]
         : [],
-    
+
     // Follow-up and notes
     notes: r.notes ?? "",
     followUpDate: r.followUpDate ? String(r.followUpDate) : "",
     followUpInstructions: r.followUpInstructions ?? "",
-    
+
     // Timestamps
     completedAt: r.completedAt ? new Date(r.completedAt).toISOString() : "",
     createdAt: r.createdAt ? new Date(r.createdAt).toISOString() : "",
@@ -252,7 +254,7 @@ export async function HEAD(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
     const patientId = searchParams.get("patientId");
-    
+
     if (!patientId || !ObjectId.isValid(patientId)) {
       return new NextResponse(null, { status: 400 });
     }

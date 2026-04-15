@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
-import { getDatabase } from "@/lib/ConnectDB";
+import { getDatabase } from "@/lib/db";
 // 1. FIX: Import Db, ObjectId, and WithId for proper typing
 import { Db, ObjectId, WithId, Document } from "mongodb";
 
@@ -160,21 +160,21 @@ export async function GET(request: NextRequest) {
 // ... (PUT and PATCH methods are fine, but I've added 'unknown' to their catch blocks too)
 
 export async function PUT(request: NextRequest) {
-    // ... (method body)
-    try {
-        // ...
-    } catch (error: unknown) {
-        console.error("Error updating notification message:", error);
-        return NextResponse.json({ error: "Failed to update notification message" }, { status: 500 });
-    }
+  // ... (method body)
+  try {
+    // ...
+  } catch (error: unknown) {
+    console.error("Error updating notification message:", error);
+    return NextResponse.json({ error: "Failed to update notification message" }, { status: 500 });
+  }
 }
 
 export async function PATCH(request: NextRequest) {
-    // ... (method body)
-    try {
-        // ...
-    } catch (error: unknown) {
-        console.error("Error updating notification:", error);
-        return NextResponse.json({ error: "Failed to update notification" }, { status: 500 });
-    }
+  // ... (method body)
+  try {
+    // ...
+  } catch (error: unknown) {
+    console.error("Error updating notification:", error);
+    return NextResponse.json({ error: "Failed to update notification" }, { status: 500 });
+  }
 }

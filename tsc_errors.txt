@@ -1,0 +1,22 @@
+﻿.next/types/validator.ts(100,39): error TS2306: File 'D:/test/healthcare/src/app/(doctor-pages)/consult/[appointmentId]/page.tsx' is not a module.
+src/app/(doctor-pages)/schedule/page.tsx(126,52): error TS2339: Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; id?: string | undefined; userType?: UserType | undefined; }'.
+src/app/api/doctor-api/reports/route.ts(2,32): error TS2307: Cannot find module '@/lib/mongodb' or its corresponding type declarations.
+src/app/api/doctor-api/schedule/route.ts(2,28): error TS2307: Cannot find module '@/lib/mongodb' or its corresponding type declarations.
+src/app/api/doctor-api/schedule/route.ts(11,34): error TS2339: Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; id?: string | undefined; userType?: UserType | undefined; }'.
+src/app/api/hospital-api/hospital/doctors/route.ts(3,28): error TS2307: Cannot find module '@/lib/mongodb' or its corresponding type declarations.
+src/app/api/hospital-api/hospital/doctors/route.ts(12,51): error TS2339: Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; id?: string | undefined; userType?: UserType | undefined; }'.
+src/app/api/hospital-api/hospital/route.ts(2,28): error TS2307: Cannot find module '@/lib/mongodb' or its corresponding type declarations.
+src/app/api/hospital-api/hospital/route.ts(13,51): error TS2339: Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; id?: string | undefined; userType?: UserType | undefined; }'.
+src/app/api/messages/route.ts(3,29): error TS2307: Cannot find module '@/lib/ConnectDB' or its corresponding type declarations.
+src/app/api/messages/route.ts(111,69): error TS7006: Parameter 'msg' implicitly has an 'any' type.
+src/app/api/notifications/route.ts(4,29): error TS2307: Cannot find module '@/lib/ConnectDB' or its corresponding type declarations.
+src/app/api/patient/profile/route.ts(4,41): error TS2307: Cannot find module '@/lib/ConnectDB' or its corresponding type declarations.
+src/app/api/pharmacy/route.ts(2,29): error TS2307: Cannot find module '@/lib/ConnectDB' or its corresponding type declarations.
+src/components/hospital-components/DoctorDashboard.tsx(5,61): error TS2307: Cannot find module '../lib/doctorSocket' or its corresponding type declarations.
+src/components/hospital-components/NotificationCenter.tsx(4,34): error TS2307: Cannot find module '../contexts/SocketContext' or its corresponding type declarations.
+src/components/hospital-components/NotificationCenter.tsx(91,37): error TS7006: Parameter 'notification' implicitly has an 'any' type.
+src/components/hospital-components/RealtimeDashboard.tsx(4,34): error TS2307: Cannot find module '../contexts/SocketContext' or its corresponding type declarations.
+src/components/hospital-components/RealtimeDashboard.tsx(61,37): error TS2339: Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; id?: string | undefined; userType?: UserType | undefined; }'.
+src/components/hospital-components/RealtimeDashboard.tsx(70,47): error TS7006: Parameter 'data' implicitly has an 'any' type.
+src/components/hospital-components/RealtimeDashboard.tsx(86,41): error TS7006: Parameter 'data' implicitly has an 'any' type.
+src/components/hospital-components/RealtimeDashboard.tsx(292,47): error TS7006: Parameter 'notification' implicitly has an 'any' type.

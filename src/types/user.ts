@@ -1,7 +1,7 @@
 // User types for the healthcare platform
 export enum UserType {
   PATIENT = "patient",
-  DOCTOR = "doctor", 
+  DOCTOR = "doctor",
   HOSPITAL = "hospital",
   PHARMACY = "pharmacy"
 }
@@ -9,8 +9,8 @@ export enum UserType {
 // Collection mapping for each user type
 export const COLLECTION_MAPPING = {
   [UserType.PATIENT]: "patients",
-  [UserType.DOCTOR]: "doctors", 
-  [UserType.HOSPITAL]: "hospitals",
+  [UserType.DOCTOR]: "doctors",
+  [UserType.HOSPITAL]: "Hospital",
   [UserType.PHARMACY]: "pharmacy"
 } as const;
 

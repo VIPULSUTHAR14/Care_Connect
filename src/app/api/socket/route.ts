@@ -9,7 +9,7 @@ const globalForSocket = global as unknown as { io?: SocketIOServer };
 export async function GET(req: NextRequest) {
   if (!globalForSocket.io) {
     console.log("Starting Socket.IO server...");
-    // @ts-ignore - req is actually IncomingMessage here
+    // @ts-ignore
     const server: HTTPServer = (req as IncomingMessage).socket?.server;
 
     // @ts-expect-error - server may not have 'io' property, but we attach it dynamically

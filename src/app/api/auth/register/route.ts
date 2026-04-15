@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCollectionByUserType } from "@/lib/ConnectDB";
+import { getDatabase } from "@/lib/db";
 import { UserType } from "@/types/user";
 import bcrypt from "bcryptjs";
 import { Document } from "mongodb"; // Import the Document type
@@ -40,7 +40,9 @@ export async function POST(request: NextRequest) {
 
     // This endpoint is for patient registration only
     const userType = UserType.PATIENT;
-    const collection = await getCollectionByUserType(userType);
+    const db = await getDatabase()
+    const collection = db.collection(userType)
+
 
     // Check if user already exists
     const existingUser = await collection.findOne({ email });
@@ -77,7 +79,7 @@ export async function POST(request: NextRequest) {
 
     if (result.insertedId) {
       const { password: _, ...userWithoutPassword } = userData;
-      
+
       return NextResponse.json({
         message: "User created successfully",
         user: {

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDatabase } from "@/lib/ConnectDB";
+import { getDatabase } from "@/lib/db";
 
 // GET /api/pharmacy
 // Query params:
@@ -55,6 +55,7 @@ export async function GET(request: NextRequest) {
       }
 
       // Otherwise, return a flattened, paginated list across all pharmacies
+      //ts-ignore
       const pipeline: any[] = [
         {
           $project: {
@@ -93,6 +94,7 @@ export async function GET(request: NextRequest) {
       const total = totalDocs[0]?.count || 0;
 
       return NextResponse.json({
+        //ts-ignore
         medicines: items.map((doc: any) => ({ ...doc.medicines })),
         total,
         page,
