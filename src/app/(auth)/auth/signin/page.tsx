@@ -18,7 +18,7 @@ export default function SignIn() {
   const router = useRouter();
 
   const gotoRegister = () => {
-    router.push("/Register");
+    router.push("/register");
   };
 
   const { data: session, status } = useSession();
