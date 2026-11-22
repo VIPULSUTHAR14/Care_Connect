@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDatabase } from "@/lib/db";
-import { UserType } from "@/types/user";
+import { UserType, COLLECTION_MAPPING } from "@/types/user";
 import bcrypt from "bcryptjs";
 import { Document } from "mongodb"; // Import the Document type
 
@@ -40,12 +40,13 @@ export async function POST(request: NextRequest) {
 
     // This endpoint is for patient registration only
     const userType = UserType.PATIENT;
-    const db = await getDatabase()
-    const collection = db.collection(userType)
-
+    const db = await getDatabase();
+    const collection = db.collection(COLLECTION_MAPPING[userType]);
 
     // Check if user already exists
-    const existingUser = await collection.findOne({ email });
+    const existingUser =
+      (await collection.findOne({ email })) ||
+      (await db.collection("patient").findOne({ email }));
     if (existingUser) {
       return NextResponse.json(
         { error: "User with this email already exists" },

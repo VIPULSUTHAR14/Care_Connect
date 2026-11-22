@@ -72,7 +72,11 @@ export default function Register() {
         if (signInResponse?.ok) {
           router.push("/dashboard");
         } else {
-          setError(signInResponse?.error || "Sign-in failed after registration.");
+          setError(
+            signInResponse?.error === "CredentialsSignin"
+              ? "Account created, but automatic sign-in failed. Please sign in directly."
+              : signInResponse?.error || "Sign-in failed after registration."
+          );
         }
       } else {
         setError(data.error || "Registration failed");

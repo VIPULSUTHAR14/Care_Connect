@@ -11,7 +11,13 @@ const getUserByEmail = async (email: string, userType: UserType) => {
   const db = await getDatabase();
   const collectionName = COLLECTION_MAPPING[userType];
   const collection = db.collection(collectionName);
-  return await collection.findOne({ email });
+  const user = await collection.findOne({ email });
+  if (!user && userType === UserType.PATIENT) {
+    // Fallback in case patient was registered in singular "patient" collection
+    const fallbackUser = await db.collection("patient").findOne({ email });
+    if (fallbackUser) return fallbackUser;
+  }
+  return user;
 };
 
 export const authOptions: NextAuthOptions = {
