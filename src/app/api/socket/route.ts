@@ -7,69 +7,82 @@ import { IncomingMessage } from "http";
 const globalForSocket = global as unknown as { io?: SocketIOServer };
 
 export async function GET(req: NextRequest) {
-  if (!globalForSocket.io) {
-    console.log("Starting Socket.IO server...");
-    // @ts-ignore
-    const server: HTTPServer = (req as IncomingMessage).socket?.server;
+  try {
+    if (!globalForSocket.io) {
+      // In serverless runtimes (like Vercel), req.socket is undefined.
+      // @ts-ignore
+      const server: HTTPServer | undefined = (req as IncomingMessage).socket?.server;
 
-    // @ts-expect-error - server may not have 'io' property, but we attach it dynamically
-    if (!server.io) {
-      const io = new SocketIOServer(server, {
-        path: "/api/socket",
-        cors: { origin: "*" },
-      });
+      if (!server) {
+        return new Response(
+          "Socket.IO server requires a dedicated Node.js server (e.g. server.js) and is not supported in serverless runtimes.",
+          { status: 200, headers: { "Content-Type": "text/plain" } }
+        );
+      }
 
-      // Attach to server so it persists
-      // @ts-expect-error - dynamically adding 'io' property to server
-      server.io = io;
-      globalForSocket.io = io;
-
-      io.on("connection", (socket) => {
-        console.log("User connected:", socket.id);
-
-        // User joins a room named by their userId for targeted messaging
-        socket.on("join-room", (userId: string) => {
-          if (typeof userId === "string" && userId.trim().length > 0) {
-            socket.join(userId);
-            console.log(`Socket ${socket.id} joined room ${userId}`);
-          }
+      // @ts-expect-error - server may not have 'io' property, but we attach it dynamically
+      if (!server.io) {
+        console.log("Starting Socket.IO server...");
+        const io = new SocketIOServer(server, {
+          path: "/api/socket",
+          cors: { origin: "*" },
         });
 
-        // Handle call requests (target callee room)
-        socket.on("call:request", ({ callId, callerId, calleeId }) => {
-          console.log(`Call request from ${callerId} to ${calleeId}`);
-          io.to(calleeId).emit("call:incoming", { callId, callerId, calleeId });
-        });
+        // Attach to server so it persists
+        // @ts-expect-error - dynamically adding 'io' property to server
+        server.io = io;
+        globalForSocket.io = io;
 
-        // Call accepted (notify caller)
-        socket.on("call:accept", ({ callId, calleeId, callerId }) => {
-          io.to(callerId).emit("call:accepted", { callId, calleeId });
-        });
+        io.on("connection", (socket) => {
+          console.log("User connected:", socket.id);
 
-        // Call rejected (notify caller)
-        socket.on("call:reject", ({ callId, callerId }) => {
-          io.to(callerId).emit("call:rejected", { callId });
-        });
+          // User joins a room named by their userId for targeted messaging
+          socket.on("join-room", (userId: string) => {
+            if (typeof userId === "string" && userId.trim().length > 0) {
+              socket.join(userId);
+              console.log(`Socket ${socket.id} joined room ${userId}`);
+            }
+          });
 
-        // WebRTC signaling (target peer user room specified in 'to')
-        socket.on("webrtc:offer", (data) => {
-          io.to(data.to).emit("webrtc:offer", data);
-        });
+          // Handle call requests (target callee room)
+          socket.on("call:request", ({ callId, callerId, calleeId }) => {
+            console.log(`Call request from ${callerId} to ${calleeId}`);
+            io.to(calleeId).emit("call:incoming", { callId, callerId, calleeId });
+          });
 
-        socket.on("webrtc:answer", (data) => {
-          io.to(data.to).emit("webrtc:answer", data);
-        });
+          // Call accepted (notify caller)
+          socket.on("call:accept", ({ callId, calleeId, callerId }) => {
+            io.to(callerId).emit("call:accepted", { callId, calleeId });
+          });
 
-        socket.on("webrtc:candidate", (data) => {
-          io.to(data.to).emit("webrtc:candidate", data);
-        });
+          // Call rejected (notify caller)
+          socket.on("call:reject", ({ callId, callerId }) => {
+            io.to(callerId).emit("call:rejected", { callId });
+          });
 
-        socket.on("disconnect", () => {
-          console.log("User disconnected:", socket.id);
+          // WebRTC signaling (target peer user room specified in 'to')
+          socket.on("webrtc:offer", (data) => {
+            io.to(data.to).emit("webrtc:offer", data);
+          });
+
+          socket.on("webrtc:answer", (data) => {
+            io.to(data.to).emit("webrtc:answer", data);
+          });
+
+          socket.on("webrtc:candidate", (data) => {
+            io.to(data.to).emit("webrtc:candidate", data);
+          });
+
+          socket.on("disconnect", () => {
+            console.log("User disconnected:", socket.id);
+          });
         });
-      });
+      }
     }
-  }
 
-  return new Response("Socket.IO server running", { status: 200 });
+    return new Response("Socket.IO server running", { status: 200 });
+  } catch (error) {
+    console.error("Socket handler error:", error);
+    return new Response("Socket initialization skipped", { status: 200 });
+  }
 }

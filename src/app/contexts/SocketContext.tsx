@@ -103,12 +103,14 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
   }>>([])
 
   useEffect(() => {
-    // Connect to the socket server initialized by server.js
-    const socketInstance = io({
+    // Connect to the socket server initialized by server.js (or designated external socket server)
+    const socketUrl = process.env.NEXT_PUBLIC_APP_URL || '';
+    const socketInstance = io(socketUrl, {
       path: '/api/socket/',
       transports: ['polling', 'websocket'],
       autoConnect: true,
-      timeout: 20000,
+      timeout: 10000,
+      reconnectionAttempts: 3,
       forceNew: true,
     })
 

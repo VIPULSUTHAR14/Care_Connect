@@ -5,12 +5,14 @@ let doctorSocket: Socket | null = null;
 
 export function connectDoctorSocket(doctorId: string, authToken: string): Socket {
   if (doctorSocket?.connected) return doctorSocket;
-  doctorSocket = io({
+  const socketUrl = process.env.NEXT_PUBLIC_APP_URL || "";
+  doctorSocket = io(socketUrl, {
     path: "/api/socket/",
     auth: { token: authToken, userId: doctorId, userType: "doctor" },
     transports: ["polling", "websocket"],
     autoConnect: true,
-    timeout: 20000,
+    timeout: 10000,
+    reconnectionAttempts: 3,
     forceNew: true,
   });
   return doctorSocket;
