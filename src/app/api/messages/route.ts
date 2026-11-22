@@ -19,18 +19,21 @@ interface MessageDocument extends Document {
 }
 
 // --- ENCRYPTION SETUP ---
-const secretKey: string | undefined = process.env.SECRET_KEY;
-if (!secretKey) {
-    throw new Error('Please define the SECRET_KEY environment variable inside .env.local for encryption.');
-}
+const getSecretKey = (): string => {
+    const secretKey = process.env.SECRET_KEY;
+    if (!secretKey) {
+        throw new Error('Please define the SECRET_KEY environment variable inside .env.local for encryption.');
+    }
+    return secretKey;
+};
 
 const encryptMessage = (text: string): string => {
-    return CryptoJS.AES.encrypt(text, secretKey).toString();
+    return CryptoJS.AES.encrypt(text, getSecretKey()).toString();
 };
 
 const decryptMessage = (ciphertext: string): string => {
     try {
-        const bytes = CryptoJS.AES.decrypt(ciphertext, secretKey);
+        const bytes = CryptoJS.AES.decrypt(ciphertext, getSecretKey());
         const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
         if (!decryptedText) {
             throw new Error("Decryption resulted in an empty string.");
@@ -43,12 +46,14 @@ const decryptMessage = (ciphertext: string): string => {
 };
 
 // --- GEMINI API SETUP ---
-const geminiApiKey = process.env.GEMINI_API_KEY;
-if (!geminiApiKey) {
-    throw new Error('Please define the GEMINI_API_KEY environment variable inside .env.local');
-}
-const genAI = new GoogleGenerativeAI(geminiApiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const getGenAIModel = () => {
+    const geminiApiKey = process.env.GEMINI_API_KEY;
+    if (!geminiApiKey) {
+        throw new Error('Please define the GEMINI_API_KEY environment variable inside .env.local');
+    }
+    const genAI = new GoogleGenerativeAI(geminiApiKey);
+    return genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+};
 
 
 // --- GET HANDLER (Fetch Chat History) ---
@@ -142,6 +147,7 @@ export async function POST(request: NextRequest) {
         // 4. Call the Gemini API
         let botResponseText = '';
         try {
+            const model = getGenAIModel();
             const chat = model.startChat({
                 history: [...healthBotSystemInstruction, ...chatHistory],
                 generationConfig: { temperature: 0.2 },

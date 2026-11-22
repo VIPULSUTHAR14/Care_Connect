@@ -181,7 +181,7 @@ export const authOptions: NextAuthOptions = {
     signIn: "/auth/signin",
     error: "/auth/error",
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "healthcare_fallback_secret_for_build",
 };
 
 const handler = NextAuth(authOptions);
